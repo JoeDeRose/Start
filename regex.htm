@@ -1,0 +1,3277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Regular Expressions</title>
+<style>
+.RegExp
+	{
+		background-color:#FFCC66;
+		font:"Courier New", Courier, monospace;
+		font-family:"Courier New", Courier, monospace;
+	}
+.RegExpReplace
+	{
+		background-color:#0F0;
+		font:"Courier New", Courier, monospace;
+		font-family:"Courier New", Courier, monospace;
+	}
+.CenterText {
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+<script>
+function RegExpTestJ()
+	{
+		SearchIgnoreGlobalJ = "";
+		for (i = 0; i < document.RegExpForm.SearchIgnoreGlobalJ.length; i++)
+			{
+				if (document.RegExpForm.SearchIgnoreGlobalJ[i].selected)
+					{
+						SearchIgnoreGlobalJ = document.RegExpForm.SearchIgnoreGlobalJ.options[i].text;
+					}
+			};
+
+		OriginalJ = document.RegExpForm.OriginalJ.value
+		SearchJ = new RegExp(document.RegExpForm.SearchJ.value,SearchIgnoreGlobalJ)
+		// Note:  If not taking information from a form, it is necessary to double the backslashes, for example
+			AltSearchJ = new RegExp("\\[B\\w\\]", "g")
+		ReplaceJ = document.RegExpForm.ReplaceJ.value
+		ResultJ = OriginalJ.replace(SearchJ, ReplaceJ)
+		document.getElementById('RegExpResult').innerHTML = ResultJ
+	}
+</script>
+<p><b>Resources for Regular Expressions</b></p>
+<ul>
+  <li><a href="http://www.regular-expressions.info/" target="_blank">http://www.regular-expressions.info/</a></li>
+  <li><a href="http://www.javascriptkit.com/javatutors/redev2.shtml" target="_blank">http://www.javascriptkit.com/javatutors/redev2.shtml</a></li>
+  <li><a href="http://www.webreference.com/js/column5/" target="_blank">http://www.webreference.com/js/column5/</a></li>
+</ul>
+<hr />
+<p><b>Structure</b></p>
+<p>Regular expressions are framed by slashes, and followed (optionally) by the letters <span class="RegExp">i</span> or <span class="RegExp">g</span> (concatenated in that order):</p>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><center>
+      <b>i</b>
+    </center>    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td>ignore case </td>
+  </tr>
+  <tr>
+    <td><center>
+      <b>g</b>
+    </center>    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td>global search (replace all instances) </td>
+  </tr>
+  <tr>
+    <td><b>ig</b></td>
+    <td>&nbsp;</td>
+    <td>both ignore case and global search </td>
+  </tr>
+</table>
+<p>The following <span style='background-color: #99FFFF'>blue-shaded</span> &quot;metacharacters&quot; (in the first column below) must be preceded by a backslash; otherwise, they have alternate meanings as described:</p>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="3" valign="top"><b>Framing of Regular Expressions</b></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      /      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>slash:</b> Frames regular expression </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top"><b>Special Characters</b></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      \      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>backslash:</b> Precedes these special characters and character classes (as follows). </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top"><b>\b</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">word border </td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\n</b></td>
+        <td valign="top">&nbsp;&nbsp;</td>
+        <td valign="top">line feed </td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\r</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">carriage return </td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\t</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">tab</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\v</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">vertical tab </td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\f</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">form feed </td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\d</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">any digit (<span class="RegExp">/\d/</span> = <span class="RegExp">/[0-9]/</span>)</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\D</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">any <u>non</u>-digit (<span class="RegExp">/\D/</span> = <span class="RegExp">/[^0-9]/</span>)</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\w</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">any word (i.e., alphanumeric or underscore) character (<span class="RegExp">/\w/</span> = <span class="RegExp">/[a-zA-Z_0-9]/</span>)</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\W</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">any <u>non</u>-word (i.e., <u>non</u>-alphanumeric and <u>non</u>-underscore) character (<span class="RegExp">/\W/</span> = <span class="RegExp">/[^a-zA-Z_0-9]/</span>)</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\s</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">any white space (<span class="RegExp">/\s/</span> = <span class="RegExp">/[\t\v\n\r\f]/</span>)</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\S</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">any <u>non</u>-white space (<span class="RegExp">/\S/</span> = <span class="RegExp">/[^\t\v\n\r\f]/</span>)</td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\u####</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">unicode character #### </td>
+      </tr>
+      <tr>
+        <td valign="top"><b>\#</b></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">i.e., <span class="RegExp">\1</span>, <span class="RegExp">\2</span>, ...  the search term (which must be framed in parentheses) associated with that number (<span class="RegExp">/(the )\1/</span> = <span class="RegExp">/the the /</span>) (<span class="RegExp">/(and) (the )\2/</span> = <span class="RegExp">/and the the /</span>)</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top"><b>Search Terms</b></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"> <center>
+      <b>      |      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>pipe:</b> Separates alternative search terms; for example, <span class="RegExp">/cat|dog/</span> will match either &quot;cat&quot; or &quot;dog.&quot; </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b> (&nbsp;) </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>parentheses:</b> Group search terms (for modification by commands such as &quot;?&quot; or for alternatives such as &quot;|&quot;) </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"> <center>
+      <b>      [ ]     </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>brackets:</b> Enclose a character set. Character sets are closed by a closing bracket; within them, ranges are identified with hypehns. For example <span class="RegExp">/[ae]/</span> matches &quot;a&quot; or &quot;e&quot; but not &quot;ae&quot;; <span class="RegExp">/[0-9a-fA-F]/</span> matches any hexadecimal digit. <span class="RegExp">[…]</span> encloses a list of alernate characters for that position in the search; <span class="RegExp">[^…]</span> encloses a list of characters to be <i>excluded</i> at that position in the search.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+        <b> - </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>hyphen:</b> Within brackets, indicates a range of characters: <span class="RegExp">/[0-9]/</span> is the same as <span class="RegExp">/[0123456789]/</span>. </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+        <b> ^ </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>caret:</b> Inside brackets, excludes certain characters; for example, <span class="RegExp">/[^aeiou]/</span> matches only consonants. <font color="#FF0000">(See alternate usage under &quot;Location of Search.&quot;)</font></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      .      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>dot:</b> Matches any character except a line feed. </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top"><b>Location of Search</b></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      ^      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>caret:</b> <u>Before</u> a letter, indicates that the match is at the beginning of the string; for example, <span class="RegExp">/^b/i</span> matches the first &quot;b&quot; in &quot;Bob.&quot; <font color="#FF0000">(See alternate usage under &quot;Search Terms.&quot;)</font></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      $      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>dollar sign:</b> <u>After</u> a letter, indicates that the match is at the end of the string; example, <span class="RegExp">/b$/i</span> matches the second &quot;b&quot; in &quot;Bob.&quot;</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+        <b> ? </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>question mark:</b> Within parentheses, introduces a &quot;lookaround search&quot; (&nbsp;<span class="RegExp">/(?…)/</span>&nbsp;) or a &quot;lookbehind search&quot; (&nbsp;<span class="RegExp">/(?&lt;…)/</span>&nbsp;), in which search terms are found only in the context of surrounding characters. The &quot;<span class="RegExp">?</span>&quot; or &quot;<span class="RegExp">?&lt;</span>&quot; is followed by either &quot;=&quot; for a matched character or &quot;!&quot; for an excluded character. (Note: &quot;Lookbehind search&quot; is not supported by JavaScript, even though &quot;lookaround search&quot; is supported.) <font color="#FF0000">(See alternate usage under &quot;Number of Search Attempts.&quot;)</font></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">The following table may help illustrate how the lookaround search works: </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+
+        <tr>
+          <td valign="bottom">Search&nbsp;
+          for:</td>
+          <td>&nbsp;&nbsp;</td>
+          <td class="RegExp"><center>
+            /(<u>?&lt;=</u>b)a/
+          </center></td>
+          <td><center>
+            &nbsp;&nbsp;
+          </center></td>
+          <td><center>
+              <span class="RegExp">/(<u>?&lt;!</u>b)a/</span>
+          </center></td>
+          <td><center>
+            &nbsp;&nbsp;
+          </center></td>
+          <td class="RegExp"><center>
+            /a(<u>?=</u>b)/
+          </center></td>
+          <td><center>
+            &nbsp;&nbsp;
+          </center></td>
+          <td class="RegExp"><center>
+            /a(<u>?!</u>b)/
+          </center></td>
+        </tr>
+        <tr>
+          <td><b>bab</b></td>
+          <td>&nbsp;</td>
+          <td><center>
+              <b>b<font color="#FF0000">x</font>b</b>
+                    </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>bab</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+              <b>b<font color="#FF0000">x</font>b</b>
+                    </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+              <b>bab</b>
+          </center></td>
+        </tr>
+        <tr>
+          <td><b>baab</b></td>
+          <td>&nbsp;</td>
+          <td><center>
+            <b>b<font color="#FF0000">x</font>ab</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>ba<font color="#FF0000">x</font>b</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>ba<font color="#FF0000">x</font>b</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>b<font color="#FF0000">x</font>ab</b>
+          </center></td>
+        </tr>
+        <tr>
+          <td><b>baaab</b></td>
+          <td>&nbsp;</td>
+          <td><center>
+            <b>b<font color="#FF0000">x</font>aab</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>ba<font color="#FF0000">x</font><font color="#FF0000">x</font>b</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>baa<font color="#FF0000">x</font>b</b>
+          </center></td>
+          <td><center>
+          </center></td>
+          <td><center>
+            <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>ab</b>
+          </center></td>
+        </tr>
+
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top"><b>Number of Search Attempts</b></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      *      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>asterisk:</b> Matches an item <u>zero or more times</u>. For example, <span class="RegExp">/<<font color="#FF0000">[A-Za-z]</font>[A-Za-z0-9]*>/</span> matches any valid HTML tag without attributes (i.e., as long as it doesn't include a space), from one character (&quot;<b>&lt;a&gt;</b>&quot;) to more (&quot;<b>&lt;blockquote&gt;</b>&quot;), but <font color="#FF0000">requires that it include an alphabetic character at the start</font>.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      +      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>plus sign:</b> Same as above, except matches an item <u>one or more times</u>. </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+      <b>      ?      </b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>question mark:</b><font color="#FF0000">(See alternate usage under &quot;Location of Search.&quot;)</font></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td valign="top">&bull;&nbsp;</td>
+          <td valign="top">Same as above, except matches an item <u>zero or one time</u> (i.e., making it optional); for example <span class="RegExp">/colou?r/</span> matches &quot;color&quot; and &quot;colour.&quot;</td>
+        </tr>
+        <tr>
+          <td valign="top">&bull;&nbsp;</td>
+          <td valign="top">After <span class="RegExp">*</span> or <span class="RegExp">+</span> the search will be &quot;greedy&quot; (extended to the maximum possible length); adding a <span class="RegExp">?</span> will make the search &quot;lazy&quot; (limited to the minimum possible length); for example, in the search term &quot;<b>This is &lt;b&gt;bold&lt;/b&gt; text</b>,&quot; <span class="RegExp">/<.*>/</span> will find &quot;<b>&lt;b&gt;bold&lt;/b&gt;</b>,&quot; while <span class="RegExp">/<.*?>/</span> will find &quot;<b>&lt;b&gt;</b>.&quot;</td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#99FFFF"><center>
+        <b> {&nbsp;}<br />
+        {&nbsp;,&nbsp;}</b>
+    </center></td>
+    <td valign="top">&nbsp;&nbsp;</td>
+    <td valign="top"><b>braces:</b> Frame one or two numbers to indicate the number of times a match should be made; for example, <span class="RegExp">/\b<font color="#FF0000">[1-9]</font><font color="#0000FF">[0-9]{3}</font>\b/</span> matches any number from <font color="#FF0000">1</font><font color="#0000FF">000</font> to <font color="#FF0000">9</font><font color="#0000FF">999</font>. When two digits, separated by commas, are in the braces, they represent the minimum and maximum number of repetitions; for example, <span class="RegExp">/\b<font color="#FF0000">[1-9]</font><font color="#0000FF">[0-9]{2,4}</font>\b/</span> matches any number from <font color="#FF0000">1</font><font color="#0000FF">00</font> to <font color="#FF0000">9</font><font color="#0000FF">9999</font>. If the second number in the braces is omitted, the maximum number of times is unlimited; thus <span class="RegExp">/<font color="#FF0000">1</font><font color="#0000FF">0{2,}</font>/</span> will not find <font color="#FF0000">1</font> or <font color="#FF0000">1</font><font color="#0000FF">0</font>, but will find <font color="#FF0000">1</font><font color="#0000FF">00</font>, <font color="#FF0000">1</font><font color="#0000FF">000</font>, <font color="#FF0000">1</font><font color="#0000FF">0000</font>, <font color="#FF0000">1</font><font color="#0000FF">0000</font>, etc.</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">The following table may help illustrate how these functions work together: Where the search term was found in the words below, it is replaced with a red &quot;<b><font color="#FF0000">x</font></b>.&quot;</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td rowspan="2" valign="bottom">Search&nbsp;
+          for:</td>
+        <td>&nbsp;</td>
+        <td><center>
+        </center>        </td>
+        <td><center>
+        </center>        </td>
+        <td><center>
+          <b>          *          </b>
+        </center></td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>          +          </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b> ? </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b> (…)? </b>
+                                        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b> {x} </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b> {x,y} </b>
+        </center></td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>          {x,}          </b>
+        </center></td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;</td>
+        <td class="RegExp"><center>/aa/</center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center>        </td>
+        <td class="RegExp"><center>/aa*/</center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center>        </td>
+        <td class="RegExp"><center>/aa+/</center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center></td>
+        <td><center>
+          <span class="RegExp">/aa?/</span>
+        </center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center></td>
+        <td><center>
+            <span class="RegExp">/(aa)(aa)?/</span>
+        </center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center></td>
+        <td><center>
+          <span class="RegExp">/a{2}/</span>
+        </center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center></td>
+        <td><center>
+          <span class="RegExp">/a{2,4}/</span>
+        </center></td>
+        <td><center>
+          &nbsp;&nbsp;
+        </center>        </td>
+        <td><center>
+          <span class="RegExp">/a{2,}/</span>
+        </center></td>
+      </tr>
+      <tr>
+        <td><b>bab</b></td>
+        <td>&nbsp;</td>
+        <td><center>
+          <b>bab</b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b          </b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>bab</b>
+        </center>        </td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b>b<font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b>bab</b>
+                </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>bab</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>bab</b>
+        </center></td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>bab</b>
+        </center>        </td>
+      </tr>
+      <tr>
+        <td><b>baab</b></td>
+        <td>&nbsp;</td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b          </b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center>        </td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b>b<font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b>b<font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center>        </td>
+      </tr>
+      <tr>
+        <td><b>baaab</b></td>
+        <td>&nbsp;</td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>ab</b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center>        </td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+            <b>b<font color="#FF0000">x</font>ab</b>
+                </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>ab</b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center></td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b</b>
+        </center>        </td>
+      </tr>
+      <tr>
+        <td><b>baaaab</b></td>
+        <td>&nbsp;</td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b </b>
+        </center></td>
+      </tr>
+      <tr>
+        <td><b>baaaaab</b></td>
+        <td>&nbsp;</td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>ab          </b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b          </b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b          </b>
+        </center>        </td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">xx</font>b          </b>
+        </center>        </td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>ab          </b>
+        </center>        </td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font><font color="#FF0000">x</font>ab </b>
+        </center></td>
+        <td><center>
+        </center></td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>ab </b>
+        </center></td>
+        <td><center>
+          
+        </center>        </td>
+        <td><center>
+          <b>b<font color="#FF0000">x</font>b          </b>
+        </center>        </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+  	<td valign="top">&nbsp;</td>
+  	<td valign="top">&nbsp;</td>
+  	<td valign="top">&nbsp;</td>
+  	</tr>
+  <tr>
+  	<td valign="top" bgcolor="#99FFFF"><center>
+  		<b> \# </b>
+  		</center></td>
+  	<td valign="top">&nbsp;&nbsp;</td>
+  	<td valign="top"><b>backreference in search (slash followed by digit):</b> This technique will find text framed by a certain incidence of parentheses. For example, the term <span class="RegExp">&lt;([^&gt;]+&gt;).*&lt;\/\1</span> will find any pair of HTML tags along with their contents. To break that down: <span class="RegExp">&lt;([^&gt;]+&gt;)</span>, finds any tag &ndash; such as <b>&lt;span&gt;</b>, but because of the position in parentheses, <b>span&gt;</b> is held in memory. The middle part of the expression, <span class="RegExp">.*</span> finds intervening characters. And the final part, <span class="RegExp">&lt;\/\1</span> finds the closing tag (in this case <b>&lt;/span&gt;</b>) for the one previously found; this is because the <span class="RegExp">&lt;\/</span> finds the angle bracket followed by a slash (signaling a closing tag), and then the <span class="RegExp">\1</span> searches for the same parentheses-framed term that was found earlier. Thus, if the first part of the regular expression matched on <b>&lt;span&gt;</b>, the second part would match on <b>&lt;/span&gt;</b> &ndash; but not on <b>&lt;/table&gt;</b>, <b>&lt;/div&gt;</b>, <b>&lt;/body&gt;</b>, etc.</td>
+  	</tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+  	<td colspan="3" valign="top"><b>Replacing</b></td>
+  	</tr>
+  <tr>
+  	<td valign="top">&nbsp;</td>
+  	<td valign="top">&nbsp;</td>
+  	<td valign="top">&nbsp;</td>
+  	</tr>
+  <tr>
+  	<td valign="top" bgcolor="#99FFFF"><center>
+  		<b> $# </b>
+  		</center></td>
+  	<td valign="top">&nbsp;&nbsp;</td>
+  	<td valign="top"><b>backreference in replace (dollar-sign followed by a digit):</b> This varies by programming language, but a common schema (which <i>is</i> used in JavaScript) is to refer back to portions of the search term with a dollar-sign followed by a digit. For example, <b>$1</b> would refer to the <i>first</i> item in the search string that is <u>framed in parentheses</u>; <b>$2</b> would refer to the second, etc. To illustrate: (1) If you wanted to put the word &quot;test&quot; in bold, you would search on <span class="RegExp">/(test)/</span> and replace it with <span class="RegExpReplace">&lt;b&gt;$1&lt;/b&gt;</span>. (2) If you wanted to put the flip the first two words of some text, you would search on <span class="RegExp">/^(\w+)\s(\w+)/</span> and replace it with <span class="RegExpReplace">$2 $1</span>. In ColdFusion, a backreference in replace is handled like a backreference in search: with a backslash followed by a digit (e.g., <b>\1</b>, <b>\2</b>).</td>
+  	</tr>
+</table>
+<hr />
+<p><b>Metacharacters</b></p>
+<p>The f ollowing 11 characters are metacharacters and must be escaped (preceded with a backslash) if used literally in a regular expression:</p>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>[</strong></td>
+    <td>&nbsp;&nbsp;</td>
+    <td>open bracket</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>\</strong></td>
+    <td>&nbsp;</td>
+    <td>backslash</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>^</strong></td>
+    <td>&nbsp;</td>
+    <td>caret</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>$</strong></td>
+    <td>&nbsp;</td>
+    <td>dollar sign</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>.</strong></td>
+    <td>&nbsp;</td>
+    <td>period (dot)</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>|</strong></td>
+    <td>&nbsp;</td>
+    <td>vertical bar (pipe)</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>?</strong></td>
+    <td>&nbsp;</td>
+    <td>question mark</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>*</strong></td>
+    <td>&nbsp;</td>
+    <td>asterisk (star)</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>+</strong></td>
+    <td>&nbsp;</td>
+    <td>plus sign</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>(</strong></td>
+    <td>&nbsp;</td>
+    <td>opening parenthesis</td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF" class="CenterText"><strong>)</strong></td>
+    <td>&nbsp;</td>
+    <td>closing parenthesis</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr />
+<p><b>Examples</b></p>
+<p>Useful regular expressions include</p>
+<p>Remove spaces at beginning and end of a string (equivalent to <font face="Courier New, Courier, monospace">trim()</font> in VisualBasic): <br />
+<span class="RegExp">/^\s+|\s+$/g</span></p>
+<blockquote>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        ^
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        |
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        $
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        g
+      </center></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td>&nbsp;&nbsp;
+        <center>
+        </center>      </td>
+      <td>begin regular expression </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        ^
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>at the beginning of the string ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>... find white space ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>... as many times as possible (and at least once) </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        |
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>or</td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>find white space ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>... as many times as possible ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        $
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>... at the end of the string </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>end regular expression </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20" class="RegExp"><center>
+        g
+      </center></td>
+      <td><center>
+      </center>      </td>
+      <td>perform search globally </td>
+    </tr>
+  </table>
+</blockquote>
+<p>Remove HTML markups: <br />
+  <span class="RegExp">/&lt;[^&gt;]+&gt;/g</span></p>
+<blockquote>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        &lt;
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        [
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        ^
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        &gt;
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        ]
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        &gt;
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        g
+      </center></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td>&nbsp;&nbsp;
+          <center>
+        </center></td>
+      <td>begin regular expression </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        &lt;
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>find &quot;&lt;&quot;, followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        [
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>begin character set, which includes ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        ^
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;... characters <i>other than </i>... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        &gt;
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;... &quot;&gt;&quot; </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        ]
+      </center>
+      </td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;end character set (i.e., any character <i>except</i> &quot;&gt;&quot;) </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>as many times as possible (and at least once) </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        &gt;
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>until it comes to a &quot;&gt;&quot; </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>end regular expression </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        g
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>perform search globally </td>
+    </tr>
+  </table>
+</blockquote>
+<p>Find doubled words (e.g., &quot;the the&quot;): <br />
+  <span class="RegExp">/\b(\w+)\s+\1\b/g</span></p>
+<blockquote>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \b
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        (
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \w
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        )
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \1
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \b
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        g
+      </center></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td>&nbsp;&nbsp;
+          <center>
+        </center></td>
+      <td>begin regular expression </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \b
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>find a word border, followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        (
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>begin a search term group, which includes ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \w
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;... any word character ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;... as many times as possible (and at least once) </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        )
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;close search term group, followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>any white space, ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>... as many times as possible (and at least once)</td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \1
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>then repeat the search term found in the first search term group, followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \b
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td><center>
+      </center></td>
+      <td>a word border </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td>&nbsp;</td>
+      <td>end regular expression </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center></td>
+      <td class="RegExp"><center>
+        g
+      </center></td>
+      <td>&nbsp;</td>
+      <td>perform search globally </td>
+    </tr>
+  </table>
+</blockquote>
+<p>Find words that end (or do not end) in <i>s</i>: <br />
+  <span class="RegExp">/\b\w*s\s|\b\w*s$/g</span></p>
+<blockquote>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \b
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \w
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        *
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        s
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        |
+      </center></td>
+      <td width="20" class="RegExp">        <center>
+          \b
+      </center></td>
+      <td width="20" class="RegExp">        <center>
+          \w
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        *
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        s
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        $
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        g
+      </center></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="20" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td>&nbsp;&nbsp;
+          <center>
+        </center></td>
+      <td>begin regular expression </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \b
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center></td>
+      <td>find a word border, followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \w
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center></td>
+      <td>any word character (alphanumeric or underscore) </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        *
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;... as many times as possible, followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        s
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center></td>
+      <td>the letter <i>s</i>, (replace with <span class="RegExp">[^s]</span> to <i>exclude</i> words that end in <i>s</i>), followed by ... </td>
+    </tr>
+    <tr>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20"><center>
+      </center></td>
+      <td width="20" class="RegExp"><center>
+        \s
+      </center></td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td><center>
+      </center></td>
+      <td>white space</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td class="RegExp"><center>
+        |
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>or</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp">        <center>
+          \b
+      </center></td>
+      <td width="20">        <center>
+        </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td width="20"><center>
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>find a word border, followed by ... </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp"><center>
+        \w
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>any word character (alphanumeric or underscore) </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp"><center>
+        *
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;... as many times as possible, followed by ... </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp"><center>
+        s
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>the letter <i>s</i>, (replace with <span class="RegExp">[^s]</span> to <i>exclude</i> words that end in <i>s</i>)</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp"><center>
+        $
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>at the end of the string </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp"><center>
+        /
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>end regular expression </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td><center>
+      </center>      </td>
+      <td class="RegExp"><center>
+        g
+      </center>      </td>
+      <td>&nbsp;</td>
+      <td>perform search globally </td>
+    </tr>
+  </table>
+</blockquote>
+<p>Check whether text is a properly formatted e-mail address (in <i>most</i> e-mail constructs): <br />
+  <span class="RegExp">/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i</span></p>
+<blockquote>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20" valign="top" class="RegExp">        <center>
+          /
+      </center></td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          ^
+      </center></td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          [
+      </center></td>
+      <td width="20" valign="top" nowrap="nowrap" class="RegExp"><center><nobr>A-Z0-9._%+-</nobr></center></td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          ]
+      </center></td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          +
+      </center></td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          @
+      </center></td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          [
+      </center></td>
+      <td width="20" valign="top" nowrap="nowrap" class="RegExp"><center>
+        <nobr>A-Z0-9.-</nobr>
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        ]
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        +
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        \.
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        [
+      </center></td>
+      <td width="20" valign="top" nowrap="nowrap" class="RegExp"><center>
+        <nobr>A-Z</nobr>
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        ]
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        {
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        2,4
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        }
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        $
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        /
+      </center></td>
+      <td width="20" valign="top" class="RegExp"><center>
+        i
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="20" valign="top" class="RegExp">        <center>
+          /
+      </center></td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">begin regular expression </td>
+    </tr>
+    <tr>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          ^
+      </center></td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">start at the first character, and search for ... </td>
+    </tr>
+    <tr>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          [
+      </center></td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">a letter to be found in the following group ... </td>
+    </tr>
+    <tr>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top" nowrap="nowrap" class="RegExp">        <center>
+          <nobr>A-Z0-9._%+-</nobr>
+      </center></td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>... letters from A-Z, digits from 0-9, characters ., _, %, +, or -</td>
+        </tr>
+      </table>        </td>
+    </tr>
+    <tr>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top" class="RegExp">        <center>
+        ]
+      </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... end character group </td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top" class="RegExp">        <center>
+          +
+      </center></td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">repeated as many times as necessary (but at least once); followed by ... </td>
+    </tr>
+    <tr>
+      <td valign="top"><center>
+      </center>      </td>
+      <td valign="top"><center>
+      </center>      </td>
+      <td valign="top"><center>
+      </center>      </td>
+      <td valign="top"><center>
+      </center>      </td>
+      <td valign="top"><center>
+      </center>      </td>
+      <td valign="top"><center>
+      </center>      </td>
+      <td valign="top" class="RegExp">        <center>
+          @
+      </center></td>
+      <td width="20" valign="top">        <center>
+        </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top"><center>
+      </center>      </td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td width="20" valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&quot;@&quot;, followed by </td>
+    </tr>
+    <tr>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+        [
+      </center>      </td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">a letter to be found in the following group ... </td>
+    </tr>
+    <tr>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top" class="RegExp"><center>
+        <nobr>A-Z0-9.-</nobr>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... letters from A-Z, digits from 0-9, characters ., -</td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top" class="RegExp"><center>
+      ]
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... end character group </td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
++        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">repeated as many times as necessary (but at least once); followed by ... </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+\.        
+      </center>      </td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&quot;.&quot;, followed by </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+[        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">a letter to be found in the following group ... </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+        <nobr>A-Z</nobr>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... letters from A-Z</td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+]        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... end character group </td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top" class="RegExp"><center>
+{        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">repeated ... </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+2,4        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... at least 2, but no more than 4, times </td>
+          </tr>
+        </table>      </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+}        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>... end repetition instruction </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+$        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">end at the last character </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+/        
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">end regular expression </td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top"><center>
+      </center></td>
+      <td valign="top" class="RegExp"><center>
+i        
+      </center></td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">ignore case (uppercase vs. lowercase) </td>
+    </tr>
+  </table>
+</blockquote>
+<hr />
+<p><b>Test Search for Regular Expressions</b></p>
+<form id="RegExpForm" name="RegExpForm" method="post" action="">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>In this string:&nbsp;&nbsp; </td>
+      <td><input name="OriginalJ" type="text" id="OriginalJ" size="45" /></td>
+    </tr>
+    <tr>
+      <td>Search for:&nbsp;&nbsp;</td>
+      <td bgcolor="#FC6">/&nbsp;<input name="SearchJ" type="text" id="SearchJ" size="45" style="background:#FC6" />&nbsp;/&nbsp;
+        <select name="SearchIgnoreGlobalJ" id="SearchIgnoreGlobalJ" style="background:#FC6">
+          <option></option>
+          <option>i</option>
+          <option>g</option>
+          <option>ig</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>And replace it with:&nbsp;&nbsp; </td>
+      <td><input name="ReplaceJ" type="text" id="ReplaceJ" size="45" /></td>
+    </tr>
+    <tr>
+      <td>For this result: 
+      <input type="button" name="Button" value="Go" onclick="RegExpTestJ()" />
+      &nbsp;&nbsp;</td>
+      <td bgcolor="#66FF99" style="border:1px solid #000"><span id="RegExpResult"></span></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+</html>

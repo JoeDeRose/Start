@@ -1,0 +1,778 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<style>
+   <!--
+   -->
+</style>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Joe's Public Transit Menu</title>
+<SCRIPT LANGUAGE = "JavaScript">
+<!--
+// Bus route descriptions begin at line 346
+
+ var ns6=document.getElementById&&!document.all
+ var ie4=document.all
+ 
+ var Selected_Month;
+ var Selected_Year;
+ var Current_Date = new Date();
+ var Current_Month = Current_Date.getMonth();
+ 
+ var Days_in_Month = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+ var Month_Label = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+ 
+ var Current_Year = Current_Date.getYear();
+ if (Current_Year < 1000)
+ Current_Year+=1900
+ 
+ 
+ var Today = Current_Date.getDate();
+ 
+ function Header(Year, Month) {
+ 
+    if (Month == 1) {
+    Days_in_Month[1] = ((Year % 400 == 0) || ((Year % 4 == 0) && (Year % 100 !=0))) ? 29 : 28;
+    }
+    var Header_String = Month_Label[Month] + ' ' + Year;
+    return Header_String;
+ }
+ 
+ function Make_Calendar(Year, Month) {
+    var First_Date = new Date(Year, Month, 1);
+    var Heading = Header(Year, Month);
+    var First_Day = First_Date.getDay() + 1;
+    if (((Days_in_Month[Month] == 31) && (First_Day >= 6)) ||
+     ((Days_in_Month[Month] == 30) && (First_Day == 7))) {
+    var Rows = 6;
+    }
+    else if ((Days_in_Month[Month] == 28) && (First_Day == 1)) {
+    var Rows = 4;
+    }
+    else {
+    var Rows = 5;
+    }
+ 
+    var HTML_String = '<table><tr><td valign="top"><table BORDER=1 CELLSPACING=0 cellpadding=0 FRAME="box" >';
+ 
+    HTML_String += '<tr><th colspan=7 BGCOLOR="FFFFFF" ><FONT FACE="ARIAL" SIZE="-1">' + Heading + '</font></th></tr>';
+ 
+    HTML_String += '<tr><th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">Su</FONT></th><th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">Mo</FONT></th><th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">Tu</FONT></th><th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">We</FONT></th>';
+ 
+    HTML_String += '<th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">Th</FONT></th><th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">Fr</FONT></th><th ALIGN="CENTER" BGCOLOR="FFFFFF" WIDTH="20"><FONT FACE="ARIAL" SIZE="-1">Sa</FONT></th></tr>';
+ 
+    var Day_Counter = 1;
+    var Loop_Counter = 1;
+    for (var j = 1; j <= Rows; j++) {
+    HTML_String += '<tr ALIGN="left" VALIGN="top">';
+    for (var i = 1; i < 8; i++) {
+    if ((Loop_Counter >= First_Day) && (Day_Counter <= Days_in_Month[Month])) {
+    if ((Day_Counter == Today) && (Year == Current_Year) && (Month == Current_Month)) {
+       HTML_String += '<td BGCOLOR="FFFFFF"><b><font FACE="ARIAL" color="red" SIZE="-2">' + Day_Counter + '</font></b></td>';
+    }
+    else {
+       HTML_String += '<td BGCOLOR="FFFFFF" HEIGHT="17"> <FONT FACE="ARIAL" SIZE="-2">' + Day_Counter + ' </FONT></td>';
+    }
+    Day_Counter++;    
+    }
+    else {
+    HTML_String += '<td> </td>';
+    }
+    Loop_Counter++;
+    }
+    HTML_String += '</tr>';
+    }
+    HTML_String += '</table></td></tr></table>';
+    cross_el=ns6? document.getElementById("Calendar") : document.all.Calendar
+    cross_el.innerHTML = HTML_String;
+ }
+ 
+ 
+ function Check_Nums() {
+    if ((event.keyCode < 48) || (event.keyCode > 57)) {
+    return false;
+    }
+ }
+ 
+ function On_Year() {
+    var Year = document.jsclock.year.value;
+    if (Year.length == 4) {
+    Selected_Month = document.jsclock.month.selectedIndex;
+    Selected_Year = Year;
+    Make_Calendar(Selected_Year, Selected_Month);
+    }
+ }
+ 
+ function On_Month() {
+    var Year = document.jsclock.year.value;
+    if (Year.length == 4) {
+    Selected_Month = document.jsclock.month.selectedIndex;
+    Selected_Year = Year;
+    Make_Calendar(Selected_Year, Selected_Month);
+    }
+    else {
+    alert('Please enter a valid year.');
+    document.jsclock.year.focus();
+    }
+ }
+
+ function Defaults()
+	{
+		var Mid_Screen = Math.round(document.body.clientWidth / 2);
+		document.jsclock.month.selectedIndex = Current_Month;
+		document.jsclock.year.value = Current_Year;
+		Selected_Month = Current_Month;
+		Selected_Year = Current_Year;
+		Make_Calendar(Current_Year, Current_Month);
+
+		TodayJ = new Date();
+		switch (TodayJ.getDay())
+			{
+				case 0:
+					document.getElementById('Day1').innerHTML = "Su"
+					document.getElementById('Day2').innerHTML = "Mo"
+					document.getElementById('Day3').innerHTML = "Tu"
+					document.getElementById('Day4').innerHTML = "We"
+					document.getElementById('Day5').innerHTML = "Th"
+					document.getElementById('Day6').innerHTML = "Fr"
+					document.getElementById('Day7').innerHTML = "Sa"
+					document.getElementById('Day1Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day7Color').style.backgroundColor = "#CCCCCC"
+					break;
+				case 1:
+					document.getElementById('Day1').innerHTML = "Mo"
+					document.getElementById('Day2').innerHTML = "Tu"
+					document.getElementById('Day3').innerHTML = "We"
+					document.getElementById('Day4').innerHTML = "Th"
+					document.getElementById('Day5').innerHTML = "Fr"
+					document.getElementById('Day6').innerHTML = "Sa"
+					document.getElementById('Day7').innerHTML = "Su"
+					document.getElementById('Day6Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day7Color').style.backgroundColor = "#CCCCCC"
+					break;
+				case 2:
+					document.getElementById('Day1').innerHTML = "Tu"
+					document.getElementById('Day2').innerHTML = "We"
+					document.getElementById('Day3').innerHTML = "Th"
+					document.getElementById('Day4').innerHTML = "Fr"
+					document.getElementById('Day5').innerHTML = "Sa"
+					document.getElementById('Day6').innerHTML = "Su"
+					document.getElementById('Day7').innerHTML = "Mo"
+					document.getElementById('Day5Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day6Color').style.backgroundColor = "#CCCCCC"
+					break;
+				case 3:
+					document.getElementById('Day1').innerHTML = "We"
+					document.getElementById('Day2').innerHTML = "Th"
+					document.getElementById('Day3').innerHTML = "Fr"
+					document.getElementById('Day4').innerHTML = "Sa"
+					document.getElementById('Day5').innerHTML = "Su"
+					document.getElementById('Day6').innerHTML = "Mo"
+					document.getElementById('Day7').innerHTML = "Tu"
+					document.getElementById('Day4Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day5Color').style.backgroundColor = "#CCCCCC"
+					break;
+				case 4:
+					document.getElementById('Day1').innerHTML = "Th"
+					document.getElementById('Day2').innerHTML = "Fr"
+					document.getElementById('Day3').innerHTML = "Sa"
+					document.getElementById('Day4').innerHTML = "Su"
+					document.getElementById('Day5').innerHTML = "Mo"
+					document.getElementById('Day6').innerHTML = "Tu"
+					document.getElementById('Day7').innerHTML = "We"
+					document.getElementById('Day3Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day4Color').style.backgroundColor = "#CCCCCC"
+					break;
+				case 5:
+					document.getElementById('Day1').innerHTML = "Fr"
+					document.getElementById('Day2').innerHTML = "Sa"
+					document.getElementById('Day3').innerHTML = "Su"
+					document.getElementById('Day4').innerHTML = "Mo"
+					document.getElementById('Day5').innerHTML = "Tu"
+					document.getElementById('Day6').innerHTML = "We"
+					document.getElementById('Day7').innerHTML = "Th"
+					document.getElementById('Day2Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day3Color').style.backgroundColor = "#CCCCCC"
+					break;
+				case 6:
+					document.getElementById('Day1').innerHTML = "Sa"
+					document.getElementById('Day2').innerHTML = "Su"
+					document.getElementById('Day3').innerHTML = "Mo"
+					document.getElementById('Day4').innerHTML = "Tu"
+					document.getElementById('Day5').innerHTML = "We"
+					document.getElementById('Day6').innerHTML = "Th"
+					document.getElementById('Day7').innerHTML = "Fr"
+					document.getElementById('Day1Color').style.backgroundColor = "#CCCCCC"
+					document.getElementById('Day2Color').style.backgroundColor = "#CCCCCC"
+					break;
+			}
+	}
+
+ function Skip(Direction) {
+    if (Direction == '+') {
+    if (Selected_Month == 11) {
+    Selected_Month = 0;
+    Selected_Year++;
+    }
+    else {
+    Selected_Month++;
+    }
+    }
+    else {
+    if (Selected_Month == 0) {
+    Selected_Month = 11;
+    Selected_Year--;
+    }
+    else {
+    Selected_Month--;
+    }
+    }
+    Make_Calendar(Selected_Year, Selected_Month);
+    document.jsclock.month.selectedIndex = Selected_Month;
+    document.jsclock.year.value = Selected_Year;
+ }
+
+function SubmitMARTANextBus(StopJ)
+	{
+		d = new Date();
+		YearJ = d.getYear()
+		MonthJ = parseInt(d.getMonth())+1
+		DateJ = d.getDate()
+		HourJ = d.getHours()
+		MinuteJ = d.getMinutes()
+		
+		if (MonthJ < 10)
+			{
+				FullDateJ = "0" + MonthJ + "-"
+			}
+		else
+			{
+				FullDateJ = MonthJ + "-"
+			}
+		if (DateJ < 10)
+			{
+				FullDateJ = FullDateJ + "0" + DateJ + "-"
+			}
+		else
+			{
+				FullDateJ = FullDateJ + DateJ + "-"
+			}
+		FullDateJ = FullDateJ + YearJ
+		if (HourJ == 0)
+			{
+				FullTimeJ = "12:"
+				AMPMJ = "a"
+			}
+		if (HourJ >= 1 && HourJ <= 9)
+			{
+				FullTimeJ = "+" + HourJ + ":"
+				AMPMJ = "a"
+			}
+		if (HourJ >= 10 && HourJ <= 11)
+			{
+				FullTimeJ = HourJ + ":"
+				AMPMJ = "a"
+			}
+		if (HourJ == 12)
+			{
+				FullTimeJ = "12:"
+				AMPMJ = "p"
+			}
+		if (HourJ >= 13 && HourJ <= 21)
+			{
+				FullTimeJ = "+" + (parseInt(HourJ)-12) + ":"
+				AMPMJ = "p"
+			}
+		if (HourJ >= 22 && HourJ <= 23)
+			{
+				FullTimeJ = (parseInt(HourJ)-12) + ":"
+				AMPMJ = "p"
+			}
+		if (MinuteJ < 10)
+			{
+				FullTimeJ = FullTimeJ + "0" + MinuteJ
+			}
+		else
+			{
+				FullTimeJ = FullTimeJ + MinuteJ + "-"
+			}
+		document.MARTANextBus.NextBusText.value = StopJ
+		document.MARTANextBus.Date.value = FullDateJ
+		document.MARTANextBus.FromTime.value = FullTimeJ
+		document.MARTANextBus.FromMeridiem.value = AMPMJ
+		document.MARTANextBus.submit();
+	}
+
+function SubmitMARTAScheduleLookup(DayJ, RouteJ, DirectionJ)
+	{
+		d = new Date();
+		dStart = new Date(d.getYear(), d.getMonth(), d.getDate() + DayJ)
+		YearJ = dStart.getYear()
+		MonthJ = parseInt(dStart.getMonth())+1
+		DateJ = dStart.getDate()
+
+		if (MonthJ < 10)
+			{
+				FullDateJ = "0" + MonthJ + "-"
+			}
+		else
+			{
+				FullDateJ = MonthJ + "-"
+			}
+		if (DateJ < 10)
+			{
+				FullDateJ = FullDateJ + "0" + DateJ + "-"
+			}
+		else
+			{
+				FullDateJ = FullDateJ + DateJ + "-"
+			}
+		FullDateJ = FullDateJ + YearJ
+
+		document.MARTAScheduleLookup.Date.value = FullDateJ
+		document.MARTAScheduleLookup.LineAbbr.value = RouteJ
+		document.MARTAScheduleLookup.DirectionName.value = DirectionJ
+		document.MARTAScheduleLookup.STOP1.value = ''
+		document.MARTAScheduleLookup.STOP2.value = ''
+		document.MARTAScheduleLookup.STOP3.value = ''
+		document.MARTAScheduleLookup.STOP4.value = ''
+		
+		if (RouteJ == '5' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46600'
+				document.MARTAScheduleLookup.STOP1.value = '44045'
+				document.MARTAScheduleLookup.STOP2.value = '59901'
+			}
+		if (RouteJ == '5' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46601'
+				document.MARTAScheduleLookup.STOP1.value = '59901'
+				document.MARTAScheduleLookup.STOP2.value = '44064'
+			}
+
+		if (RouteJ == '6' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '42840'
+				document.MARTAScheduleLookup.STOP1.value = '59901'
+				document.MARTAScheduleLookup.STOP2.value = '70300'
+				document.MARTAScheduleLookup.STOP3.value = '95900'
+			}
+		if (RouteJ == '6' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '42841'
+				document.MARTAScheduleLookup.STOP1.value = '95900'
+				document.MARTAScheduleLookup.STOP2.value = '70156'
+				document.MARTAScheduleLookup.STOP3.value = '59901'
+			}
+
+		if (RouteJ == '12' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46660'
+				document.MARTAScheduleLookup.STOP1.value = '99970088'
+				document.MARTAScheduleLookup.STOP2.value = '50024'
+				document.MARTAScheduleLookup.STOP3.value = '81910'
+			}
+		if (RouteJ == '12' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46661'
+				document.MARTAScheduleLookup.STOP1.value = '81910'
+				document.MARTAScheduleLookup.STOP2.value = '50004'
+				document.MARTAScheduleLookup.STOP3.value = '99970088'
+			}
+
+		if (RouteJ == '16' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46690'
+				document.MARTAScheduleLookup.STOP1.value = '70090'
+				document.MARTAScheduleLookup.STOP2.value = '94084'
+				document.MARTAScheduleLookup.STOP3.value = '102236'
+			}
+		if (RouteJ == '16' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46691'
+				document.MARTAScheduleLookup.STOP1.value = '102236'
+				document.MARTAScheduleLookup.STOP2.value = '94077'
+				document.MARTAScheduleLookup.STOP3.value = '70032'
+			}
+
+		if (RouteJ == '36' && DirectionJ == 'Eastbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '44691'
+				document.MARTAScheduleLookup.STOP1.value = '68900'
+				document.MARTAScheduleLookup.STOP2.value = '70202'
+				document.MARTAScheduleLookup.STOP3.value = '85904'
+			}
+		if (RouteJ == '36' && DirectionJ == 'Westbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '44690'
+				document.MARTAScheduleLookup.STOP1.value = '85904'
+				document.MARTAScheduleLookup.STOP2.value = '70122'
+				document.MARTAScheduleLookup.STOP3.value = '68900'
+			}
+
+		if (RouteJ == '99' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '47310'
+				document.MARTAScheduleLookup.STOP1.value = '81900'
+				document.MARTAScheduleLookup.STOP2.value = '95212'
+			}
+		if (RouteJ == '99' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '47311'
+				document.MARTAScheduleLookup.STOP1.value = '103060'
+				document.MARTAScheduleLookup.STOP2.value = '81900'
+			}
+
+		if (RouteJ == '113' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46531'
+				document.MARTAScheduleLookup.STOP1.value = '1000027'
+				document.MARTAScheduleLookup.STOP2.value = '999754'
+				document.MARTAScheduleLookup.STOP3.value = '94140'
+				document.MARTAScheduleLookup.STOP4.value = '84900'
+			}
+		if (RouteJ == '113' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '46530'
+				document.MARTAScheduleLookup.STOP1.value = '84900'
+				document.MARTAScheduleLookup.STOP2.value = '94040'
+				document.MARTAScheduleLookup.STOP3.value = '99970959'
+				document.MARTAScheduleLookup.STOP4.value = '102088'
+			}
+
+		if (RouteJ == '245' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '43991'
+				document.MARTAScheduleLookup.STOP1.value = '59901'
+				document.MARTAScheduleLookup.STOP2.value = '70294'
+			}
+		if (RouteJ == '245' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '43990'
+				document.MARTAScheduleLookup.STOP1.value = '70152'
+				document.MARTAScheduleLookup.STOP2.value = '70158'
+				document.MARTAScheduleLookup.STOP3.value = '59900'
+			}
+
+		if (RouteJ == '397' && DirectionJ == 'Southbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '44601'
+				document.MARTAScheduleLookup.STOP1.value = '95900'
+				document.MARTAScheduleLookup.STOP2.value = '103112'
+				document.MARTAScheduleLookup.STOP3.value = '103900'
+			}
+		if (RouteJ == '397' && DirectionJ == 'Northbound')
+			{
+				document.MARTAScheduleLookup.LineDirId.value = '44600'
+				document.MARTAScheduleLookup.STOP1.value = '103165'
+				document.MARTAScheduleLookup.STOP2.value = '103046'
+				document.MARTAScheduleLookup.STOP3.value = '95900'
+			}
+
+		document.MARTAScheduleLookup.submit();
+	}
+</SCRIPT>
+<style fprolloverstyle>
+A {text-decoration: none}
+A:hover {color: #0000FF; text-decoration: underline}
+</style>
+</head>
+
+<body link="#008000" vlink="#008000" onLoad="Defaults()">
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><a name="Top"></a><a href="index.htm"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Return to Start Page</font></a></div></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">&nbsp;</font></td>
+  </tr>
+</table>
+<table border="1" cellpadding="5" bordercolor="#008000" id="AutoNumber13" cellspacing="0" align="center">
+  <tr>
+    <td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber26">
+  <tr>
+    <td valign="top" bgcolor="#FFFFCC">
+    <div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+      <b><font size="2" face="Arial"><font color="#000000">MARTA</font></font></b></div>    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber27">
+      <tr>
+        <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" size="2"><a href="http://www.itsmarta.com/">Main</a></font></td>
+      </tr>
+      <tr>
+        <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" size="2"><a href="http://www.itsmarta.com/getthere/schedules/index-bus.htm">Schedules</a></font></td>
+      </tr>
+      <tr>
+        <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" size="2"><a href="http://www.itsmarta.com/maps/viewer.asp">System Map</a></font></td>
+      </tr>
+      <tr>
+        <td valign="top"><font face="Arial" style="font-size: 8pt">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" style="font-size: 8pt; font-weight: 700">Next Bus </font></td>
+      </tr>
+      <tr>
+        <td valign="top">&nbsp;</td>
+        <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber25">
+          <tr>
+            <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+            <td valign="top" style="border-left-style: solid; border-left-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+            <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber27">
+                <tr>
+                  <td valign="top"><font face="Arial" style="font-size: 8pt; font-weight: 700">From Home (Randolph &amp; Highland/JW Dobbs &amp; Randoph) </font></td>
+                </tr>
+                <tr>
+                  <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber25">
+                      <tr>
+                        <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+                        <td valign="top" style="border-left-style: solid; border-left-width: 1; border-bottom-style: solid; border-bottom-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+                        <td valign="top"><font face="Arial" size="2"><a href="" onClick="SubmitMARTANextBus('901226')">113 Southbound</a> | <a href="" onClick="SubmitMARTANextBus('210731')">113 Northbound</a></font></td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+		  <tr>
+            <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+            <td valign="top" style="border-left-style: solid; border-left-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+            <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber27">
+                <tr>
+                  <td valign="top"><font face="Arial" style="font-size: 8pt; font-weight: 700">From Home (Irwin &amp; Randolph/Bradley) </font></td>
+                </tr>
+                <tr>
+                  <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber25">
+                      <tr>
+                        <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+                        <td valign="top" style="border-left-style: solid; border-left-width: 1; border-bottom-style: solid; border-bottom-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+                        <td valign="top"><font face="Arial" size="2"><a href="" onClick="SubmitMARTANextBus('901389')">113 Southbound</a> | <a href="" onClick="SubmitMARTANextBus('903277')">113 Northbound</a></font></td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+            <td valign="top" style="border-left-style: solid; border-left-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+            <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber27">
+
+              <tr>
+                <td valign="top"><font face="Arial" style="font-size: 8pt; font-weight: 700">From Home (Edgewood &amp; Randolph/Bradley) </font></td>
+              </tr>
+              <tr>
+                <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber25">
+
+                    <tr>
+                      <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+                      <td valign="top" style="border-left-style: solid; border-left-width: 1; border-bottom-style: solid; border-bottom-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+                      <td valign="top"><font face="Arial" size="2"><a href="" onClick="SubmitMARTANextBus('103046')">397 Eastbound</a> | <a href="" onClick="SubmitMARTANextBus('103112')">397 Westbound</a></font></td>
+                    </tr>
+                </table></td>
+              </tr>
+
+            </table></td>
+          </tr>
+
+            <tr>
+              <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+              <td valign="top" style="border-left-style: solid; border-left-width: 1; border-bottom-style: solid; border-bottom-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+              <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber27">
+                <tr>
+                  <td valign="top"><font face="Arial" style="font-size: 8pt; font-weight: 700">From Work (Clifton &amp; Gatewood/Michael)</font></td>
+                </tr>
+                <tr>
+                  <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber25">
+                      <tr>
+                        <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+                        <td valign="top" style="border-left-style: solid; border-left-width: 1; border-bottom-style: solid; border-bottom-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+                        <td valign="top"><font face="Arial" size="2"><a href="" onClick="SubmitMARTANextBus('901604')">6/245 Northbound</a> | <a href="" onClick="SubmitMARTANextBus('902016')">6 Southbound</a></font></td>
+                      </tr>
+                  </table></td>
+                </tr>
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td valign="top"><font face="Arial" style="font-size: 8pt">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" style="font-size: 8pt; font-weight: 700">Schedule</font></td>
+      </tr>
+      <tr>
+        <td valign="top">&nbsp;</td>
+        <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber25">
+
+            <tr>
+              <td valign="top"><font size="2">&nbsp;&nbsp;</font></td>
+              <td valign="top" style="border-left-style: solid; border-left-width: 1; border-bottom-style: solid; border-bottom-width: 1"><font size="2">&nbsp;&nbsp;</font></td>
+              <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="center"><font face="Arial" style="font-size: 8pt; font-weight: 700">Bus</font></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font size="2" face="Arial"><a href="http://www.itsmarta.com/getthere/schedules/5.htm">5</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font face="Arial" size="2"><a href="http://www.itsmarta.com/getthere/schedules/6.htm">6</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font face="Arial" size="2"><a href="http://www.itsmarta.com/getthere/schedules/12.htm">12</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font face="Arial" size="2"><a href="http://www.itsmarta.com/getthere/schedules/16.htm">16</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font size="2" face="Arial"><a href="http://www.itsmarta.com/getthere/schedules/36.htm">36</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font face="Arial" size="2"><a href="http://www.itsmarta.com/getthere/schedules/99.htm">99</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font face="Arial" size="2"><a href="http://www.itsmarta.com/getthere/schedules/113.htm">113</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font size="2" face="Arial"><a href="http://www.itsmarta.com/getthere/schedules/245.htm">245</a></font></b></td>
+                  </tr>
+                <tr>
+                  <td align="center"><b><font size="2" face="Arial"><a href="http://www.itsmarta.com/getthere/schedules/397.htm">397</a></font></b></td>
+                  </tr>
+
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+      </table>    </td>
+  </tr>
+  </table>    </td>
+    <td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
+  <tr>
+    <td valign="top" bgcolor="#FFFFCC">
+    <div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+      <font face="Arial" size="2"><b><font size="2"><font color="#000000">Cliff (Emory Shuttles)</font></font></b></font></div>    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3">
+      <tr>
+        <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" size="2"><a href="http://transportation.emory.edu/transportation/cliff/index.html">Main</a></font></td>
+      </tr>
+      <tr>
+        <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" size="2"><a href="http://emory.transloc.com/">Find Cliff</a></font></td>
+      </tr>
+      </table>    </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#FFFFCC"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"> <b><font face="Arial" size="2">CCT</font></b></div></td>
+  </tr>
+  <tr>
+    <td valign="top"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3">
+        <tr>
+          <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+          <td valign="top"><font face="Arial" size="2"><a href="http://cobbdot.org/cct.htm">Main</a></font></td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;    </td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#FFFFCC">
+    <div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+      <b><font face="Arial" size="2">Personal</font></b></div>    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3">
+      <tr>
+        <td valign="top"><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+        <td valign="top"><font face="Arial" size="2"><a href="http://home.comcast.net/~joe.derose/mobile/MARTA.htm">Mobile</a></font></td>
+      </tr>
+      </table>    </td>
+  </tr>
+  </table>    </td>
+    <td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber38">
+  <tr>
+    <td valign="top" bgcolor="#FFFFCC">
+    <div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+      <b><font face="Arial" size="2">Calendar</font></b></div>    </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+     <form method="POST" name="jsclock" action="--WEBBOT-SELF--">
+     <div id=NavBar style="position:relative;top:5px;" align="center">     
+     <table>
+      <tr>
+       <td><input type="button" value=" < " onClick="Skip('-')"></td>
+       <td><select name="month" onChange="On_Month()">
+       
+       <script language="JavaScript1.2">
+       if (ie4||ns6){
+       for (j=0;j<Month_Label.length;j++) {
+       document.writeln('<option value=' + j + '>' + Month_Label[j]);
+       }
+       }
+       </script>
+       
+       </select>       </td>
+       <td><input type="text" name="year" size=4 maxlength=4 onKeyPress="return Check_Nums()" onKeyUp="On_Year()"></td>
+       <td><input type="button" value=" > " onClick="Skip('+')"></td>
+      </tr>
+     </table>
+     </div>
+     <div id=Calendar style="position:relative;top:-2px;" align="CENTER"></div>
+     </form>    </td>
+  </tr>
+  </table>    </td>
+  </tr>
+</table>
+<form method="GET" target="_blank" action="http://mycommute.itsmarta.com/hiwire" name="MARTANextBus">
+	<input type="hidden" name=".a" value="iNextBusMatch">
+	<input type="hidden" name="ShowTimes" value="1">
+	<input type="hidden" name="NumStopTimes" value="5">
+	<input type="hidden" name="GetSchedules" value="1">
+	<input type="hidden" name="NextBusText" value="901389">
+	<input type="hidden" name="Date" value="11-05-2007">
+	<input type="hidden" name="FromTime" value="+9%3A44">
+	<input type="hidden" name="FromMeridiem" value="a">
+	<input type="hidden" name="SB" value="Search">
+</form>
+<form method="POST" target="_blank" action="http://mycommute.itsmarta.com/hiwire" name="MARTAScheduleLookup" id="ScheduleLookup">
+	<input type="hidden" name=".a" value="iHeadwaySheet"/>
+	<input type="hidden" name="LineAbbr" value=""/>
+	<input type="hidden" name="DirectionName" value=""/>
+	<input type="hidden" name="LineDirId" value=""/>
+	<input type="hidden" name="ServiceGroupId" value=""/>
+	<input type="hidden" name="ReturnTimeSpecificDest" value=""/>
+	<input type="hidden" name="Date" value=""/>
+	<input type="hidden" name="FromTime" value="5:00"/>
+	<input type="hidden" name="ToTime" value="4:59"/>
+	<input type="hidden" name="FromMeridiem" value="a"/>
+	<input type="hidden" name="ToMeridiem" value="a"/>
+	<input type="hidden" name="StopDisplay" value="Select"/>
+	<input type="hidden" name="STOP1" value="102270"/>
+	<input type="hidden" name="STOP2" value="94140"/>
+	<input type="hidden" name="STOP3" value="84901"/>
+	<input type="hidden" name="STOP4" value=""/>
+</form>
+</body>
+
+</html>

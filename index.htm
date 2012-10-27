@@ -1,0 +1,1082 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="3600">
+
+<title>Joe's Start Menu</title>
+<base target='_blank' />
+
+<!-- main stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="main.css" />
+
+<!-- calendar stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="jscalendar-1.0/calendar-win2k-cold-1.css" title="win2k-cold-1" />
+
+<!-- Clock Functions -->
+<script src="Scripts/SunInformation.js" type="text/javascript"></script>
+<script src="Scripts/PrayTimes.js" type="text/javascript"></script>
+<script src="Scripts/ClockFunctions.js" type="text/javascript"></script>
+
+<!-- main calendar program -->
+<script type="text/javascript" src="jscalendar-1.0/calendar.js"></script>
+
+<!-- language for the calendar -->
+<script type="text/javascript" src="jscalendar-1.0/lang/calendar-en.js"></script>
+
+<!-- the following script defines the Calendar.setup helper function, which makes
+adding a calendar a matter of 1 or 2 lines of code. -->
+<script type="text/javascript" src="jscalendar-1.0/calendar-setup.js"></script>
+
+<!-- jQuery and add-ins -->
+<script src="Scripts/jquery-min.js"></script>
+<script src="Scripts/jquery.xdomainajax.js"></script>
+
+<script language="JavaScript">
+
+function SubmitGoogleMain()
+	{
+		document.GoogleMain.q.value = document.GoogleSetup.q.value ;
+		document.GoogleMain.submit();
+	}
+
+function SubmitGoogleWikipedia()
+	{
+		document.GoogleMain.q.value = document.GoogleSetup.q.value + " site:en.wikipedia.org";
+		document.GoogleMain.submit();
+	}
+
+function SubmitGoogleWikitravel()
+	{
+		document.GoogleMain.q.value = document.GoogleSetup.q.value + " site:wikitravel.org/en/";
+		document.GoogleMain.submit();
+	}
+
+function SubmitGoogleImages()
+	{
+		document.GoogleImages.q.value = document.GoogleSetup.q.value ;
+		document.GoogleImages.submit();
+	}
+
+function SubmitGoogleNews()
+	{
+		document.GoogleNews.q.value = document.GoogleSetup.q.value ;
+		document.GoogleNews.submit();
+	}
+
+function SubmitDictionary()
+	{
+		document.Dictionary.q.value = document.GoogleSetup.q.value ;
+		document.Dictionary.submit();
+	}
+
+function SubmitUrbanDictionary()
+	{
+		document.UrbanDictionary.term.value = document.GoogleSetup.q.value ;
+		document.UrbanDictionary.submit();
+	}
+
+function SubmitAcronym()
+	{
+		document.Acronym.Acronym.value = document.GoogleSetup.q.value ;
+		document.Acronym.submit();
+	}
+
+function toggleClock( thisIDJ ) {
+	parentID = $( "#" + thisIDJ ).parents().attr("id");
+	$( "#" + parentID + " canvas").hide();
+	if ( thisIDJ == $( "#" + parentID + " canvas:last").attr("id") ) {
+		$("#" + parentID + " canvas").first().show();
+	} else {
+		$("#" + parentID + " canvas").next().show();
+	}
+}
+
+</script>
+
+</head>
+
+<body link="#008000" vlink="#008000" onLoad="onLoadJ();">
+
+<table border="1" cellpadding="5" bordercolor="#008000" id="AutoNumber13" cellspacing="0" align="center">
+	<tr id="JavaScriptIsDisabled">
+		<td colspan="6" style="text-align:center; background:#F00; color:#FFF; font-weight:bold">JavaScript is disabled.</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<table class="LinkGrid">
+				<tr>
+					<td valign="top">
+						<table>
+							<tr>
+								<td class="FlashClock" id="ClockCell1" >
+									<canvas id="imgStandardClock" width="200" height="200" style="border:1px black solid" onClick="toggleClock(this.id);" ></canvas>
+									<canvas id="img24HourClock" width="200" height="200" style="border:1px black solid" onClick="toggleClock(this.id);" class="HideOnLoad"></canvas>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table>
+							<tr>
+								<td class="FlashClock" id="ClockCell2" >
+									<canvas id="imgChineseClock" width="200" height="200" style="border:1px black solid"></canvas>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table>
+							<tr>
+								<td class="FlashClock" id="ClockCell3" >
+									<canvas id="imgMetricClock" width="200" height="200" style="border:1px black solid"></canvas>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table class="LinkGrid">
+				<tr>
+					<td class="MainHeader">Emory</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;</td>
+								<td valign="top">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td nowrap><span class="SubHeader">CFAdmin&nbsp;&nbsp;</span></td>
+											<td nowrap>&nbsp;<a href="http://cfmlappprod1:8301/CFIDE/administrator/index.cfm">Prod</a>&nbsp;</td>
+											<td nowrap>&nbsp;</td>
+											<td nowrap>&nbsp;</td>
+											<td nowrap>&nbsp;<a href="http://cfmlappdev1:8301/CFIDE/administrator/index.cfm">Dev</a>&nbsp;</td>
+											<td nowrap>&nbsp;<a href="http://127.0.0.1:8501/CFIDE/administrator/enter.cfm">Local</a>&nbsp;</td>
+										</tr>
+										<tr>
+											<td nowrap><span class="SubHeader">ERMS&nbsp;&nbsp;</span></td>
+											<td nowrap>&nbsp;<a href="https://erms.emory.edu/">Prod</a>&nbsp;</td>
+											<td nowrap>&nbsp;<a href="https://erms-stg.emory.edu/">Stg</a>&nbsp;</td>
+											<td nowrap>&nbsp;<a href="https://erms-qa.emory.edu/">QA</a>&nbsp;</td>
+											<td nowrap>&nbsp;<a href="https://erms-dev.emory.edu/">Dev</a>&nbsp;</td>
+											<td nowrap>&nbsp;<a href="http://localhost:8501/">Local</a>&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://blackboard.emory.edu/">Blackboard</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://directory.service.emory.edu/">Directory</a> |
+								ENID (<a href="https://enid.emory.edu/idm/user/">Self</a>) (<a href="http://enid.emory.edu/admin">Admin</a>)</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">
+									<a href="https://owa.emory.edu/">Exchange Server</a>
+									(<a href="http://eas.emory.edu/">Archive</a>)
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://help.emory.edu/">IT Support</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://www.hr.emory.edu/leave">Leave Request</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="https://www.app.emory.edu/av-spamfilter">Spam Filter</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://www.sparkfly.com/">Sparkfly</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="https://mydesktop.emory.org/">Virtual Desktop</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="https://vpn.emory.edu">VPN</a> <span class="SpecialNote">(Firefox/IE)</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">R-WIT</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="https://collaborate.emory.edu/Pages/Default.aspx">Collaborate</a>
+												<br>
+												<a href="https://emoryrhsit.onjira.com/">JIRA</a>
+												<br>
+												<a href="https://project.emory.edu/pwa">PWA</a> <span class="SpecialNote">(IE)</span>
+												<br>
+												<a href="http://v3.sonar6.com/">Sonar6</a>
+												<br>
+												<a href="https://svn.service.emory.edu:8443/repos/emoryoit/project/">SVN</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader"><a href="http://www.ocr.emory.edu/">OCR</a></span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.ocr.emory.edu/staff/">OCR Staff</a> |
+												<a href="http://med.emory.edu/research/cto/protected/Metrics/metrics.php">Metrics</a>
+												<br>
+												<a href="http://www.med.emory.edu/research/cto/wiki/">DokuWiki</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="MainHeader">Programming</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="https://github.com/login">Github</a></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">ColdFusion</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.cfquickdocs.com/cf9/">ColdFusion CFQuickDocs</a>
+												<br>
+												<a href="http://livedocs.adobe.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/js/html/wwhelp.htm">ColdFusion Documentation</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">jQuery</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://jquery.com/">jQuery</a>
+												(<a href="http://docs.jquery.com/">Documentation</a>)
+												<br>
+												<a href="http://jsfiddle.net/">jsFiddle</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Oracle</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.techonthenet.com/oracle/">Oracle/PLSQL Topics</a>
+												(<a href="http://www.techonthenet.com/oracle/functions/">Functions</a>)
+												<br>
+												<a href="http://www.ss64.com/ora/">Oracle SQL Commands</a>
+												<br>
+												<a href="http://www.sqlfiddle.com/">SQL Fiddle</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">PHP</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.php.net/manual/en/langref.php">PHP Language Reference</a>
+												<br>
+												<a href="http://www.web.emory.edu/doc/php/ref.oci8.html">PHP Oracle 8 Functions (Emory)</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="MainHeader">Utilities</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://zip4.usps.com/zip4/welcome.jsp">USPS ZIP+4 Lookup</a></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Search</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<form method="GET" action="http://www.google.com/search" name="GoogleSetup" >
+													<input type="text" id="q" name="q" size="20">
+													<br>
+													<a href="" onClick="SubmitGoogleMain()">Google</a> | 
+													<a href="" onClick="SubmitGoogleImages()">Images</a> | 
+													<a href="" onClick="SubmitGoogleNews()">News</a>
+													<br>
+													<a href="" onClick="SubmitGoogleWikipedia()">Wikipedia</a> |
+													<a href="" onClick="SubmitGoogleWikitravel()">Wikitravel</a>
+													<br>
+													<a href="" onClick="SubmitDictionary()">Dictionary</a> |
+													<a href="" onClick="SubmitUrbanDictionary()">Urban Dictionary</a>
+													<br>
+													<a href="" onClick="SubmitAcronym()">Acronym Finder</a>
+												</form>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table class="LinkGrid">
+				<tr>
+					<td class="MainHeader">Entertainment/Information</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">
+									<a href="https://www.gmail.com/">GMail</a> | 
+									<a href="https://www.google.com/voice/">Voice</a> | 
+									<a href="https://www.google.com/calendar/">Calendar</a> | 
+									<a href="https://mail.google.com/mail/u/0/#contacts">Contacts</a> | 
+									<a href="http://www.google.com/reader/">Reader</a>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/latitude/">Latitude</a> | 
+									<a href="https://mail.google.com/tasks/canvas">Tasks</a> | 
+									<a href="https://drive.google.com/#starred">Drive</a> | 
+									<a href="https://www.google.com/settings/account">Account</a>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">
+									<a href="http://plus.google.com/">Google+</a> |
+									<a href="https://www.facebook.com/?sk=h_chr">Facebook</a> |
+									<a href="http://www.twitter.com/">Twitter</a> |
+									<a href="http://www.linkedin.com/">LinkedIn</a>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://www.evite.com/">Evite</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><A HREF="http://www.straightdope.com/">Straight Dope</A></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://www.conceptispuzzles.com/index.aspx?uri=myconceptis">Conceptis Puzzles</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="https://secure.logmein.com/">LogMeIn</a> <span class="SpecialNote">(Firefox)</span></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://www.qrstuff.com/">QRStuff</a></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Food</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="https://online.jasonsdeli.com/">Jason's Deli</a>
+												<br>
+												<a href="http://www.nancyspizza.com/">Nancy's Pizza</a>
+												<br>
+												<a href="http://www.pizzahut.com/">Pizza Hut</a>
+												<br>
+												<a href="http://eatricebox.net/">Rice Box</a>
+												<br>
+												<a href="http://roaminghunger.com/atl">Roaming Hunger</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">News</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<i><a href="http://www.clatl.com/">Creative Loafing</a></i> |
+												<i><a href="http://www.ajc.com/">AJC</a></i>
+												<br>
+												<a href="http://www.cnn.com/">CNN</a> |
+												<a href="http://www.msnbc.msn.com/">MSNBC</a>
+												<br>
+												<a href="http://www.bbc.co.uk/">BBC</a> |
+												<a href="http://www.aljazeera.net/">&#1575;&#1604;&#1580;&#1586;&#1610;&#1585;&#1577;</a>
+												<br>
+												<a href="http://www.time.com/"><i>Time</i></a> |
+												<a href="http://www.newsweek.com/"><i>Newsweek</i></a>
+												<br>
+												<a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a> |
+												<a href="http://www.bing.com">Bing</a> |
+												<a href="http://www.wolframalpha.com/">WolframAlpha</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Television and Movies</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.imdb.com/">IMDB</a>
+												<br>
+												<a href="http://www.tvguide.com/listings/">TV Guide</a> |
+												<a href="http://www.tvtome.com/">TV.com</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Travel</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.kayak.com/">Kayak</a> |
+												<a href="http://matrix.itasoftware.com/">ITA</a> |
+												<a href="http://www.google.com/flights/">Google Flights</a> |
+												<a href="http://www.delta.com/">Delta</a>
+												<br>
+												<a href="http://home.comcast.net/~joe.derose/vacation/default.htm">Vacation Reports</a> |
+												<a href="http://home.comcast.net/~joe.derose/vacation/planning/2010_Israel.htm">Israel</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="MainHeader">Language</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><A HREF="http://translate.google.com/">Translation</A></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader" style="font-size:1em">&#27721;&#35821;</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.archchinese.com/chinese_english_dictionary.html">Stroke Order</a>
+												(<a href="language/strokeorder.htm">Local Menu</a>)
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Esperanto</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://reta-vortaro.de/revo/">Dictionary</a> |
+												<a href="http://en.wikipedia.org/wiki/Esperanto_vocabulary">Vocabulary</a> |
+												<a href="http://en.wikipedia.org/wiki/Esperanto_grammar">Grammar</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="MainHeader">Transportation</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">
+									<a href="http://www.itsmarta.com/">MARTA</a>
+									(<a href="https://www.facebook.com/pages/MARTA/64214098113">Facebook</a>) |
+									<a href="http://www.trip.atltransit.com/">A-Train</a>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">
+									<a href="http://webwatch.itsmarta.com/">Webwatch Real-Time</a> |
+									<a href="http://spice.ridecell.com/">RideCell</a>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top">
+									<a href="http://transportation.emory.edu/transportation/cliff/index.html">Cliff</a> |
+									<a href="http://transportation.emory.edu/transportation/cliff/CCTMA_route.html">CCTMA</a> |
+									<a href="http://emory.transloc.com/">Live Map</a>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://maps.google.com/">Google Maps</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://www.zipcar.com/">Zipcar</a></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table class="LinkGrid">
+				<tr>
+					<td class="MainHeader">Finance</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><A HREF="https://wwws.mint.com/login.event">Mint.com</A></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Banking</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://personalsavings.americanexpress.com/">AmEx Savings</a>
+												<br>
+												<a href="http://www.emoryacu.com/">Emory Alliance</a>
+												<br>
+												<a href="http://home.ingdirect.com/">ING</a>
+												<br>
+												<a href="https://www.paypal.com/">PayPal</a>
+												<br>
+												<a href="https://secure.serve.com/Login">Serve</a>
+												<br>
+												<a href="https://squareup.com/login/">Square</a>
+												<br>
+												<a href="http://www.statefarm.com/account.htm">State Farm</a>
+												<br>
+												<a href="https://www.suntrust.com/portal/server.pt?space=CommunityPage&cached=true&parentname=CommunityPage&parentid=0&in_hi_userid=2&control=SetCommunity&CommunityID=765&PageID=0">SunTrust</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Credit</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="https://online.americanexpress.com/">AmEx</a>
+												(<a href="https://www.facebook.com/americanexpress?sk=app_216352075054740">Link, Like, Love</a>)
+												<br>
+												<a href="http://www.chase.com/">Chase</a>
+												<br>
+												<a href="https://www.citibank.com/us/cards/index.jsp">Citibank</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Employment</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="https://psofthr.cc.emory.edu/">Emory&nbsp;Employment</a>
+												<br>
+												<a href="https://www.onecard.emory.edu/1card/">EmoryCard</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Healthcare and Insurance</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="https://emoryhealthcarepatientportal.iqhealth.com/iqh3/messaging/emry_ga/inbox">EHC Patient Portal</a>
+												<br>
+												<a href="http://www.medcohealth.com/">Medco</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Microlending</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.kiva.org/">Kiva</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Retirement</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.tiaa-cref.org/">TIAA-CREF</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Rewards</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.delta.com/skymiles/view_account_activity/index.jsp">Delta</a>
+												<br>
+												<a href="http://www.opentable.com/">OpenTable</a>
+												<br>
+												<a href="http://skymiles.rewardsnetwork.com/">Rewards Network</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Savings Bonds</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://www.treasurydirect.gov/">Treasury Direct</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Taxes</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://turbotax.intuit.com/">TurboTax/ItsDeductible</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top"><span class="SubHeader">Utilities</span></td>
+							</tr>
+							<tr>
+								<td valign="top"><span class="SubHeader">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td valign="top">
+									<table class="LinkGrid">
+										<tr>
+											<td class="FrameLeftBottom">&nbsp;</td>
+											<td>
+												<a href="http://payatlwateronline.com/">Atlanta Water Department</a>
+												<br>
+												<a href="https://my.bluehost.com/cgi-bin/cplogin">Bluehost</a>
+												<br>
+												<a href="https://is.breezecard.com/marta/">Breeze Card</a>
+												<br>
+												<a href="https://login.comcast.net/login">Comcast</a>
+												(<a href="http://web.mail.comcast.net/zimbra/mail?app=mail">E-Mail</a>)
+												<br>
+												<a href="https://catch.com/login/snaptic">Catch</a> |
+												<a href="http://www.evernote.com/Home.action?login=true#v=t&b=9ac4e901-24fb-4b03-b9ef-9380047562c1&z=d">Evernote</a>
+												<br>
+												<a href="http://ebill.georgiapower.com/">Georgia Power</a>
+												<br>
+												<a href="https://lastpass.com/">LastPass</a>
+												<br>
+												<a href="http://www.scana.com/SCANA+Energy/">SCANA</a>
+												<br>
+												<a href="http://www.tivo.com/manage">TiVo</a>
+												(<a href="http://www.amazon.com/b/ref=gw_br_unbox/002-3221642-5730405?%5Fencoding=UTF8&node=16261631">Amazon</a>)
+												<br>
+												<a href="http://www.verizonwireless.com/">Verizon</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table class="LinkGrid">
+				<tr>
+					<td class="MainHeader">Local</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table class="LinkGrid BorderCollapse">
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="bookmarklets.htm" class="AltMenu">Bookmarklets</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="cameras.htm" class="AltMenu">Cameras</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="fav.htm" class="AltMenu">Favorites</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="images.htm" class="AltMenu">Images</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="http://mobile.joederose.us/" class="AltMenu">Mobile</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="regex.htm" class="AltMenu">Regular Expressions</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="shopping.htm" class="AltMenu">Shopping</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="UncleJerry.htm" class="AltMenu">Uncle Jerry</a></td>
+							</tr>
+							<tr>
+								<td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top"><a href="weather.htm" class="AltMenu">Weather</a></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="MainHeader">Updates</td>
+				</tr>
+				<tr>
+					<td valign="top"><img class="spacegap" src="images/invisible.gif"></td>
+				</tr>
+				<tr>
+					<td id="Twitter" valign="top" align="center">
+						<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+						<script>
+							new TWTR.Widget({
+							version: 2,
+							type: 'list',
+							rpp: 30,
+							interval: 30000,
+							title: 'Twitter',
+							subject: '',
+							width: 200,
+							height: 300,
+							theme: {
+							shell: {
+							background: '#847cb3',
+							color: '#ffffff'
+							},
+							tweets: {
+							background: '#ffffff',
+							color: '#444444',
+							links: '#440ef5'
+							}
+							},
+							features: {
+							scrollbar: true,
+							loop: false,
+							live: true,
+							behavior: 'all'
+							}
+							}).render().setList('LJDeRose', 'interesting').start();
+						</script>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top"><img class="spacegap" src="images/invisible.gif"></td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table class="LinkGrid">
+				<tr>
+					<td valign="top">
+						<table>
+							<tr>
+								<td class="FlashClock" id="ClockCell4" >
+									<canvas id="imgJewishClock" width="200" height="200" style="border:1px black solid"></canvas>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table>
+							<tr>
+								<td class="FlashClock" id="ClockCell5" >
+									<canvas id="imgIslamicClock" width="200" height="200" style="border:1px black solid"></canvas>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<table>
+							<tr>
+								<td class="FlashClock" id="ClockCell6" >
+									<canvas id="imgHexadecimalClock" width="200" height="200" style="border:1px black solid"></canvas>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<form method="GET" target="_blank" action="http://www.google.com/search" name="GoogleMain">
+	<input type="hidden" name="q">
+</form>
+
+<form method="GET" target="_blank" action="http://images.google.com/images" name="GoogleImages">
+	<input type="hidden" name="q">
+</form>
+
+<form method="GET" target="_blank" action="http://news.google.com/news" name="GoogleNews">
+	<input type="hidden" name="q">
+</form>
+
+<form method="GET" target="_blank" action="http://dictionary.reference.com/search" name="Dictionary">
+	<input type="hidden" name="q">
+</form>
+
+<form method="GET" target="_blank" action="http://www.urbandictionary.com/define.php" name="UrbanDictionary">
+	<input type="hidden" name="term">
+</form>
+
+<form method="GET" target="_blank" action="http://www.acronymfinder.com/af-query.asp" name="Acronym">
+	<input type="hidden" name="String" value="exact">
+	<input type="hidden" name="Acronym">
+</form>
+
+<script>
+
+	$("#JavaScriptIsDisabled").hide();
+	
+	function onLoadJ() {
+		$(".HideOnLoad").hide();
+		loadImages();
+		runClocks();
+	}
+	
+	function runClocks() {
+		calculateStandardClock( "imgStandardClock" );
+		CalculateJewishClock( "imgJewishClock" );
+		calculateIslamicClock( "imgIslamicClock" );
+		calculateMetricClock( "imgMetricClock" );
+		calculateHexadecimalClock( "imgHexadecimalClock" );
+		calculate24HourClock( "img24HourClock" );
+		calculateChineseClock( "imgChineseClock" );
+		clockUpdate = setTimeout( "runClocks()", 250 );
+	}
+	
+	function loadImages() {
+	
+		$("#q").focus();
+		
+	}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+
+a
+	{
+		text-decoration: none
+	}
+
+a:hover
+	{
+		color: #0000FF; text-decoration: underline
+	}
+
+td
+	{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:0.95em;
+	}
+
+table.LinkGrid
+	{
+		margin:0;
+		padding:0;
+	}
+
+table.BorderCollapse
+	{
+		border-collapse:collapse;
+	}
+
+table.LinkGrid td
+	{
+		padding:0;
+	}
+
+.InactiveLink
+	{
+		color:#AAA;
+	}
+
+.AltMenu
+	{
+		background-color:#DDFFDD;
+	}
+
+.MainHeader
+	{
+		vertical-align:top;
+		letter-spacing:0.1em;
+		background-color:#FFFFCC;
+		border:1px #000 solid;
+		border-radius:5px;
+		font-variant:small-caps;
+		letter-spacing:0.2em;
+		text-align:center;
+		font-weight:bold;
+	}
+
+.HeaderText
+	{
+		padding-left:4px;
+		padding-right:4px;
+		padding-top:1px;
+		padding-bottom:1px;
+		font-weight:bold;
+		font-family:Arial, Helvetica, sans-serif;
+		color:#000;
+	}
+
+.SubHeader
+	{
+		font-weight: 700;
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:0.9em;
+	}
+
+.SpecialNote
+	{
+		font-weight:bold;
+		font-size:0.8em;
+		color:#990033;
+	}
+
+.FrameLine
+	{
+		border-left:1px #000 solid;
+		width:0.5em;
+	}
+
+.FrameCorner
+	{
+		border-left:1px #000 solid;
+		border-bottom:1px #000 solid;
+		width:0.5em;
+	}
+
+.FrameLeftBottom
+	{
+		border-left:1px #000 solid;
+		border-bottom:1px #000 solid;
+		width:0.5em;
+		border-bottom-left-radius:5px;
+	}
+
+.FlashClock
+	{
+		border:1px solid #000000;
+	}
+
+.spacegap
+	{
+		width:10px;
+		height:10px;
+	}

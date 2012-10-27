@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+A {
+	text-decoration: none
+}
+
+A:hover {
+	text-decoration: none;
+	background: #FF0;
+}
+
+.pinyin {
+	font-family: Arial, Helvetica, sans-serif;
+	padding-right: 1em;
+}
+
+.hanzi {
+	font-family:
+	Arial, Helvetica, sans-serif;
+	font-size: 1.5em;
+}
+
+.hanzi:hover {
+	text-decoration: none;
+	background: #FF0;
+}
+
+.bordertop {
+	border-top: solid 1px lightgray;
+}
+
+.borderbottom {
+	border-bottom: solid 1px lightgray;
+}
+
+#FloatingMenu {
+	position: fixed;
+	top: 10;
+	left: 50;
+}
+
+#FloatingMenu td {
+	width: 3em;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#FloatingMenu a {
+	color: #008000;
+	cursor: pointer;
+}
