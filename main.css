@@ -1,6 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
 
+@font-face
+	{
+		font-family: ArialRounded;
+		src: url('fonts/ARLRDBD.TTF');
+	}
+
 a
 	{
 		text-decoration: none
@@ -49,11 +55,11 @@ table.LinkGrid td
 		letter-spacing:0.1em;
 		background-color:#FFFFCC;
 		border:1px #000 solid;
-		border-radius:5px;
+		border-radius:1em;
+		font-family:ArialRounded;
 		font-variant:small-caps;
-		letter-spacing:0.2em;
+		letter-spacing:0.25em;
 		text-align:center;
-		font-weight:bold;
 	}
 
 .HeaderText
