@@ -1,0 +1,4 @@
+cd "C:\Users\Joe Laptop\Documents\My Webs\Joe - Bluehost\Start"
+git add .
+git commit -m "Description"
+git push -u origin master
