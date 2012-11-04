@@ -35,63 +35,35 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 
 <script language="JavaScript">
 
-function SubmitGoogleMain()
-	{
-		document.GoogleMain.q.value = document.GoogleSetup.q.value ;
-		document.GoogleMain.submit();
+	function SearchFor( Domain, QueryString ) {
+		SearchTerm = $( "#SearchTerm" ).val();
+		$( "#SearchTerm" ).val( "" );
+		$("#SearchTerm").focus();
+		if ( SearchTerm == "" ) {
+			window.open( Domain, "_blank" );
+		} else {
+			SearchTerm = encodeURIComponent( SearchTerm );
+			QueryString = QueryString.replace( /<REPLACE>/, SearchTerm );
+			if ( QueryString.search( /^https?:\/\// ) != -1 ) {
+				// If QueryString begins with "http://" or "https://", use it in place of the Domain.
+				Domain = QueryString;
+			} else {
+				// Otherse, concatenate it onto the end of the domain.
+				Domain = Domain + QueryString;
+			}
+			window.open( Domain, "_blank" );
+		}
 	}
 
-function SubmitGoogleWikipedia()
-	{
-		document.GoogleMain.q.value = document.GoogleSetup.q.value + " site:en.wikipedia.org";
-		document.GoogleMain.submit();
+	function toggleClock( thisIDJ ) {
+		parentID = $( "#" + thisIDJ ).parents().attr("id");
+		$( "#" + parentID + " canvas").hide();
+		if ( thisIDJ == $( "#" + parentID + " canvas:last").attr("id") ) {
+			$("#" + parentID + " canvas").first().show();
+		} else {
+			$("#" + parentID + " canvas").next().show();
+		}
 	}
-
-function SubmitGoogleWikitravel()
-	{
-		document.GoogleMain.q.value = document.GoogleSetup.q.value + " site:wikitravel.org/en/";
-		document.GoogleMain.submit();
-	}
-
-function SubmitGoogleImages()
-	{
-		document.GoogleImages.q.value = document.GoogleSetup.q.value ;
-		document.GoogleImages.submit();
-	}
-
-function SubmitGoogleNews()
-	{
-		document.GoogleNews.q.value = document.GoogleSetup.q.value ;
-		document.GoogleNews.submit();
-	}
-
-function SubmitDictionary()
-	{
-		document.Dictionary.q.value = document.GoogleSetup.q.value ;
-		document.Dictionary.submit();
-	}
-
-function SubmitUrbanDictionary()
-	{
-		document.UrbanDictionary.term.value = document.GoogleSetup.q.value ;
-		document.UrbanDictionary.submit();
-	}
-
-function SubmitAcronym()
-	{
-		document.Acronym.Acronym.value = document.GoogleSetup.q.value ;
-		document.Acronym.submit();
-	}
-
-function toggleClock( thisIDJ ) {
-	parentID = $( "#" + thisIDJ ).parents().attr("id");
-	$( "#" + parentID + " canvas").hide();
-	if ( thisIDJ == $( "#" + parentID + " canvas:last").attr("id") ) {
-		$("#" + parentID + " canvas").first().show();
-	} else {
-		$("#" + parentID + " canvas").next().show();
-	}
-}
 
 </script>
 
@@ -143,7 +115,10 @@ function toggleClock( thisIDJ ) {
 			</table>
 		</td>
 		<td valign="top">
-			<div class="MainHeader">Emory</div>
+			<div class="MainHeader">Search</div>
+			<p><input type="text" id="SearchTerm" size="33"></p>
+			<p><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></p>
+			<div class="MainHeader MainHeaderSpaceBefore">Emory</div>
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td nowrap><span class="SubHeader">CFAdmin&nbsp;&nbsp;</span></td>
@@ -190,7 +165,7 @@ function toggleClock( thisIDJ ) {
 					</td>
 				</tr>
 			</table>
-			<p class="SubHeader">OCR</p>
+			<p class="SubHeader"><a href="http://www.ocr.emory.edu/">OCR</a></p>
 			<table class="SlightIndent">
 				<tr>
 					<td class="FrameLeftBottom"></td>
@@ -213,7 +188,7 @@ function toggleClock( thisIDJ ) {
 				<tr>
 					<td class="FrameLeftBottom"></td>
 					<td>
-						<p><a href="http://www.cfquickdocs.com/cf9/">ColdFusion CFQuickDocs</a></p>
+						<p><a href="" class="AltMenu" onClick="SearchFor( 'http://www.cfquickdocs.com/cf9/', '#<REPLACE>' ); return false;">ColdFusion CFQuickDocs</a></p>
 						<p><a href="http://livedocs.adobe.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/js/html/wwhelp.htm">ColdFusion Documentation</a></p>
 					</td>
 				</tr>
@@ -254,61 +229,47 @@ function toggleClock( thisIDJ ) {
 					</td>
 				</tr>
 			</table>
-			<div class="MainHeader MainHeaderSpaceBefore">Utilities</div>
-			<p><a href="http://zip4.usps.com/zip4/welcome.jsp">USPS ZIP+4 Lookup</a></p>
-			<p class="SubHeader">Search</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<form method="GET" action="http://www.google.com/search" name="GoogleSetup" >
-							<p><input type="text" id="q" name="q" size="20"></p>
-							<p>
-								<a href="" onClick="SubmitGoogleMain()">Google</a> | 
-								<a href="" onClick="SubmitGoogleImages()">Images</a> | 
-								<a href="" onClick="SubmitGoogleNews()">News</a>
-							</p>
-							<p>
-								<a href="" onClick="SubmitGoogleWikipedia()">Wikipedia</a> |
-								<a href="" onClick="SubmitGoogleWikitravel()">Wikitravel</a>
-							</p>
-							<p>
-								<a href="" onClick="SubmitDictionary()">Dictionary</a> |
-								<a href="" onClick="SubmitUrbanDictionary()">Urban Dictionary</a>
-							</p>
-							<p><a href="" onClick="SubmitAcronym()">Acronym Finder</a></p>
-						</form>
-					</td>
-				</tr>
-			</table>
 		</td>
 		<td valign="top">
 			<div class="MainHeader">Entertainment/Information</div>
 			<p>
-				<a href="https://www.gmail.com/">GMail</a> | 
-				<a href="https://www.google.com/voice/">Voice</a> | 
-				<a href="https://www.google.com/calendar/">Calendar</a> | 
-				<a href="https://mail.google.com/mail/u/0/#contacts">Contacts</a> | 
-				<a href="http://www.google.com/reader/">Reader</a>
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/', 'mail/u/0/#search/<REPLACE>' ); return false;">GMail</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/voice/', '#search/<REPLACE>' ); return false;">Voice</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/calendar/', 'render?tab=lc&q=<REPLACE>' ); return false;">Calendar</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/mail/u/0/#contacts', '/search/<REPLACE>' ); return false;">Contacts</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.google.com/reader/', 'view/#search/<REPLACE>/' ); return false;">Reader</a>
 			</p>
 			<p class="BigIndent">
-				<a href="https://www.google.com/latitude/">Latitude</a> | 
-				<a href="https://mail.google.com/tasks/canvas">Tasks</a> | 
-				<a href="https://drive.google.com/#starred">Drive</a> | 
+				<a href="https://www.google.com/latitude/">Latitude</a> |
+				<a href="https://mail.google.com/tasks/canvas">Tasks</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://drive.google.com/#starred', 'https://drive.google.com/#search/<REPLACE>' ); return false;">Drive</a> |
 				<a href="https://www.google.com/settings/account">Account</a>
 			</p>
 			<p>
-				<a href="http://plus.google.com/">Google+</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/', '#q=<REPLACE>' ); return false;">Google</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=isch', '&q=<REPLACE>' ); return false;">Images</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=nws', '&q=<REPLACE>' ); return false;">News</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=shop', '&q=<REPLACE>' ); return false;">Shopping</a>
+			</p>
+			<p>
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://plus.google.com/', 's/<REPLACE>' ); return false;">Google+</a> |
 				<a href="https://www.facebook.com/?sk=h_chr">Facebook</a> |
-				<a href="http://www.twitter.com/">Twitter</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://twitter.com/', 'search?q=<REPLACE>' ); return false;">Twitter</a> |
 				<a href="http://www.linkedin.com/">LinkedIn</a>
+			</p>
+			<p>
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://en.wikipedia.org/', 'https://www.google.com/#q=<REPLACE>+site:en.wikipedia.org' ); return false;">Wikipedia</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.bing.com/', 'search?q=<REPLACE>' ); return false;">Bing</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.wolframalpha.com/', 'input/?i=<REPLACE>' ); return false;">WolframAlpha</a>
+			</p>
+			<p>
+				<a href="" class="AltMenu" onClick="SearchFor( 'http://dictionary.reference.com/', 'browse/<REPLACE>' ); return false;">Dictionary</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.urbandictionary.com/', 'define.php?term=<REPLACE>' ); return false;">Urban Dictionary</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.acronymfinder.com/', '<REPLACE>.html' ); return false;">Acronym Finder</a>
 			</p>
 			<p><a href="http://www.evite.com/">Evite</a></p>
 			<p><a href="http://www.straightdope.com/">Straight Dope</a></p>
 			<p><a href="http://www.conceptispuzzles.com/index.aspx?uri=myconceptis">Conceptis Puzzles</a></p>
-			<p><a href="https://secure.logmein.com/">LogMeIn</a> <span class="SpecialNote">(Firefox)</span></p>
-			<p><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></p>
-			<p><a href="http://www.qrstuff.com/">QRStuff</a></p>
 			<p class="SubHeader">Food</p>
 			<table class="SlightIndent">
 				<tr>
@@ -343,11 +304,6 @@ function toggleClock( thisIDJ ) {
 							<a href="http://www.time.com/"><i>Time</i></a> |
 							<a href="http://www.newsweek.com/"><i>Newsweek</i></a>
 						</p>
-						<p>
-							<a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a> |
-							<a href="http://www.bing.com">Bing</a> |
-							<a href="http://www.wolframalpha.com/">WolframAlpha</a>
-						</p>
 					</td>
 				</tr>
 			</table>
@@ -375,6 +331,8 @@ function toggleClock( thisIDJ ) {
 							<a href="http://www.google.com/flights/">Google Flights</a> |
 							<a href="http://www.delta.com/">Delta</a>
 						</p>
+						<p><a href="" class="AltMenu" onClick="SearchFor( 'http://wikitravel.org/en/', 'https://www.google.com/search?q=<REPLACE>+site%3Awikitravel.org%2Fen%2F' ); return false;">Wikitravel</a></p>
+
 						<p>
 							<a href="http://www.joederose.us/travel/">Vacation Reports</a> |
 							<a href="http://www.joederose.us/travel/planning/2010_Israel.htm">Israel</a>
@@ -424,7 +382,7 @@ function toggleClock( thisIDJ ) {
 				<a href="http://transportation.emory.edu/transportation/cliff/CCTMA_route.html">CCTMA</a> |
 				<a href="http://emory.transloc.com/">Live Map</a>
 			</p>
-			<p><a href="http://maps.google.com/">Google Maps</a></p>
+			<p><a href="" class="AltMenu" onClick="SearchFor( 'https://maps.google.com/', 'maps?q=<REPLACE>' ); return false;">Google Maps</a></p>
 			<p><a href="http://www.zipcar.com/">Zipcar</a></p>
 		</td>
 		<td valign="top">
@@ -536,12 +494,7 @@ function toggleClock( thisIDJ ) {
 							<a href="https://login.comcast.net/login">Comcast</a>
 							(<a href="http://web.mail.comcast.net/zimbra/mail?app=mail">E-Mail</a>)
 						</p>
-						<p>
-							<a href="https://catch.com/login/snaptic">Catch</a> |
-							<a href="http://www.evernote.com/Home.action?login=true#v=t&b=9ac4e901-24fb-4b03-b9ef-9380047562c1&z=d">Evernote</a>
-						</p>
 						<p><a href="http://ebill.georgiapower.com/">Georgia Power</a></p>
-						<p><a href="https://lastpass.com/">LastPass</a></p>
 						<p><a href="http://www.scana.com/SCANA+Energy/">SCANA</a></p>
 						<p>
 							<a href="http://www.tivo.com/manage">TiVo</a>
@@ -554,15 +507,24 @@ function toggleClock( thisIDJ ) {
 		</td>
 		<td valign="top">
 			<div class="MainHeader">Local</div>
-			<p><a href="bookmarklets.htm" class="AltMenu">Bookmarklets</a></p>
-			<p><a href="cameras.htm" class="AltMenu">Cameras</a></p>
-			<p><a href="fav.htm" class="AltMenu">Favorites</a></p>
-			<p><a href="images.htm" class="AltMenu">Images</a></p>
-			<p><a href="http://mobile.joederose.us/" class="AltMenu">Mobile</a></p>
-			<p><a href="regex.htm" class="AltMenu">Regular Expressions</a></p>
-			<p><a href="shopping.htm" class="AltMenu">Shopping</a></p>
-			<p><a href="UncleJerry.htm" class="AltMenu">Uncle Jerry</a></p>
-			<p><a href="weather.htm#1" class="AltMenu">Weather</a></p>
+			<p><a href="bookmarklets.htm">Bookmarklets</a></p>
+			<p><a href="cameras.htm">Cameras</a></p>
+			<p><a href="fav.htm">Favorites</a></p>
+			<p><a href="images.htm">Images</a></p>
+			<p><a href="http://mobile.joederose.us/">Mobile</a></p>
+			<p><a href="regex.htm">Regular Expressions</a></p>
+			<p><a href="shopping.htm">Shopping</a></p>
+			<p><a href="UncleJerry.htm">Uncle Jerry</a></p>
+			<p><a href="weather.htm#1">Weather</a></p>
+			<div class="MainHeader MainHeaderSpaceBefore">Utilities</div>
+			<p>
+				<a href="https://catch.com/login/snaptic">Catch</a> |
+				<a href="http://www.evernote.com/Home.action?login=true#v=t&b=9ac4e901-24fb-4b03-b9ef-9380047562c1&z=d">Evernote</a>
+			</p>
+			<p><a href="https://lastpass.com/">LastPass</a></p>
+			<p><a href="https://secure.logmein.com/">LogMeIn</a> <span class="SpecialNote">(Firefox)</span></p>
+			<p><a href="http://www.qrstuff.com/">QRStuff</a></p>
+			<p><a href="http://zip4.usps.com/zip4/welcome.jsp">USPS ZIP+4 Lookup</a></p>
 			<div class="MainHeader MainHeaderSpaceBefore">Updates</div>
 			<div id="Twitter">
 				<script src="http://widgets.twimg.com/j/2/widget.js"></script>
@@ -685,7 +647,7 @@ function toggleClock( thisIDJ ) {
 	
 	function loadImages() {
 	
-		$("#q").focus();
+		$("#SearchTerm").focus();
 		
 	}
 
