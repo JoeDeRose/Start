@@ -38,7 +38,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 	function SearchFor( Domain, QueryString ) {
 		SearchTerm = $( "#SearchTerm" ).val();
 		$( "#SearchTerm" ).val( "" );
-		$("#SearchTerm").focus();
+		setTimeout( "$('#SearchTerm').focus();", 100 );
 		if ( SearchTerm == "" ) {
 			window.open( Domain, "_blank" );
 		} else {
@@ -116,7 +116,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		</td>
 		<td valign="top">
 			<div class="MainHeader">Search</div>
-			<p><input type="text" id="SearchTerm" size="33"></p>
+			<p><input type="text" id="SearchTerm" size="33" onBlur="$( '#Google' ).focus();"></p>
 			<p><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></p>
 			<div class="MainHeader MainHeaderSpaceBefore">Emory</div>
 			<table border="0" cellspacing="0" cellpadding="0">
@@ -246,7 +246,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				<a href="https://www.google.com/settings/account">Account</a>
 			</p>
 			<p>
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/', '#q=<REPLACE>' ); return false;">Google</a> |
+				<a id="Google" href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/', '#q=<REPLACE>' ); return false;">Google</a> |
 				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=isch', '&q=<REPLACE>' ); return false;">Images</a> |
 				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=nws', '&q=<REPLACE>' ); return false;">News</a> |
 				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=shop', '&q=<REPLACE>' ); return false;">Shopping</a>
