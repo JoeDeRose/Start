@@ -4,3 +4,4 @@ git status
 git commit -m "Description"
 git status
 git push -u origin master
+git status
