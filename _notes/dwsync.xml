@@ -7,16 +7,16 @@
 <file name="cameras.htm" server="upload.comcast.net" local="129848938762703995" remote="129849082800000000" />
 <file name="aar.htm" server="ftp.joederose.us/public_html/" local="129936975306771025" remote="129936936000000000" />
 <file name="bookmarklets.htm" server="ftp.joederose.us/public_html/" local="129194394010000000" remote="129936936000000000" />
-<file name="cameras.htm" server="ftp.joederose.us/public_html/" local="129936975307121045" remote="129936936000000000" />
+<file name="cameras.htm" server="ftp.joederose.us/public_html/" local="129980347195396045" remote="129981614400000000" />
 <file name="CSS Clip.xlsx" server="ftp.joederose.us/public_html/" local="129129952961722171" remote="129936936000000000" />
 <file name="fav.htm" server="ftp.joederose.us/public_html/" local="129936975310561242" remote="129936936000000000" />
-<file name="images.htm" server="ftp.joederose.us/public_html/" local="129936975312001324" remote="129936936000000000" />
-<file name="index.htm" server="ftp.joederose.us/public_html/" local="129966352081151956" remote="129966316200000000" />
+<file name="images.htm" server="ftp.joederose.us/public_html/" local="129981058442668616" remote="129981614400000000" />
+<file name="index.htm" server="ftp.joederose.us/public_html/" local="129981690435116070" remote="129981618600000000" />
 <file name="pubtrans.htm" server="ftp.joederose.us/public_html/" local="129936975312881375" remote="129936937200000000" />
-<file name="shopping.htm" server="ftp.joederose.us/public_html/" local="129936975313391404" remote="129936943800000000" />
-<file name="UncleJerry.htm" server="ftp.joederose.us/public_html/" local="129936975315981552" remote="129956796600000000" />
-<file name="weather.htm" server="ftp.joederose.us/public_html/" local="129957789208891762" remote="129957718200000000" />
-<file name="regex.htm" server="ftp.joederose.us/public_html/" local="129545204114400433" remote="129943875600000000" />
+<file name="shopping.htm" server="ftp.joederose.us/public_html/" local="129980773345000408" remote="129981614400000000" />
+<file name="UncleJerry.htm" server="ftp.joederose.us/public_html/" local="129980778187247369" remote="129981614400000000" />
+<file name="weather.htm" server="ftp.joederose.us/public_html/" local="129981688577979848" remote="129981616200000000" />
+<file name="regex.htm" server="ftp.joederose.us/public_html/" local="129973366242572702" remote="129973294200000000" />
 <file name=".htaccess" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
 <file name="400.shtml" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
 <file name="401.shtml" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
@@ -24,6 +24,8 @@
 <file name="404.shtml" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
 <file name="500.php" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
 <file name="500.shtml" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
-<file name="favicon.ico" server="ftp.joederose.us/public_html/" local="129936951000000000" remote="129936951000000000" />
-<file name="main.css" server="ftp.joederose.us/public_html/" local="129964734770810100" remote="129964662600000000" />
+<file name="main.css" server="ftp.joederose.us/public_html/" local="129981186888494850" remote="129981614400000000" />
+<file name="- git.txt" server="ftp.joederose.us/public_html/" local="129966352769701339" remote="129975016200000000" />
+<file name="favicon.ico" server="ftp.joederose.us/public_html/" local="129977780750216696" remote="129977709000000000" />
+<file name="favicon-orig.ico" server="ftp.joederose.us/public_html/" local="129936952800000000" remote="129981614400000000" />
 </dwsync>

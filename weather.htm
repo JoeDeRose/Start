@@ -1,789 +1,389 @@
-<!-- saved from url=(0022)http://internet.e-mail -->
-<!-- saved from url=(0022)http://internet.e-mail -->
 <html>
-<style>
-   <!--
-   .show    {
-            width        : 100;
-		    height       : 100;
-		    overflow     : hidden;
-            }
-   .show1   {
-            width        : 100;
-		    height       : 85;
-		    overflow     : hidden;
-            }
-   .show2   {
-            width        : 100;
-		    height       : 15;
-		    overflow     : hidden;
-            }
-   .wc1     {
-            position     : relative;
-            top          : -215;
-            left         : -285; 
-            }		
-   .wc1A    {
-            position     : relative;
-            top          : -470;
-            left         : -445; 
-            }		
-   .wc2     {
-            position     : relative;
-            top          : -100;
-            left         : -390; 
-            }		
-   .wc3     {
-            position     : relative;
-            top          : -80;
-            left         : -320; 
-            }		
-   .wc3A    {
-            position     : relative;
-            top          : -48;
-            left         : -385; 
-            }		
-   .wc4     {
-            position     : relative;
-            top          : -210;
-            left         : -350; 
-            }		
-   .wc4A    {
-            position     : relative;
-            top          : -30;
-            left         : -357; 
-            }		
-   .wc5     {
-            position     : relative;
-            top          : -135;
-            left         : -325; 
-            }		
-   .wc6     {
-            position     : relative;
-            top          : -230;
-            left         : -350; 
-            }		
-   .stock   {
-            position     : relative;
-            top          : 0;
-            left         : -19; 
-            }		
-   .traffic {
-            position     : relative;
-            top          : -260;
-            left         : -185; 
-            }		
-   .equake  {
-            position     : relative;
-            top          : -190;
-            left         : -300; 
-            }		
-   .hcane   {
-            position     : relative;
-            top          : -210;
-            left         : -125; 
-            }		
-	#FloatingMenu
-			{
-			position: fixed;
-			top: 10;
-			left: 50;
-			}
-   -->
-</style>
-<script>
-function FixYearJ(YearJ)
-	{
-		if (YearJ <= 1900)
-			{
-				ResultYearJ = YearJ + 1900
-			}
-		else
-			{
-				ResultYearJ = YearJ
-			}
-		return(ResultYearJ)
-	}
 
-function FillSpansJ()
-	{
-/*
-		document.location.hash = "1";
-		
-		document.getElementById('TWC1').innerHTML = "<iframe name='I1' src='http://www.weather.com/weather/hourbyhour/graph/Atlanta+GA+USGA0028:1:US' height='4000' width='100%'></iframe>"
-		d = new Date(); 
-		TopD = new Date(FixYearJ(d.getYear()), d.getMonth(), d.getDate(), 0, 0, 0)
-		DateJan1 = new Date(FixYearJ(d.getYear()), 0, 1, 0, 0, 0, 0)
-		
-		HourScreen1 = d.getHours()
-		DayScreen1 = Math.round((((((TopD-DateJan1)/1000)/60)/60)/24)+1)
-
-		// This is the "Next 1" section of the Weather Channel chart.
-		HoursToAdvanceJ = 7
-		HourScreen2 = HourScreen1 + HoursToAdvanceJ
-		DayScreen2 = DayScreen1
-		if (HourScreen2 >= 24)
-			{
-				HourScreen2 = HourScreen2 - 24
-				DayScreen2 = DayScreen2 + 1
-			}
-		document.getElementById('TWC2').innerHTML = "<iframe name='I1' src='http://www.weather.com/weather/hourbyhour/graph/Atlanta+GA+USGA0028:1:US?pagenum=2&nextbeginIndex=6' height='4000' width='100%'></iframe>"
-
-		// This is the "Next 2" section of the Weather Channel chart.
-		HoursToAdvanceJ = 8
-		HourScreen3 = HourScreen2 + HoursToAdvanceJ
-		DayScreen3 = DayScreen2
-		if (HourScreen3 >= 24)
-			{
-				HourScreen3 = HourScreen3 - 24
-				DayScreen3 = DayScreen3 + 1
-			}
-		document.getElementById('TWC3').innerHTML = "<iframe name='I1' src='http://www.weather.com/weather/hourbyhour/graph/Atlanta+GA+USGA0028:1:US?pagenum=3&nextbeginIndex=24' height='4000' width='100%'></iframe>"
-		//document.getElementById('TWC3Link').innerHTML = "<a href='http://www.weather.com/outlook/travel/businesstraveler/hourbyhour/graph/USGA0028?begHour=" + HourScreen3 + "&begDay=" + DayScreen3 + "' target='_blank'>+1 Day</a>"
-
-		document.getElementById('TWC4').innerHTML = "<iframe name='I1' src='http://www.weather.com/outlook/travel/businesstraveler/tenday/USGA0028' height='4000' width='100%'></iframe>"
-*/
-
-		document.getElementById('AW1Link').innerHTML = "<a href='http://wwwa.accuweather.com/forecast-hourly.asp?partner=accuweather&myadc=0&traveler=1&zipcode=30312&metric=1' target='_blank'>Hourly</a>"
-
-		document.getElementById('AW2Link').innerHTML = "<a href='http://wwwa.accuweather.com/forecast-15day.asp?partner=accuweather&myadc=0&traveler=1&zipcode=30312&metric=1' target='_blank'>15-Day</a>"
-	}
-
-function ShowWeatherJ(IDJ)
-	{
-		document.getElementById('TWC1').style.display="none"
-		document.getElementById('TWC2').style.display="none"
-		document.getElementById('TWC3').style.display="none"
-		document.getElementById('TWC4').style.display="none"
-		document.getElementById('AW1').style.display="none"
-		document.getElementById('AW2').style.display="none"
-		switch (IDJ)
-			{
-				case "TWC1":
-					document.getElementById('TWC1').style.display="";
-					break;
-				case "TWC2":
-					document.getElementById('TWC2').style.display="";
-					break;
-				case "TWC3":
-					document.getElementById('TWC3').style.display="";
-					break;
-				case "TWC4":
-					document.getElementById('TWC4').style.display="";
-					break;
-				case "AW1":
-					document.getElementById('AW1').style.display="";
-					break;
-				case "AW2":
-					document.getElementById('AW2').style.display="";
-					break;
-			}
-	}
-
-function TempConvertJ(FromToJ)
-	{
-		Temp1J = document.TempConvertForm.Degrees.value
-		if (FromToJ == "FC")
-			{
-				Temp2J = "F = " + Math.round((Temp1J-32)*5/9) + "&deg;C"
-			}
-		else
-			{
-				Temp2J = "C = " + Math.round((Temp1J*9/5)+32) + "&deg;F"
-			}
-		document.getElementById('TempConvertNew').innerHTML=Temp2J
-	}
-</script>
 <head>
-<meta http-equiv="Content-Language" content="en-us">
-<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
-<meta name="ProgId" content="FrontPage.Editor.Document">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Joe's Weather Menu</title>
-<SCRIPT LANGUAGE = "JavaScript">
-<!--
-if (document.images)
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="3600">
+
+<title>Joe's Start Menu</title>
+
+<!-- main stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="main.css" />
+
+<style>
+
+.NavBox a
 	{
-		img01on = new Image();
-		img01on.src = "http://image.weather.com/web/radar/us_atl_closeradar_large_usen.jpg";
-		img02on = new Image();
-		img02on.src = "http://image.weather.com/images/maps/current/se_curtemp_720x486.jpg";
-		img03on = new Image();
-		img03on.src = "http://image.weather.com/web/forecast/us_se_9regwxlo1_large_usen.jpg";
-		img04on = new Image();
-		img04on.src = "http://image.weather.com/web/forecast/us_se_9regwxhi2_large_usen.jpg";
-		img05on = new Image();
-		img05on.src = "http://image.weather.com/images/maps/forecast/se_precfcst_720x486.jpg";
-		img06on = new Image();
-		img06on.src = "http://image.weather.com/images/maps/current/cur_se_720x486.jpg";
-		img07on = new Image();
-		img07on.src = "http://www.advfn.com/p.php?pid=staticchart&s=DJI^INDU&p=0&t=7&cb=1106603021";
-		img08on = new Image();
-		img08on.src = "http://www.advfn.com/p.php?pid=staticchart&s=NI^COMPX&p=0&t=7&cb=1106603021";
-		img09on = new Image();
-		img09on.src = "http://www.advfn.com/p.php?pid=staticchart&s=SPI^INX&p=0&t=7&cb=1106603021";
-		img10on = new Image();
-		img10on.src = "http://www.georgianavigator.com/images/dynamic/maps/traffic/atl_metro_Ics.png";
-		img11on = new Image();
-		img11on.src = "http://image.weather.com/images/maps/health/airquality/us_national_fcst_airquality_day1_600_en.jpg";
-		img12on = new Image();
-		img12on.src = "http://image.weather.com/images/maps/seasonal/spec_seasonal11_600_en.jpg";
-		img13on = new Image();
-		img13on.src = "http://earthquake.usgs.gov/eqcenter/recenteqsus/index.gif";
-		img14on = new Image();
-		img14on.src = "http://weather.unisys.com/hurricane/atlantic/2006/track.gif";
-		img15on = new Image();
-		img15on.src = "http://image.weather.com/web/forecast/us_se_9regwxhi1_large_usen.jpg";
-		img16on = new Image();
-		img16on.src = "http://image.weather.com/images/maps/special/severe_se_720x486.jpg";
-		img17on = new Image();
-		img17on.src = "http://image.weather.com/web/radar/us_atl_metroradar_large_usen.jpg";
+		background:#008000;
+		color:#FFF;
+		padding-left:0.5em;
+		padding-right:0.5em;
+		padding-top:0.25em;
+		padding-bottom:0.25em;
 	}
 
-function imgAOn(imgName)
+.NavBoxRight
 	{
-        if (document.images)
-        	{
-            	document["A"].src = eval(imgName + "on.src");
-			}
+		float: right;
+		margin-bottom: 1em;
 	}
 
-function imgBOn(imgName)
+.DisplayBox
 	{
-        if (document.images)
-        	{
-            	document["B"].src = eval(imgName + "on.src");
-			}
+		padding:5px;
+		border-color:#008000;
+		border-width:2px;
+		border-style:solid;
 	}
 
-function imgCOn(imgName)
+.DisplayBox table
 	{
-        if (document.images)
-        	{
-            	document["C"].src = eval(imgName + "on.src");
-			}
+		clear:both;
+		margin-left:auto;
+		margin-right:auto;
 	}
 
-function imgDOn(imgName)
+.TempConversion
 	{
-        if (document.images)
-        	{
-            	document["D"].src = eval(imgName + "on.src");
-			}
+		font-family:Arial, Helvetica, sans-serif;
+		text-align:center;
 	}
 
-</SCRIPT>
-<style fprolloverstyle>
-A {text-decoration: none}
-A:hover {color: #0000FF; text-decoration: underline}
+img
+	{
+		border: solid #000 1px;
+	}
+
 </style>
+
 </head>
 
-<body link="#008000" vlink="#008000" onLoad="FillSpansJ();">
+<body onLoad="FillSpansJ();">
 
-<div id="FloatingMenu">
-<table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td>
-<table border="1" cellpadding="5" bordercolor="#008000" id="AutoNumber13" cellspacing="0" align="center">
-	<tr><td bgcolor="#008000"><center><b><font color="#FFFFFF" size="2" face="Arial">The Weather Channel</font></b>
-	</center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://www.weather.com/weather/right-now/30312" target="_blank">Current</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://www.weather.com/weather/hourbyhour/graph/Atlanta+GA+30312:4:US" target="_blank">Hourly</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://www.weather.com/weather/tomorrow/Atlanta+GA+30312:4:US" target="_blank">Tomorrow</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://www.weather.com/weather/tenday/Atlanta+GA+30312:4:US" target="_blank">10-Day</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href='http://www.weather.com/outlook/travel/businesstraveler/map/interactive/USGA0028?from=dayDetails_topnav_business' target="_blank">Radar</a></font></b>
-	</center></td></tr>
-	<tr><td bgcolor="#008000"><center><b><font color="#FFFFFF" size="2" face="Arial">AccuWeather</font></b>
-	</center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><span id="AW1Link"></span></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><span id="AW2Link"></span></font></b></center></td></tr>
-	<tr><td bgcolor="#008000"><center><b><font color="#FFFFFF" size="2" face="Arial">Other</font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://weatherspark.com/#!graphs;a=USA/GA/Atlanta" target="_blank">WeatherSpark</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="images.htm" target="_blank">Images</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://www.atlantaallergy.com/pollenCount.aspx" target="_blank">Pollen</a></font></b></center></td></tr>
-	<tr><td><center><b><font color="#008000" size="2" face="Arial"><a href="http://hint.fm/wind/" target="_blank">Wind</a></font></b></center></td></tr>
-</table>				</td>
-              </tr>
-            </table>
-</div>
-
-<table border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><a name="Top"></a><a href="index.htm"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Return to Start Page</font></a></div></td>
-  </tr>
-  <tr>
-    <td><font face="Arial" size="2">&nbsp;</font></td>
-  </tr>
+<table class="ReturnToTop">
+	<tr>
+		<td class="ReturnToTop">
+			<a name="Top"></a>
+			<a href="index.htm" class="ReturnToTop">Return to Start Page</a>
+		</td>
+	</tr>
 </table>
-<table border="1" cellpadding="5" bordercolor="#008000" id="AutoNumber13" cellspacing="0" align="center">
-  <tr>
-    <td valign="top">
 
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-          <tr>
-            <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-          </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-          <table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#11"><font color="#FFFFFF">Bottom</font></a>&nbsp;</font></div></td>
-			  <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="1" href="#2"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-            </tr>
-          </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font size="1" face="Arial"><a name="Doppler"></a>Radar 600-Mile</font></b></td>
-      <td><font size="1" face="Arial">Radar 100-Mile</font></b></td>
-    </tr>
-    <tr>
-      <td style="border-style: solid; border-width: 1" bordercolor="#000000">
-      <p align="center">
+<script src="Scripts/jquery-min.js"></script>
+<script>
 
-<a href onClick="imgAOn('img01')" >
-<img border="0" src="http://image.weather.com/web/radar/us_atl_closeradar_medium_usen.jpg" width="440" height="297"></a></td>
-      <td style="border-right: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000">
+	function FillSpansJ() {
+		document.getElementById('AW1Link').innerHTML = "<a href='http://wwwa.accuweather.com/forecast-hourly.asp?partner=accuweather&myadc=0&traveler=1&zipcode=30312&metric=1' target='_blank'>Hourly</a>"
+		document.getElementById('AW2Link').innerHTML = "<a href='http://wwwa.accuweather.com/forecast-15day.asp?partner=accuweather&myadc=0&traveler=1&zipcode=30312&metric=1' target='_blank'>15-Day</a>"
+	}
+	
+	function TempConvertJ(FromToJ) {
+		Temp1J = $( "#Degrees" ).val();
+		if (FromToJ == "FC") {
+			Temp2J = "F = " + Math.round((Temp1J-32)*5/9) + "&deg;C"
+		} else {
+			Temp2J = "C = " + Math.round((Temp1J*9/5)+32) + "&deg;F"
+		}
+		document.getElementById('TempConvertNew').innerHTML=Temp2J
+	}
+	
+	function WriteNavBox( ThisAnchorJ, ToAnchorJ, ShowBottom, ShowNext ) {
+		var NavBoxHTML = "";
+		NavBoxHTML = NavBoxHTML + "			<div class=\"NavBox NavBoxRight\">"
+		if ( ShowBottom == true ) {
+			NavBoxHTML = NavBoxHTML + "				<a href=\"#Bottom\" class=\"ReturnToTop\">Bottom</a>"
+		}
+		if ( ShowNext == true ) {
+			NavBoxHTML = NavBoxHTML + "				<a href=\"#" + ToAnchorJ + "\" class=\"ReturnToTop\">Next</a>"
+		}
+		NavBoxHTML = NavBoxHTML + "			</div>"
+		NavBoxHTML = NavBoxHTML + "			<div class=\"NavBox\">"
+		NavBoxHTML = NavBoxHTML + "				<a name=\"" + ThisAnchorJ + "\" href=\"#Top\" class=\"ReturnToTop\">Top</a>"
+		NavBoxHTML = NavBoxHTML + "			</div>"
+		
+		document.write( NavBoxHTML );
+	}
 
-<a href onClick="imgAOn('img17')" >
-<img border="0" src="http://image.weather.com/web/radar/us_atl_metroradar_medium_usen.jpg" width="440" height="297"></a></td>
-    </tr>
-  </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
+</script>
 
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="2" href="#3"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font size="1" face="Arial">Current Temparature </font></td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #000000; ">
-
-<a href onClick="imgBOn('img03')" >
-<img border="0" src="http://image.weather.com/images/maps/current/se_curtemp_720x486.jpg" width="720" height="486"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="3" href="#4"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font size="1" face="Arial">Tonight's Low</font></td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #000000; ">
-
-<a href onClick="imgBOn('img03')" >
-<img border="0" src="http://image.weather.com/web/forecast/us_se_9regwxlo1_large_usen.jpg" width="720" height="486"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="4" href="#5"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font size="1" face="Arial">Tomorrow's High*</font></td>
-    </tr>
-    <tr>
-      <td style="border-right: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000">
-
-<a href onClick="imgBOn('img04')" >
-<img border="0" src="http://image.weather.com/web/forecast/us_se_9regwxhi2_large_usen.jpg" width="720" height="486"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="5" href="#6"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-<table border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td><font size="1" face="Arial">Precipitation</font></td>
-  </tr>
-  <tr>
-    <td><a href onClick="imgCOn('img05')" ><img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day1_3usse_enus_600x405.jpg" width="600" height="405"></a></td>
-  </tr>
+<table id="FloatingMenu">
+	<tr><th>The Weather Channel</td></tr>
+	<tr><td><a href="http://www.weather.com/weather/right-now/30312" target="_blank">Current</a></td></tr>
+	<tr><td><a href="http://www.weather.com/weather/hourbyhour/graph/Atlanta+GA+30312:4:US" target="_blank">Hourly</a></td></tr>
+	<tr><td><a href="http://www.weather.com/weather/tomorrow/Atlanta+GA+30312:4:US" target="_blank">Tomorrow</a></td></tr>
+	<tr><td><a href="http://www.weather.com/weather/tenday/Atlanta+GA+30312:4:US" target="_blank">10-Day</a></td></tr>
+	<tr><td><a href='http://www.weather.com/outlook/travel/businesstraveler/map/interactive/USGA0028?from=dayDetails_topnav_business' target="_blank">Radar</a></td></tr>
+	<tr><th>AccuWeather</th></tr>
+	<tr><td><span id="AW1Link"></span></td></tr>
+	<tr><td><span id="AW2Link"></span></td></tr>
+	<tr><th>Other</th></tr>
+	<tr><td><a href="http://weatherspark.com/#!graphs;a=USA/GA/Atlanta" target="_blank">WeatherSpark</a></td></tr>
+	<tr><td><a href="images.htm" target="_blank">Images</a></td></tr>
+	<tr><td><a href="http://www.atlantaallergy.com/pollenCount.aspx" target="_blank">Pollen</a></td></tr>
+	<tr><td><a href="http://hint.fm/wind/" target="_blank">Wind</a></td></tr>
 </table>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td width="50%"><table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-              </tr>
-          </table></td>
-          <td width="50%"><div align="right">
-              <table border="0" cellspacing="3">
-                <tr>
-                  <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="6" href="#7"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-                </tr>
-              </table>
-          </div></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
-    <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td>
 
-        </td>
-    </tr>
-    <tr>
-      <td>
-<font size="1">&nbsp;</font></td>
-    </tr>
-    <tr>
-      <td>
+<table class="FrameTable">
 
-<a href onClick="imgCOn('img05')" >
-<img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day2_3usse_enus_277x187.jpg" width="277" height="187" align="middle">&nbsp;&nbsp;<img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day3_3usse_enus_277x187.jpg" width="277" height="187" align="middle">&nbsp;&nbsp;<img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day4_3usse_enus_277x187.jpg" width="277" height="187" align="middle"></a></td>
-    </tr>
-    <tr>
-      <td>
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "1", "2", true, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Radar 600-Mile</td>
+					<td class="caption">Radar 100-Mile</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/web/radar/us_atl_closeradar_medium_usen.jpg">
+					</td>
+					<td>
+						<img src="http://image.weather.com/web/radar/us_atl_metroradar_medium_usen.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<font size="1">&nbsp;</font></td>
-    </tr>
-    <tr>
-      <td>
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "2", "3", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Current Temparature</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/images/maps/current/se_curtemp_720x486.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<a href onClick="imgCOn('img05')" >
-<img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day5_3usse_enus_277x187.jpg" width="277" height="187" align="middle">&nbsp;&nbsp;<img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day6_3usse_enus_277x187.jpg" width="277" height="187" align="middle">&nbsp;&nbsp;<img border="1" src="http://image.weather.com/images/maps/forecast/map_wkpln_day7_3usse_enus_277x187.jpg" width="277" height="187" align="middle"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "3", "4", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Tonight's Low</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/web/forecast/us_se_9regwxlo1_large_usen.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="7" href="#8"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font size="1" face="Arial"><a name="Weather"></a>Surface Weather</font></td>
-    </tr>
-    <tr>
-      <td style="border-style: solid; border-width: 1" bordercolor="#000000">
-      <p align="center">
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "4", "5", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Tomorrow's High</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/web/forecast/us_se_9regwxhi2_large_usen.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<a href onClick="imgCOn('img06')" >
-<img border="0" src="http://image.weather.com/images/maps/current/cur_se_720x486.jpg" width="720" height="486"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "5", "6", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Precipitation</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day1_3usse_enus_600x405.jpg">
+					</td>
+				</tr>
+			</table>
+			<script>
+				WriteNavBox( "6", "7", false, true );
+			</script>
+			<table>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day2_3usse_enus_277x187.jpg">
+					</td>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day3_3usse_enus_277x187.jpg">
+					</td>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day4_3usse_enus_277x187.jpg">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day5_3usse_enus_277x187.jpg">
+					</td>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day6_3usse_enus_277x187.jpg">
+					</td>
+					<td>
+						<img src="http://image.weather.com/images/maps/forecast/map_wkpln_day7_3usse_enus_277x187.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="8" href="#9"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font size="1" face="Arial">Severe Weather</font></td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #000000; ">
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "7", "8", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Surface Weather</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/images/maps/current/cur_se_720x486.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<a href onClick="imgCOn('img16')" >
-<img border="0" src="http://image.weather.com/images/maps/special/severe_se_720x486.jpg" width="720" height="486"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "8", "9", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Severe Weather</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="http://image.weather.com/images/maps/special/severe_se_720x486.jpg">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-<div align="center">
-  <center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="9" href="#11"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-    </table>
-    <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><font face="Arial" size="1">Air Quality</font></td>
-    </tr>
-    <tr>
-      <td style="border:1px solid #000000; ">
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "9", "Bottom", false, true );
+			</script>
+			<table>
+				<tr>
+					<td class="caption">Air Quality</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://www.air.dnr.state.ga.us/smogforecast/stats.php" target="_blank">
+							<img src="http://image.weather.com/images/maps/health/airquality/us_national_fcst_airquality_day1_600_en.jpg">
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 
-        <a href="http://www.air.dnr.state.ga.us/smogforecast/stats.php"><img border="0" src="http://image.weather.com/images/maps/health/airquality/us_national_fcst_airquality_day1_600_en.jpg" width="600" height="405"></a></td>
-    </tr>
-    </table>
-  </center>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="50%"><table border="0" cellspacing="3">
-            <tr>
-              <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="#Top"><font color="#FFFFFF">Top</font></a>&nbsp;</font></div></td>
-            </tr>
-        </table></td>
-        <td width="50%"><div align="right">
-            <table border="0" cellspacing="3">
-              <tr>
-                <td align="center" bgcolor="#008000"><div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1"><font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="10" href="#11"><font color="#FFFFFF">Next</font></a>&nbsp;</font></div></td>
-              </tr>
-            </table>
-        </div></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-    </table>
-    <table width="100%" cellpadding="5" cellspacing="0">
-		<tr>
-<!--
-			<td>
-    <p align="center">
-    <span id="TWC1"></span>
-    <span id="TWC2" style="display:none"></span>
-    <span id="TWC3" style="display:none"></span>
-    <span id="TWC4" style="display:none"></span>
-    <span id="AW1" style="display:none"></span>
-    <span id="AW2" style="display:none"></span>
-	</p>
-			</td>
--->
-			<td width="100" valign="top"><table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td>
-				<table cellspacing="0" cellpadding="0">
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif"><b>&deg;C</b></font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif"><b>&deg;F</b></font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right" width="64"><center><font size="2" face="Arial, Helvetica, sans-serif">45</font></center></td>
-                    <td align="right" width="64"><center><font size="2" face="Arial, Helvetica, sans-serif">113</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">40</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">104</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">35</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">95</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">30</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">86</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">25</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">77</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">20</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">68</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">15</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">59</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">10</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">50</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">5</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">41</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">0</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">32</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-5</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">23</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-10</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">14</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-15</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">5</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-20</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-4</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-25</font></center></td>
-                    <td align="right"><center><font size="2" face="Arial, Helvetica, sans-serif">-13</font></center></td>
-                  </tr>
-                  <tr height="20">
-                    <td height="20" colspan="2" align="right"><center>
-                      <form action="" method="post" name="TempConvertForm" id="TempConvertForm">
-                        <font size="2" face="Arial, Helvetica, sans-serif">
-                        <input name="Degrees" type="text" id="Degrees" size="1">&deg;<span id="TempConvertNew"></span><br>
-                        <input type="button" name="Button" value="C &gt; F" onClick="TempConvertJ('CF')">
-                        <input type="button" name="Button" value="F &gt; C" onClick="TempConvertJ('FC')">
-                        </font>
-                      </form>
-                    </center>                    </td>
-                    </tr>
-                </table></td>
-              </tr>
-            </table>
-		    </td>
-		</tr>
-	</table>
-    </td>
-  </tr>
+	<tr>
+		<td class="DisplayBox">
+			<script>
+				WriteNavBox( "Bottom", "Bottom", false, false );
+			</script>
+			<table class="TempConversion">
+				<tr>
+					<th>&deg;C</th>
+					<th>&deg;F</th>
+				</tr>
+				<tr>
+					<td>45</td>
+					<td>113</td>
+				</tr>
+				<tr>
+					<td>40</td>
+					<td>104</td>
+				</tr>
+				<tr>
+					<td>35</td>
+					<td>95</td>
+				</tr>
+				<tr>
+					<td>30</td>
+					<td>86</td>
+				</tr>
+				<tr>
+					<td>25</td>
+					<td>77</td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>68</td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>59</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>50</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>41</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>32</td>
+				</tr>
+				<tr>
+					<td>-5</td>
+					<td>23</td>
+				</tr>
+				<tr>
+					<td>-10</td>
+					<td>14</td>
+				</tr>
+				<tr>
+					<td>-15</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>-20</td>
+					<td>-4</td>
+				</tr>
+				<tr>
+					<td>-25</td>
+					<td>-13</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input name="Degrees" type="text" id="Degrees" size="1">&deg;<span id="TempConvertNew"></span><br>
+						<input type="button" name="Button" value="C &#8594; F" onClick="TempConvertJ('CF')">
+						<input type="button" name="Button" value="F &#8594; C" onClick="TempConvertJ('FC')">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
 </table>
+
 </body>
 
 </html>

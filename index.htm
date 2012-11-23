@@ -54,7 +54,21 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 			window.open( Domain, "_blank" );
 		}
 	}
-
+	
+	function SearchForPost( Domain, BlankFormAction, BlankFormInputName ) {
+		SearchTerm = $( "#SearchTerm" ).val();
+		$( "#SearchTerm" ).val( "" );
+		setTimeout( "$('#SearchTerm').focus();", 100 );
+		if ( SearchTerm == "" ) {
+			window.open( Domain, "_blank" );
+		} else {
+			$( "#BlankForm" ).attr( "action", BlankFormAction );
+			$( "#BlankFormInput" ).attr( "name", BlankFormInputName );
+			$( "#BlankFormInput" ).attr( "value", SearchTerm );
+			$( "#BlankForm" ).submit();
+		}
+	}
+	
 	function toggleClock( thisIDJ ) {
 		parentID = $( "#" + thisIDJ ).parents().attr("id");
 		$( "#" + parentID + " canvas").hide();
@@ -69,14 +83,14 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 
 </head>
 
-<body link="#008000" vlink="#008000" onLoad="onLoadJ();">
+<body onLoad="onLoadJ();">
 
-<table border="1" cellpadding="5" bordercolor="#008000" id="AutoNumber13" cellspacing="0" align="center" class="FrameTable">
+<table class="FrameTable">
 	<tr id="JavaScriptIsDisabled">
 		<td colspan="6" style="text-align:center; background:#F00; color:#FFF; font-weight:bold">JavaScript is disabled.</td>
 	</tr>
 	<tr>
-		<td valign="top">
+		<td valign="top" class="LinkBox">
 			<table>
 				<tr>
 					<td valign="top">
@@ -114,32 +128,32 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				</tr>
 			</table>
 		</td>
-		<td valign="top">
+		<td valign="top" class="LinkBox">
 			<div class="MainHeader">Search</div>
 			<p><input type="text" id="SearchTerm" size="33" onBlur="$( '#Google' ).focus();"></p>
 			<p><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></p>
 			<div class="MainHeader MainHeaderSpaceBefore">Emory</div>
-			<table border="0" cellspacing="0" cellpadding="0">
+			<table class="MenuLinkTable">
 				<tr>
-					<td nowrap><span class="SubHeader">CFAdmin&nbsp;&nbsp;</span></td>
-					<td nowrap>&nbsp;<a href="http://cfmlappprod1:8301/CFIDE/administrator/index.cfm">Prod</a>&nbsp;</td>
-					<td nowrap>&nbsp;</td>
-					<td nowrap>&nbsp;</td>
-					<td nowrap>&nbsp;<a href="http://cfmlappdev1:8301/CFIDE/administrator/index.cfm">Dev</a>&nbsp;</td>
-					<td nowrap>&nbsp;<a href="http://127.0.0.1:8501/CFIDE/administrator/enter.cfm">Local</a>&nbsp;</td>
+					<td><span class="SubHeader">CFAdmin&nbsp;&nbsp;</span></td>
+					<td>&nbsp;<a href="http://cfmlappprod1:8301/CFIDE/administrator/index.cfm">Prod</a>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;<a href="http://cfmlappdev1:8301/CFIDE/administrator/index.cfm">Dev</a>&nbsp;</td>
+					<td>&nbsp;<a href="http://127.0.0.1:8501/CFIDE/administrator/enter.cfm">Local</a>&nbsp;</td>
 				</tr>
 				<tr>
-					<td nowrap><span class="SubHeader">ERMS&nbsp;&nbsp;</span></td>
-					<td nowrap>&nbsp;<a href="https://erms.emory.edu/">Prod</a>&nbsp;</td>
-					<td nowrap>&nbsp;<a href="https://erms-stg.emory.edu/">Stg</a>&nbsp;</td>
-					<td nowrap>&nbsp;<a href="https://erms-qa.emory.edu/">QA</a>&nbsp;</td>
-					<td nowrap>&nbsp;<a href="https://erms-dev.emory.edu/">Dev</a>&nbsp;</td>
-					<td nowrap>&nbsp;<a href="http://localhost:8501/">Local</a>&nbsp;</td>
+					<td><span class="SubHeader">ERMS&nbsp;&nbsp;</span></td>
+					<td>&nbsp;<a href="https://erms.emory.edu/">Prod</a>&nbsp;</td>
+					<td>&nbsp;<a href="https://erms-stg.emory.edu/">Stg</a>&nbsp;</td>
+					<td>&nbsp;<a href="https://erms-qa.emory.edu/">QA</a>&nbsp;</td>
+					<td>&nbsp;<a href="https://erms-dev.emory.edu/">Dev</a>&nbsp;</td>
+					<td>&nbsp;<a href="http://localhost:8501/">Local</a>&nbsp;</td>
 				</tr>
 			</table>
 			<p><a href="http://blackboard.emory.edu/">Blackboard</a></p>
 			<p>
-				<a href="http://directory.service.emory.edu/">Directory</a> |
+				<a href="" class="AltMenu" onClick="SearchForPost( 'http://directory.service.emory.edu/', 'http://directory.service.emory.edu/index.cfm', 'SearchString' ); return false;">Directory</a> |
 				ENID (<a href="https://enid.emory.edu/idm/user/">Self</a>) (<a href="http://enid.emory.edu/admin">Admin</a>)
 			</p>
 			<p>
@@ -230,7 +244,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				</tr>
 			</table>
 		</td>
-		<td valign="top">
+		<td valign="top" class="LinkBox">
 			<div class="MainHeader">Entertainment/Information</div>
 			<p>
 				<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/', 'mail/u/0/#search/<REPLACE>' ); return false;">GMail</a> |
@@ -253,7 +267,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 			</p>
 			<p>
 				<a href="" class="AltMenu" onClick="SearchFor( 'https://plus.google.com/', 's/<REPLACE>' ); return false;">Google+</a> |
-				<a href="https://www.facebook.com/?sk=h_chr">Facebook</a> |
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.facebook.com/', 'search/results.php?q=<REPLACE>' ); return false;">Facebook</a> |
 				<a href="" class="AltMenu" onClick="SearchFor( 'https://twitter.com/', 'search?q=<REPLACE>' ); return false;">Twitter</a> |
 				<a href="http://www.linkedin.com/">LinkedIn</a>
 			</p>
@@ -294,7 +308,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 						</p>
 						<p>
 							<a href="http://www.cnn.com/">CNN</a> |
-							<a href="http://www.msnbc.msn.com/">MSNBC</a>
+							<a href="http://www.nbcnews.com/">NBC</a>
 						</p>
 						<p>
 							<a href="http://www.bbc.co.uk/">BBC</a> |
@@ -312,7 +326,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				<tr>
 					<td class="FrameLeftBottom"></td>
 					<td>
-						<p><a href="http://www.imdb.com/">IMDB</a></p>
+						<p><a href="" class="AltMenu" onClick="SearchFor( 'http://www.imdb.com/', 'find?q=<REPLACE>' ); return false;">IMDB</a> |</p>
 						<p>
 							<a href="http://www.tvguide.com/listings/">TV Guide</a> |
 							<a href="http://www.tvtome.com/">TV.com</a>
@@ -382,10 +396,13 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				<a href="http://transportation.emory.edu/transportation/cliff/CCTMA_route.html">CCTMA</a> |
 				<a href="http://emory.transloc.com/">Live Map</a>
 			</p>
-			<p><a href="" class="AltMenu" onClick="SearchFor( 'https://maps.google.com/', 'maps?q=<REPLACE>' ); return false;">Google Maps</a></p>
+			<p>
+				<a href="" class="AltMenu" onClick="SearchFor( 'https://maps.google.com/', 'maps?q=<REPLACE>' ); return false;">Google Maps</a>
+				(<a href="http://www.google.com/mapmaker">Map Maker</a>)
+			</p>
 			<p><a href="http://www.zipcar.com/">Zipcar</a></p>
 		</td>
-		<td valign="top">
+		<td valign="top" class="LinkBox">
 			<div class="MainHeader">Finance</div>
 			<p><a href="https://wwws.mint.com/login.event">Mint.com</a></p>
 			<p class="SubHeader">Banking</p>
@@ -505,15 +522,18 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				</tr>
 			</table>
 		</td>
-		<td valign="top">
+		<td valign="top" class="LinkBox">
 			<div class="MainHeader">Local</div>
 			<p><a href="bookmarklets.htm">Bookmarklets</a></p>
 			<p><a href="cameras.htm">Cameras</a></p>
-			<p><a href="fav.htm">Favorites</a></p>
 			<p><a href="images.htm">Images</a></p>
+			<p><a href="http://www.inmanparkanimalhospital.com/">Inman Park Animal Hospital</a></p>
 			<p><a href="http://mobile.joederose.us/">Mobile</a></p>
 			<p><a href="regex.htm">Regular Expressions</a></p>
-			<p><a href="shopping.htm">Shopping</a></p>
+			<p>
+				<a href="shopping.htm">Shopping</a>
+				(<a href="" class="AltMenu" onClick="SearchFor( 'http://www.amazon.com/', 's/ref=nb_sb_noss?field-keywords=<REPLACE>' ); return false;">Amazon</a>)
+			</p>
 			<p><a href="UncleJerry.htm">Uncle Jerry</a></p>
 			<p><a href="weather.htm#1">Weather</a></p>
 			<div class="MainHeader MainHeaderSpaceBefore">Utilities</div>
@@ -559,7 +579,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				</script>
 			</div>
 		</td>
-		<td valign="top">
+		<td valign="top" class="LinkBox">
 			<table>
 				<tr>
 					<td valign="top">
@@ -599,29 +619,8 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 	</tr>
 </table>
 
-<form method="GET" target="_blank" action="http://www.google.com/search" name="GoogleMain">
-	<input type="hidden" name="q">
-</form>
-
-<form method="GET" target="_blank" action="http://images.google.com/images" name="GoogleImages">
-	<input type="hidden" name="q">
-</form>
-
-<form method="GET" target="_blank" action="http://news.google.com/news" name="GoogleNews">
-	<input type="hidden" name="q">
-</form>
-
-<form method="GET" target="_blank" action="http://dictionary.reference.com/search" name="Dictionary">
-	<input type="hidden" name="q">
-</form>
-
-<form method="GET" target="_blank" action="http://www.urbandictionary.com/define.php" name="UrbanDictionary">
-	<input type="hidden" name="term">
-</form>
-
-<form method="GET" target="_blank" action="http://www.acronymfinder.com/af-query.asp" name="Acronym">
-	<input type="hidden" name="String" value="exact">
-	<input type="hidden" name="Acronym">
+<form id="BlankForm" target="_blank" method="post" style="display:none;">
+	<input id="BlankFormInput" type="text" >
 </form>
 
 <script>

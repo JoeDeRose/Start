@@ -1,5 +1,15 @@
-<!-- saved from url=(0022)http://internet.e-mail -->
 <html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="3600">
+
+<title>Joe's Start Menu</title>
+<base target='_blank' />
+
+<!-- main stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="main.css" />
+
 <style>
 .imagehead
 	{
@@ -7,6 +17,7 @@
 		font-family:Arial, Helvetica, sans-serif;
 		font-size:0.6em;
 	}
+
 .IconTable
 	{
 		margin:0;
@@ -14,11 +25,13 @@
 		margin-left:auto;
 		margin-right:auto;
 	}
+
 .IconTable td
 	{
 		margin:0;
 		padding:0;
 	}
+
 .OuterFrame
 	{
 		border:2px #008000 solid;
@@ -28,25 +41,30 @@
 		margin-left:auto;
 		margin-right:auto;
 	}
+
 .MainFrame
 	{
 		border:1px #008000 solid;
 		padding:15px;
 		text-align:center;
 	}
+
 .CenterTable
 	{
 		margin-left:auto;
 		margin-right:auto;
 	}
+
 .BigImage
 	{
 		border:1px #000 solid;
 	}
+
 .IconImage
 	{
 		border:0 #000 solid;
 	}
+
 .show
 	{
 		width:100;
@@ -54,6 +72,7 @@
 		border:1px #000 solid;
 		vertical-align:top;
 	}
+
 .wc1    
 	{
 		position:absolute;
@@ -61,11 +80,13 @@
 		margin-left:-285px;
 		clip: rect(215px,385px,315px,285px);
 	}
+
 .wc1A
 	{
 		position:absolute;
 		clip: rect(0px,100px,100px,0px);
 	}		
+
 .wc2
 	{
 		position:absolute;
@@ -73,16 +94,19 @@
 		margin-left:-385px;
 		clip: rect(100px,485px,200px,385px);
 	}
+
 .wc3
 	{
 		position:absolute;
 		clip: rect(0px,100px,100px,0px);
 	}		
+
 .wc3A
 	{
 		position:absolute;
 		clip: rect(0px,100px,100px,0px);
 	}		
+
 .wc4
 	{
 		position:absolute;
@@ -90,11 +114,13 @@
 		margin-left:-345px;
 		clip: rect(205px,445px,305px,345px);
 	}
+
 .wc4A
 	{
 		position:absolute;
 		clip: rect(0px,100px,100px,0px);
 	}		
+
 .wc5
 	{
 		position:absolute;
@@ -102,6 +128,7 @@
 		margin-left:-325px;
 		clip: rect(135px,425px,235px,325px);
 	}
+
 .wc6
 	{
 		position:absolute;
@@ -109,6 +136,7 @@
 		margin-left:-334px;
 		clip: rect(230px,434px,330px,334px);
 	}
+
 .wc7
 	{
 		position:absolute;
@@ -116,11 +144,13 @@
 		margin-left:-480px;
 		clip: rect(280px,580px,380px,480px);
 	}
+
 .stock
 	{
 		position:absolute;
 		clip: rect(0px,100px,100px,0px);
 	}
+
 .traffic
 	{
 		position:absolute;
@@ -128,6 +158,7 @@
 		margin-left:-200px;
 		clip: rect(255px,300px,355px,200px);
 	}
+
 .equake
 	{
 		position:absolute;
@@ -135,6 +166,7 @@
 		margin-left:-300px;
 		clip: rect(175px,400px,275px,300px);
 	}
+
 .hcane
 	{
 		position:absolute;
@@ -142,170 +174,137 @@
 		margin-left:-125px;
 		clip: rect(215px,225px,315px,125px);
 	}		
-a
-	{
-		text-decoration: none;
-		font-family:Arial, Helvetica, sans-serif;
-		font-size:0.9em;
-	}
-a:hover
-	{
-		color: #0000FF;
-		text-decoration: underline;
-	}
-
 </style>
-<head>
-<meta http-equiv="Content-Language" content="en-us">
-<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
-<meta name="ProgId" content="FrontPage.Editor.Document">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Joe's Images Menu</title>
+
+</head>
+
+<body>
+
 <script src="Scripts/jquery-min.js"></script>
-<SCRIPT LANGUAGE = "JavaScript">
+<script language="JavaScript">
 DateNowJ = new Date;
 YearNowJ = DateNowJ.getYear();
-if ( YearNowJ < 1900 )
-	{
-		YearNowJ = YearNowJ + 1900;
-	}
-if ( DateNowJ.getMonth() < 5 )
-	{
-		YearNowJ = YearNowJ - 1;
-	}
+
+if ( YearNowJ < 1900 ) {
+	YearNowJ = YearNowJ + 1900;
+}
+if ( DateNowJ.getMonth() < 5 ) {
+	YearNowJ = YearNowJ - 1;
+}
 YearMinus1 = YearNowJ - 1;
 YearMinus2 = YearNowJ - 2;
 YearMinus3 = YearNowJ - 3;
 YearMinus4 = YearNowJ - 4;
 YearMinus5 = YearNowJ - 5;
 
-if (document.images)
-	{
-		img01on = new Image();
-		img01on.src = "http://image.weather.com/web/radar/us_atl_closeradar_large_usen.jpg";
-		img02on = new Image();
-		img02on.src = "http://image.weather.com/images/maps/current/se_curtemp_720x486.jpg";
-		img03on = new Image();
-		img03on.src = "http://image.weather.com/web/forecast/us_se_9regwxlo1_large_usen.jpg";
-		img04on = new Image();
-		img04on.src = "http://image.weather.com/web/forecast/us_se_9regwxhi2_large_usen.jpg";
-		img05on = new Image();
-		img05on.src = "http://image.weather.com/images/maps/forecast/se_precfcst_720x486.jpg";
-		img06on = new Image();
-		img06on.src = "http://image.weather.com/images/maps/current/cur_se_720x486.jpg";
-		img07on = new Image();
-		img07on.src = "http://www.advfn.com/p.php?pid=staticchart&s=DOWI%3AINDU&p=0&t=7&tr=1";
-		img08on = new Image();
-		img08on.src = "http://www.advfn.com/p.php?pid=staticchart&s=NASDAQI%3ACOMPX&p=0&t=7&tr=1";
-		img09on = new Image();
-		img09on.src = "http://www.advfn.com/p.php?pid=staticchart&s=SPI%3AIN%5CX&p=0&t=7&tr=1";
-		img10on = new Image();
-		img10on.src = "http://www.georgianavigator.com/images/dynamic/maps/traffic/atl_metro_Ics.png";
-		img11on = new Image();
-		img11on.src = "http://image.weather.com/images/maps/health/airquality/us_national_fcst_airquality_day1_600_en.jpg";
-		img12on = new Image();
-		img12on.src = "http://image.weather.com/images/maps/seasonal/spec_seasonal11_600_en.jpg";
-		img13on = new Image();
-		img13on.src = "http://earthquake.usgs.gov/eqcenter/recenteqsus/index.gif";
-		img14on = new Image();
-		img14on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearNowJ + "/track.gif";
-		img15on = new Image();
-		img15on.src = "http://image.weather.com/web/forecast/us_se_9regwxhi1_large_usen.jpg";
-		img16on = new Image();
-		img16on.src = "http://image.weather.com/images/maps/special/severe_se_720x486.jpg";
-		img17on = new Image();
-		img17on.src = "http://image.weather.com/web/radar/us_atl_metroradar_large_usen.jpg";
-		img18on = new Image();
-		img18on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus5 + "/track.gif";
-		img19on = new Image();
-		img19on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus4 + "/track.gif";
-		img20on = new Image();
-		img20on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus3 + "/track.gif";
-		img21on = new Image();
-		img21on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus2 + "/track.gif";
-		img22on = new Image();
-		img22on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus1 + "/track.gif";
-		img23on = new Image();
-		img23on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearNowJ + "/track.gif";
-		img24on = new Image();
-		img24on.src = "http://www.advfn.com/p.php?pid=staticchart&s=NYM%5ECL%5CM08&p=0&t=7&tr=1";
-		img25on = new Image();
-		img25on.src = "http://image.weather.com/images/maps/pt_BR/health/tree_pol_720x486.jpg";
-		img26on = new Image();
-		img26on.src = "http://image.weather.com/images/maps/pt_BR/health/grass_pol_720x486.jpg";
-		img27on = new Image();
-		img27on.src = "http://image.weather.com/images/maps/pt_BR/health/rag_pol_720x486.jpg";
-		img28on = new Image();
-		img28on.src = "http://image.weather.com/images/maps/pt_BR/health/mold_spore_720x486.jpg";
+if (document.images) {
+	img01on = new Image();
+	img01on.src = "http://image.weather.com/web/radar/us_atl_closeradar_large_usen.jpg";
+	img02on = new Image();
+	img02on.src = "http://image.weather.com/images/maps/current/se_curtemp_720x486.jpg";
+	img03on = new Image();
+	img03on.src = "http://image.weather.com/web/forecast/us_se_9regwxlo1_large_usen.jpg";
+	img04on = new Image();
+	img04on.src = "http://image.weather.com/web/forecast/us_se_9regwxhi2_large_usen.jpg";
+	img05on = new Image();
+	img05on.src = "http://image.weather.com/images/maps/forecast/se_precfcst_720x486.jpg";
+	img06on = new Image();
+	img06on.src = "http://image.weather.com/images/maps/current/cur_se_720x486.jpg";
+	img07on = new Image();
+	img07on.src = "http://www.advfn.com/p.php?pid=staticchart&s=DOWI%3AINDU&p=0&t=7&tr=1";
+	img08on = new Image();
+	img08on.src = "http://www.advfn.com/p.php?pid=staticchart&s=NASDAQI%3ACOMPX&p=0&t=7&tr=1";
+	img09on = new Image();
+	img09on.src = "http://www.advfn.com/p.php?pid=staticchart&s=SPI%3AIN%5CX&p=0&t=7&tr=1";
+	img10on = new Image();
+	img10on.src = "http://www.georgianavigator.com/images/dynamic/maps/traffic/atl_metro_Ics.png";
+	img11on = new Image();
+	img11on.src = "http://image.weather.com/images/maps/health/airquality/us_national_fcst_airquality_day1_600_en.jpg";
+	img12on = new Image();
+	img12on.src = "http://image.weather.com/images/maps/seasonal/spec_seasonal11_600_en.jpg";
+	img13on = new Image();
+	img13on.src = "http://earthquake.usgs.gov/eqcenter/recenteqsus/index.gif";
+	img14on = new Image();
+	img14on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearNowJ + "/track.gif";
+	img15on = new Image();
+	img15on.src = "http://image.weather.com/web/forecast/us_se_9regwxhi1_large_usen.jpg";
+	img16on = new Image();
+	img16on.src = "http://image.weather.com/images/maps/special/severe_se_720x486.jpg";
+	img17on = new Image();
+	img17on.src = "http://image.weather.com/web/radar/us_atl_metroradar_large_usen.jpg";
+	img18on = new Image();
+	img18on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus5 + "/track.gif";
+	img19on = new Image();
+	img19on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus4 + "/track.gif";
+	img20on = new Image();
+	img20on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus3 + "/track.gif";
+	img21on = new Image();
+	img21on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus2 + "/track.gif";
+	img22on = new Image();
+	img22on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearMinus1 + "/track.gif";
+	img23on = new Image();
+	img23on.src = "http://weather.unisys.com/hurricane/atlantic/" + YearNowJ + "/track.gif";
+	img24on = new Image();
+	img24on.src = "http://www.advfn.com/p.php?pid=staticchart&s=NYM%5ECL%5CM08&p=0&t=7&tr=1";
+	img25on = new Image();
+	img25on.src = "http://image.weather.com/images/maps/pt_BR/health/tree_pol_720x486.jpg";
+	img26on = new Image();
+	img26on.src = "http://image.weather.com/images/maps/pt_BR/health/grass_pol_720x486.jpg";
+	img27on = new Image();
+	img27on.src = "http://image.weather.com/images/maps/pt_BR/health/rag_pol_720x486.jpg";
+	img28on = new Image();
+	img28on.src = "http://image.weather.com/images/maps/pt_BR/health/mold_spore_720x486.jpg";
+}
+
+function imgAOn(imgName) {
+	if (document.images) {
+		document["A"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgAOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["A"].src = eval(imgName + "on.src");
-			}
+function imgBOn(imgName) {
+	if (document.images) {
+		document["B"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgBOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["B"].src = eval(imgName + "on.src");
-			}
+function imgCOn(imgName) {
+	if (document.images) {
+		document["C"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgCOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["C"].src = eval(imgName + "on.src");
-			}
+function imgDOn(imgName) {
+	if (document.images) {
+		document["D"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgDOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["D"].src = eval(imgName + "on.src");
-			}
+function imgEOn(imgName) {
+	if (document.images) {
+		document["E"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgEOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["E"].src = eval(imgName + "on.src");
-			}
+function imgFOn(imgName) {
+	if (document.images) {
+		document["F"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgFOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["F"].src = eval(imgName + "on.src");
-			}
+function imgGOn(imgName) {
+	if (document.images) {
+		document["G"].src = eval(imgName + "on.src");
 	}
+}
 
-function imgGOn(imgName)
-	{
-        if (document.images)
-        	{
-            	document["G"].src = eval(imgName + "on.src");
-			}
-	}
+</script>
 
-</SCRIPT>
-</head>
-
-<body link="#008000" vlink="#008000">
-
-<table class="CenterTable" cellpadding="0" align="center">
+<table class="ReturnToTop">
 	<tr>
-		<td align="center" bgcolor="#008000">
-			<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
-				<font color="#0033FF" size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a name="Top"></a><a href="index.htm"><font color="#FFFFFF">Return to Start Page</font></a>&nbsp;</font>
-			</div>
+		<td class="ReturnToTop">
+			<a name="Top"></a>
+			<a href="index.htm" class="ReturnToTop">Return to Start Page</a>
 		</td>
 	</tr>
 	<tr>
@@ -344,7 +343,7 @@ function imgGOn(imgName)
 				<tr>
 					<td valign="top" class="imagehead">Radar 600-Mile</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td valign="top" class="imagehead">Current Temperature</td>
+					<td valign="top" class="imagehead PaddingLeftSmall">Current Temperature</td>
 					<td valign="top" class="imagehead">Today's High*</td>
 					<td valign="top" class="imagehead">Tonight's Low</td>
 					<td valign="top" class="imagehead">Tomorrow's High</td>
@@ -481,11 +480,7 @@ function imgGOn(imgName)
 	</tr>
 </table>
 
-<table border="0" cellspacing="1">
-	<tr>
-		<td>&nbsp;</td>
-	</tr>
-</table>
+<br>
 
 <table class="OuterFrame" align="center">
 
