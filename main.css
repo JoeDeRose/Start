@@ -32,13 +32,35 @@ p
 		white-space:nowrap;
 	}
 
-table.FrameTable
+.FrameDiv
 	{
 		font-size:0.85em;
 		font-family:Arial, Helvetica, sans-serif;
-		border-collapse:collapse;
+		border-color:#008000;
+		border-width:2px;
+		border-style:solid;
+		overflow:hidden;
+		display:table;
 		margin-left:auto;
 		margin-right:auto;
+	}
+
+.ColumnDiv
+	{
+		float: left;
+		padding:5px;
+		border-left-width: 2px;
+		border-left-style: solid;
+		border-left-color: #080;
+		margin-left: -2px;
+		padding-bottom: 500em;
+		margin-bottom: -499.5em;
+		margin-top: -0.5em;
+	}
+
+.ClockCanvas
+	{
+		border: 1px black solid;
 	}
 
 table.MenuLinkTable
@@ -53,12 +75,16 @@ table.MenuLinkTable td
 		padding:0;
 	}
 
-.LinkBox
+#JavaScriptIsDisabled
 	{
-		padding:5px;
-		border-color:#008000;
-		border-width:2px;
-		border-style:solid;
+		text-align: center;
+		background: #F00;
+		color: #FFF;
+		font-weight: bold;
+		width: 110%;
+		margin-left: -5%;
+		font-family: Arial, Helvetica, sans-serif;
+		margin-bottom: 0.5em;
 	}
 
 .AltMenu
@@ -77,10 +103,6 @@ table.MenuLinkTable td
 		text-align:center;
 		margin-bottom:0.2em;
 		padding-bottom:0.15em;
-	}
-
-.MainHeaderSpaceBefore
-	{
 		margin-top:0.5em;
 	}
 
@@ -98,22 +120,19 @@ table.MenuLinkTable td
 		color:#990033;
 	}
 
-.FrameLeftBottom
+.LinkGroupList
 	{
-		border-left:1px #000 solid;
-		border-bottom:1px #000 solid;
+		border-left:1px #000 groove;
 		border-bottom-left-radius:0.4em;
+		margin-left:0.25em;
 		padding-left:0.5em;
 	}
 
 .FlashClock
 	{
 		border:1px solid #000000;
-	}
-
-.SlightIndent
-	{
-		margin-left:0.25em;
+		margin-top:0.5em;
+		margin-bottom:0.5em;
 	}
 
 .BigIndent

@@ -210,7 +210,7 @@ function RegExpTestJ()
       <b>      |      </b>
     </center></td>
     <td valign="top">&nbsp;&nbsp;</td>
-    <td valign="top"><b>pipe:</b> Separates alternative search terms; for example, <span class="RegExp">/cat|dog/</span> will match either &quot;cat&quot; or &quot;dog.&quot; </td>
+    <td valign="top"><b>pipe:</b> Separates alternative search terms; for example, <span class="RegExp">/cat|dog/</span> will match either &quot;cat&quot; or &quot;dog&quot;. </td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -258,7 +258,7 @@ function RegExpTestJ()
         <b> ^ </b>
     </center></td>
     <td valign="top">&nbsp;&nbsp;</td>
-    <td valign="top"><b>caret:</b> Inside brackets, excludes certain characters; for example, <span class="RegExp">/[^aeiou]/</span> matches only consonants. <font color="#FF0000">(See alternate usage under &quot;Location of Search.&quot;)</font></td>
+    <td valign="top"><b>caret:</b> Inside brackets, excludes certain characters; for example, <span class="RegExp">/[^aeiou]/</span> matches only consonants. <font color="#FF0000">(See alternate usage under &quot;Location of Search&quot;.)</font></td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -290,7 +290,7 @@ function RegExpTestJ()
       <b>      ^      </b>
     </center></td>
     <td valign="top">&nbsp;&nbsp;</td>
-    <td valign="top"><b>caret:</b> <u>Before</u> a letter, indicates that the match is at the beginning of the string; for example, <span class="RegExp">/^b/i</span> matches the first &quot;b&quot; in &quot;Bob.&quot; <font color="#FF0000">(See alternate usage under &quot;Search Terms.&quot;)</font></td>
+    <td valign="top"><b>caret:</b> <u>Before</u> a letter, indicates that the match is at the beginning of the string; for example, <span class="RegExp">/^b/i</span> matches the first &quot;b&quot; in &quot;Bob&quot;. <font color="#FF0000">(See alternate usage under &quot;Search Terms&quot;.)</font></td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -302,7 +302,7 @@ function RegExpTestJ()
       <b>      $      </b>
     </center></td>
     <td valign="top">&nbsp;&nbsp;</td>
-    <td valign="top"><b>dollar sign:</b> <u>After</u> a letter, indicates that the match is at the end of the string; example, <span class="RegExp">/b$/i</span> matches the second &quot;b&quot; in &quot;Bob.&quot;</td>
+    <td valign="top"><b>dollar sign:</b> <u>After</u> a letter, indicates that the match is at the end of the string; example, <span class="RegExp">/b$/i</span> matches the second &quot;b&quot; in &quot;Bob&quot;.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -314,7 +314,7 @@ function RegExpTestJ()
         <b> ? </b>
     </center></td>
     <td valign="top">&nbsp;&nbsp;</td>
-    <td valign="top"><b>question mark:</b> Within parentheses, introduces a &quot;lookaround search&quot; (&nbsp;<span class="RegExp">/(?…)/</span>&nbsp;) or a &quot;lookbehind search&quot; (&nbsp;<span class="RegExp">/(?&lt;…)/</span>&nbsp;), in which search terms are found only in the context of surrounding characters. The &quot;<span class="RegExp">?</span>&quot; or &quot;<span class="RegExp">?&lt;</span>&quot; is followed by either &quot;=&quot; for a matched character or &quot;!&quot; for an excluded character. (Note: &quot;Lookbehind search&quot; is not supported by JavaScript, even though &quot;lookaround search&quot; is supported.) <font color="#FF0000">(See alternate usage under &quot;Number of Search Attempts.&quot;)</font></td>
+    <td valign="top"><b>question mark:</b> Within parentheses, introduces a &quot;lookaround search&quot; (&nbsp;<span class="RegExp">/(?…)/</span>&nbsp;) or a &quot;lookbehind search&quot; (&nbsp;<span class="RegExp">/(?&lt;…)/</span>&nbsp;), in which search terms are found only in the context of surrounding characters. The &quot;<span class="RegExp">?</span>&quot; or &quot;<span class="RegExp">?&lt;</span>&quot; is followed by either &quot;=&quot; for a matched character or &quot;!&quot; for an excluded character. (Note: &quot;Lookbehind search&quot; is not supported by JavaScript, even though &quot;lookaround search&quot; is supported.) <font color="#FF0000">(See alternate usage under &quot;Number of Search Attempts&quot;.)</font></td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -468,7 +468,7 @@ function RegExpTestJ()
       <b>      ?      </b>
     </center></td>
     <td valign="top">&nbsp;&nbsp;</td>
-    <td valign="top"><b>question mark:</b><font color="#FF0000">(See alternate usage under &quot;Location of Search.&quot;)</font></td>
+    <td valign="top"><b>question mark:</b><font color="#FF0000">(See alternate usage under &quot;Location of Search&quot;.)</font></td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -476,11 +476,11 @@ function RegExpTestJ()
     <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td valign="top">&bull;&nbsp;</td>
-          <td valign="top">Same as above, except matches an item <u>zero or one time</u> (i.e., making it optional); for example <span class="RegExp">/colou?r/</span> matches &quot;color&quot; and &quot;colour.&quot;</td>
+          <td valign="top">Same as above, except matches an item <u>zero or one time</u> (i.e., making it optional); for example <span class="RegExp">/colou?r/</span> matches &quot;color&quot; and &quot;colour&quot;.</td>
         </tr>
         <tr>
           <td valign="top">&bull;&nbsp;</td>
-          <td valign="top">After <span class="RegExp">*</span> or <span class="RegExp">+</span> the search will be &quot;greedy&quot; (extended to the maximum possible length); adding a <span class="RegExp">?</span> will make the search &quot;lazy&quot; (limited to the minimum possible length); for example, in the search term &quot;<b>This is &lt;b&gt;bold&lt;/b&gt; text</b>,&quot; <span class="RegExp">/<.*>/</span> will find &quot;<b>&lt;b&gt;bold&lt;/b&gt;</b>,&quot; while <span class="RegExp">/<.*?>/</span> will find &quot;<b>&lt;b&gt;</b>.&quot;</td>
+          <td valign="top">After <span class="RegExp">*</span> or <span class="RegExp">+</span> the search will be &quot;greedy&quot; (extended to the maximum possible length); adding a <span class="RegExp">?</span> will make the search &quot;lazy&quot; (limited to the minimum possible length); for example, in the search term &quot;<b>This is &lt;b&gt;bold&lt;/b&gt; text</b>&quot;, <span class="RegExp">/<.*>/</span> will find &quot;<b>&lt;b&gt;bold&lt;/b&gt;</b>&quot;, while <span class="RegExp">/<.*?>/</span> will find &quot;<b>&lt;b&gt;</b>&quot;.</td>
         </tr>
     </table></td>
   </tr>
@@ -505,7 +505,7 @@ function RegExpTestJ()
   <tr>
     <td valign="top">&nbsp;</td>
     <td valign="top">&nbsp;</td>
-    <td valign="top">The following table may help illustrate how these functions work together: Where the search term was found in the words below, it is replaced with a red &quot;<b><font color="#FF0000">x</font></b>.&quot;</td>
+    <td valign="top">The following table may help illustrate how these functions work together: Where the search term was found in the words below, it is replaced with a red &quot;<b><font color="#FF0000">x</font></b>&quot;.</td>
   </tr>
   <tr>
     <td valign="top">&nbsp;</td>
@@ -852,7 +852,27 @@ function RegExpTestJ()
   		<b> $# </b>
   		</center></td>
   	<td valign="top">&nbsp;&nbsp;</td>
-  	<td valign="top"><b>backreference in replace (dollar-sign followed by a digit):</b> This varies by programming language, but a common schema (which <i>is</i> used in JavaScript) is to refer back to portions of the search term with a dollar-sign followed by a digit. For example, <b>$1</b> would refer to the <i>first</i> item in the search string that is <u>framed in parentheses</u>; <b>$2</b> would refer to the second, etc. To illustrate: (1) If you wanted to put the word &quot;test&quot; in bold, you would search on <span class="RegExp">/(test)/</span> and replace it with <span class="RegExpReplace">&lt;b&gt;$1&lt;/b&gt;</span>. (2) If you wanted to put the flip the first two words of some text, you would search on <span class="RegExp">/^(\w+)\s(\w+)/</span> and replace it with <span class="RegExpReplace">$2 $1</span>. In ColdFusion, a backreference in replace is handled like a backreference in search: with a backslash followed by a digit (e.g., <b>\1</b>, <b>\2</b>).</td>
+  	<td valign="top"><p><b>backreference in replace (dollar-sign followed by a digit):</b> This
+  			varies by programming language, but a common schema is to refer back to
+  			portions of the search term with a dollar-sign followed by a digit. For
+  			example, <b>$1</b> would refer to the <i>first</i> item in the search string that is <u>framed in parentheses</u>; <b>$2</b> would
+  			refer to the second, etc. To illustrate: (1) If you wanted to put the word &quot;test&quot; in
+		bold, you would search on <span class="RegExp">/(test)/</span> and replace it with <span class="RegExpReplace">&lt;b&gt;$1&lt;/b&gt;</span>. (2) If you wanted to put the flip the first two words of some text, you would search on <span class="RegExp">/^(\w+)\s(\w+)/</span> and replace it with <span class="RegExpReplace">$2 $1</span>.</p>
+  		<p>The parenthetical frames are taken in the order of the first opening parenthesis.
+  			For example, if you are searching the string &quot;one two&quot; with the regular
+  			expression <span class="RegExp">/((\w+)\s(\w+))/</span>, <b>$1</b> would return
+  			&quot;one two&quot;; <b>$2</b> would return &quot;one&quot;; and <b>$3</b> would return &quot;two&quot;.</p>
+  		<p>Following are some examples of how backreference is handled in various
+  			languages:</p>
+  		<ul>
+  			<li><b>Java (String class):</b> first match is $1 ($0 is the entire expression)</li>
+  			<li><b>JavaScript:</b> first match is $1</li>
+  			<li><b>ColdFusion:</b> first match is \1</li>
+  			<li><b>Oracle:</b> first match is \1</li>
+  			<li><b>PHP (ereg):</b> first match is \\1</li>
+  			<li><b>Ruby:</b> first match is '\1' (or &quot;\\1&quot; or '\\1') (The quotes
+  				are necesssary to prevent it being parsed as an octal escape.)</li>
+		</ul></td>
   	</tr>
 </table>
 <hr />
@@ -2883,7 +2903,7 @@ function RegExpTestJ()
       <td valign="top"><center>
       </center></td>
       <td valign="top">&nbsp;</td>
-      <td valign="top">&quot;.&quot;, followed by </td>
+      <td valign="top">&quot;&quot;., followed by </td>
     </tr>
     <tr>
       <td valign="top">&nbsp;</td>

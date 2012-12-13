@@ -3,7 +3,6 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="refresh" content="3600">
 
 <title>Joe's Start Menu</title>
 <base target='_blank' />
@@ -85,554 +84,391 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 
 <body onLoad="onLoadJ();">
 
-<table class="FrameTable">
-	<tr id="JavaScriptIsDisabled">
-		<td colspan="6" style="text-align:center; background:#F00; color:#FFF; font-weight:bold">JavaScript is disabled.</td>
-	</tr>
-	<tr>
-		<td valign="top" class="LinkBox">
-			<table>
-				<tr>
-					<td valign="top">
-						<table>
-							<tr>
-								<td class="FlashClock" id="ClockCell1" >
-									<canvas id="imgStandardClock" width="200" height="200" style="border:1px black solid" onClick="toggleClock(this.id);" ></canvas>
-									<canvas id="img24HourClock" width="200" height="200" style="border:1px black solid" onClick="toggleClock(this.id);" class="HideOnLoad"></canvas>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<table>
-							<tr>
-								<td class="FlashClock" id="ClockCell2" >
-									<canvas id="imgChineseClock" width="200" height="200" style="border:1px black solid"></canvas>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<table>
-							<tr>
-								<td class="FlashClock" id="ClockCell3" >
-									<canvas id="imgMetricClock" width="200" height="200" style="border:1px black solid"></canvas>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</td>
-		<td valign="top" class="LinkBox">
-			<div class="MainHeader">Search</div>
-			<p><input type="text" id="SearchTerm" size="33" onBlur="$( '#Google' ).focus();"></p>
-			<p><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></p>
-			<div class="MainHeader MainHeaderSpaceBefore">Emory</div>
-			<table class="MenuLinkTable">
-				<tr>
-					<td><span class="SubHeader">CFAdmin&nbsp;&nbsp;</span></td>
-					<td>&nbsp;<a href="http://cfmlappprod1:8301/CFIDE/administrator/index.cfm">Prod</a>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;<a href="http://cfmlappdev1:8301/CFIDE/administrator/index.cfm">Dev</a>&nbsp;</td>
-					<td>&nbsp;<a href="http://127.0.0.1:8501/CFIDE/administrator/enter.cfm">Local</a>&nbsp;</td>
-				</tr>
-				<tr>
-					<td><span class="SubHeader">ERMS&nbsp;&nbsp;</span></td>
-					<td>&nbsp;<a href="https://erms.emory.edu/">Prod</a>&nbsp;</td>
-					<td>&nbsp;<a href="https://erms-stg.emory.edu/">Stg</a>&nbsp;</td>
-					<td>&nbsp;<a href="https://erms-qa.emory.edu/">QA</a>&nbsp;</td>
-					<td>&nbsp;<a href="https://erms-dev.emory.edu/">Dev</a>&nbsp;</td>
-					<td>&nbsp;<a href="http://localhost:8501/">Local</a>&nbsp;</td>
-				</tr>
-			</table>
-			<p><a href="http://blackboard.emory.edu/">Blackboard</a></p>
-			<p>
-				<a href="" class="AltMenu" onClick="SearchForPost( 'http://directory.service.emory.edu/', 'http://directory.service.emory.edu/index.cfm', 'SearchString' ); return false;">Directory</a> |
-				ENID (<a href="https://enid.emory.edu/idm/user/">Self</a>) (<a href="http://enid.emory.edu/admin">Admin</a>)
-			</p>
-			<p>
-				<a href="https://owa.emory.edu/">Exchange Server</a>
-				(<a href="http://eas.emory.edu/">Archive</a>)
-			</p>
-			<p><a href="http://help.emory.edu/">IT Support</a></p>
-			<p><a href="http://www.hr.emory.edu/leave">Leave Request</a></p>
-			<p><a href="https://www.app.emory.edu/av-spamfilter">Spam Filter</a></p>
-			<p><a href="http://www.sparkfly.com/">Sparkfly</a></p>
-			<p><a href="https://mydesktop.emory.org/">Virtual Desktop</a></p>
-			<p><a href="https://vpn.emory.edu">VPN</a> <span class="SpecialNote">(Firefox/IE)</span></p>
-			<p><a href="https://zabbix.cc.emory.edu/zabbix">Zabbix</a></p>
-			<p class="SubHeader">R-WIT</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="https://collaborate.emory.edu/Pages/Default.aspx">Collaborate</a></p>
-						<p><a href="https://emoryrhsit.onjira.com/">JIRA</a></p>
-						<p><a href="https://project.emory.edu/pwa">PWA</a> <span class="SpecialNote">(IE)</span></p>
-						<p><a href="http://v3.sonar6.com/">Sonar6</a></p>
-						<p><a href="https://svn.service.emory.edu:8443/repos/emoryoit/project/">SVN</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader"><a href="http://www.ocr.emory.edu/">OCR</a></p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://www.ocr.emory.edu/staff/">OCR Staff</a> |
-							<a href="http://med.emory.edu/research/cto/protected/Metrics/metrics.php">Metrics</a>
-						</p>
-						<p><a href="http://www.med.emory.edu/research/cto/wiki/">DokuWiki</a></p>
-					</td>
-				</tr>
-			</table>
-			<div class="MainHeader MainHeaderSpaceBefore">Programming</div>
-			<p>
-				<a href="https://github.com/login">GitHub</a> |
-				<a href="http://www.heroku.com/">Heroku</a>
-			</p>
-			<p class="SubHeader">Commands</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://www.computerhope.com/msdos.htm">MS-DOS</a> |
-							<a href="http://en.wikipedia.org/wiki/List_of_Unix_utilities">Unix</a> |
-							<a href="http://www.oreillynet.com/linux/cmd/">Linux</a> |
-							<a href="http://www.tuxfiles.org/linuxhelp/vimcheat.html">VIM</a>
-						</p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">ColdFusion</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="" class="AltMenu" onClick="SearchFor( 'http://www.cfquickdocs.com/cf9/', '#<REPLACE>' ); return false;">ColdFusion CFQuickDocs</a></p>
-						<p><a href="http://livedocs.adobe.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/js/html/wwhelp.htm">ColdFusion Documentation</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">jQuery</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://jquery.com/">jQuery</a>
-							(<a href="http://docs.jquery.com/">Documentation</a>)
-						</p>
-						<p><a href="http://jsfiddle.net/">jsFiddle</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Oracle</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://www.techonthenet.com/oracle/">Oracle/PLSQL</a>
-							(<a href="http://www.techonthenet.com/oracle/functions/">Functions</a>)
-						</p>
-						<p><a href="http://www.ss64.com/ora/">Oracle SQL Commands</a></p>
-						<p><a href="http://www.sqlfiddle.com/">SQL Fiddle</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">PHP</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://www.php.net/manual/en/langref.php">PHP Language Reference</a></p>
-					</td>
-				</tr>
-			</table>
-		</td>
-		<td valign="top" class="LinkBox">
-			<div class="MainHeader">Entertainment/Information</div>
-			<p>
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/', 'mail/u/0/#search/<REPLACE>' ); return false;">GMail</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/voice/', '#search/<REPLACE>' ); return false;">Voice</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/calendar/', 'render?tab=lc&q=<REPLACE>' ); return false;">Calendar</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/mail/u/0/#contacts', '/search/<REPLACE>' ); return false;">Contacts</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.google.com/reader/', 'view/#search/<REPLACE>/' ); return false;">Reader</a>
-			</p>
-			<p class="BigIndent">
-				<a href="https://www.google.com/latitude/">Latitude</a> |
-				<a href="https://mail.google.com/tasks/canvas">Tasks</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://drive.google.com/#starred', 'https://drive.google.com/#search/<REPLACE>' ); return false;">Drive</a> |
-				<a href="https://www.google.com/settings/account">Account</a>
-			</p>
-			<p>
-				<a id="Google" href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/', '#q=<REPLACE>' ); return false;">Google</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=isch', '&q=<REPLACE>' ); return false;">Images</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=nws', '&q=<REPLACE>' ); return false;">News</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=shop', '&q=<REPLACE>' ); return false;">Shopping</a>
-			</p>
-			<p>
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://plus.google.com/', 's/<REPLACE>' ); return false;">Google+</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.facebook.com/', 'search/results.php?q=<REPLACE>' ); return false;">Facebook</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://twitter.com/', 'search?q=<REPLACE>' ); return false;">Twitter</a> |
-				<a href="http://www.linkedin.com/">LinkedIn</a>
-			</p>
-			<p>
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://en.wikipedia.org/', 'https://www.google.com/#q=<REPLACE>+site:en.wikipedia.org' ); return false;">Wikipedia</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.bing.com/', 'search?q=<REPLACE>' ); return false;">Bing</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://www.wolframalpha.com/', 'input/?i=<REPLACE>' ); return false;">WolframAlpha</a>
-			</p>
-			<p>
-				<a href="" class="AltMenu" onClick="SearchFor( 'http://dictionary.reference.com/', 'browse/<REPLACE>' ); return false;">Dictionary</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.urbandictionary.com/', 'define.php?term=<REPLACE>' ); return false;">Urban Dictionary</a> |
-				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.acronymfinder.com/', '<REPLACE>.html' ); return false;">Acronym Finder</a>
-			</p>
-			<p><a href="http://www.evite.com/">Evite</a></p>
-			<p><a href="http://www.straightdope.com/">Straight Dope</a></p>
-			<p><a href="http://www.conceptispuzzles.com/index.aspx?uri=myconceptis">Conceptis Puzzles</a></p>
-			<p class="SubHeader">Food</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="https://online.jasonsdeli.com/">Jason's Deli</a></p>
-						<p><a href="http://www.nancyspizza.com/">Nancy's Pizza</a></p>
-						<p><a href="http://www.pizzahut.com/">Pizza Hut</a></p>
-						<p><a href="http://eatricebox.net/">Rice Box</a></p>
-						<p><a href="http://roaminghunger.com/atl">Roaming Hunger</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">News</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<i><a href="http://www.clatl.com/">Creative Loafing</a></i> |
-							<i><a href="http://www.ajc.com/">AJC</a></i>
-						</p>
-						<p>
-							<a href="http://www.cnn.com/">CNN</a> |
-							<a href="http://www.nbcnews.com/">NBC</a>
-						</p>
-						<p>
-							<a href="http://www.bbc.co.uk/">BBC</a> |
-							<a href="http://www.aljazeera.net/">&#1575;&#1604;&#1580;&#1586;&#1610;&#1585;&#1577;</a>
-						</p>
-						<p>
-							<a href="http://www.time.com/"><i>Time</i></a> |
-							<a href="http://www.newsweek.com/"><i>Newsweek</i></a>
-						</p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Television and Movies</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="" class="AltMenu" onClick="SearchFor( 'http://www.imdb.com/', 'find?q=<REPLACE>' ); return false;">IMDB</a> |</p>
-						<p>
-							<a href="http://www.tvguide.com/listings/">TV Guide</a> |
-							<a href="http://www.tvtome.com/">TV.com</a>
-						</p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Travel</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://www.kayak.com/">Kayak</a> |
-							<a href="http://matrix.itasoftware.com/">ITA</a> |
-							<a href="http://www.google.com/flights/">Google Flights</a> |
-							<a href="http://www.delta.com/">Delta</a>
-						</p>
-						<p><a href="" class="AltMenu" onClick="SearchFor( 'http://wikitravel.org/en/', 'https://www.google.com/search?q=<REPLACE>+site%3Awikitravel.org%2Fen%2F' ); return false;">Wikitravel</a></p>
+<p id="JavaScriptIsDisabled">JavaScript Disabled</p>
 
-						<p>
-							<a href="http://www.joederose.us/travel/">Vacation Reports</a> |
-							<a href="http://www.joederose.us/travel/planning/2010_Israel.htm">Israel</a>
-						</p>
-					</td>
-				</tr>
-			</table>
-			<div class="MainHeader MainHeaderSpaceBefore">Language</div>
-			<p><a href="" class="AltMenu" onClick="SearchFor( 'http://translate.google.com/', '#auto/en/<REPLACE>' ); return false;">Translation</a></p>
-			<p class="SubHeader" style="font-size:1em">&#27721;&#35821;</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://www.archchinese.com/chinese_english_dictionary.html">Stroke Order</a>
-							(<a href="language/strokeorder.htm">Local Menu</a>)
-						</p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Esperanto</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p>
-							<a href="http://reta-vortaro.de/revo/">Dictionary</a> |
-							<a href="http://en.wikipedia.org/wiki/Esperanto_vocabulary">Vocabulary</a> |
-							<a href="http://en.wikipedia.org/wiki/Esperanto_grammar">Grammar</a>
-						</p>
-					</td>
-				</tr>
-			</table>
-			<div class="MainHeader MainHeaderSpaceBefore">Transportation</div>
+<div class="FrameDiv">
+
+	<div class="ColumnDiv">
+		<p class="FlashClock" id="ClockCell1" >
+			<canvas id="imgStandardClock" width="200" height="200" class="ClockCanvas" onClick="toggleClock(this.id);" ></canvas>
+			<canvas id="img24HourClock" width="200" height="200" class="ClockCanvas HideOnLoad" onClick="toggleClock(this.id);"></canvas>
+		</p>
+		<p class="FlashClock" id="ClockCell2" >
+			<canvas id="imgChineseClock" width="200" height="200" class="ClockCanvas"></canvas>
+		</p>
+		<p class="FlashClock" id="ClockCell3" >
+			<canvas id="imgMetricClock" width="200" height="200" class="ClockCanvas"></canvas>
+		</p>
+	</div>
+
+	<div class="ColumnDiv">
+		<div class="MainHeader">Search</div>
+		<p><input type="text" id="SearchTerm" size="33" onBlur="$( '#Google' ).focus();"></p>
+		<p><a href="https://www.icloud.com/#find">Find My iPhone (Billy)</a></p>
+		<div class="MainHeader">Emory</div>
+		<table class="MenuLinkTable">
+			<tr>
+				<td><span class="SubHeader">CFAdmin&nbsp;&nbsp;</span></td>
+				<td>&nbsp;<a href="http://cfmlappprod1:8301/CFIDE/administrator/index.cfm">Prod</a>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;<a href="http://cfmlappdev1:8301/CFIDE/administrator/index.cfm">Dev</a>&nbsp;</td>
+				<td>&nbsp;<a href="http://127.0.0.1:8501/CFIDE/administrator/enter.cfm">Local</a>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><span class="SubHeader">ERMS&nbsp;&nbsp;</span></td>
+				<td>&nbsp;<a href="https://erms.emory.edu/">Prod</a>&nbsp;</td>
+				<td>&nbsp;<a href="https://erms-stg.emory.edu/">Stg</a>&nbsp;</td>
+				<td>&nbsp;<a href="https://erms-qa.emory.edu/">QA</a>&nbsp;</td>
+				<td>&nbsp;<a href="https://erms-dev.emory.edu/">Dev</a>&nbsp;</td>
+				<td>&nbsp;<a href="http://localhost:8501/">Local</a>&nbsp;</td>
+			</tr>
+		</table>
+		<p><a href="http://blackboard.emory.edu/">Blackboard</a></p>
+		<p>
+			<a href="" class="AltMenu" onClick="SearchForPost( 'http://directory.service.emory.edu/', 'http://directory.service.emory.edu/index.cfm', 'SearchString' ); return false;">Directory</a> |
+			ENID (<a href="https://enid.emory.edu/idm/user/">Self</a>) (<a href="http://enid.emory.edu/admin">Admin</a>)
+		</p>
+		<p>
+			<a href="https://owa.emory.edu/">Exchange Server</a>
+			(<a href="http://eas.emory.edu/">Archive</a>)
+		</p>
+		<p><a href="http://help.emory.edu/">IT Support</a></p>
+		<p><a href="http://www.hr.emory.edu/leave">Leave Request</a></p>
+		<p><a href="https://www.app.emory.edu/av-spamfilter">Spam Filter</a></p>
+		<p><a href="http://www.sparkfly.com/">Sparkfly</a></p>
+		<p><a href="https://mydesktop.emory.org/">Virtual Desktop</a></p>
+		<p><a href="https://vpn.emory.edu">VPN</a> <span class="SpecialNote">(Firefox/IE)</span></p>
+		<p><a href="https://zabbix.cc.emory.edu/zabbix">Zabbix</a></p>
+		<p class="SubHeader">R-WIT</p>
+		<div class="LinkGroupList" >
+			<p><a href="https://collaborate.emory.edu/Pages/Default.aspx">Collaborate</a></p>
+			<p><a href="https://emoryrhsit.onjira.com/">JIRA</a></p>
+			<p><a href="https://project.emory.edu/pwa">PWA</a> <span class="SpecialNote">(IE)</span></p>
+			<p><a href="http://v3.sonar6.com/">Sonar6</a></p>
+			<p><a href="https://svn.service.emory.edu:8443/repos/emoryoit/project/">SVN</a></p>
+		</div>
+		<p class="SubHeader"><a href="http://www.ocr.emory.edu/">OCR</a></p>
+		<div class="LinkGroupList" >
 			<p>
-				<a href="http://www.itsmarta.com/">MARTA</a>
-				(<a href="https://www.facebook.com/pages/MARTA/64214098113">Facebook</a>) |
-				<a href="http://www.trip.atltransit.com/">A-Train</a>
+				<a href="http://www.ocr.emory.edu/staff/">OCR Staff</a> |
+				<a href="http://med.emory.edu/research/cto/protected/Metrics/metrics.php">Metrics</a>
+			</p>
+			<p><a href="http://www.med.emory.edu/research/cto/wiki/">DokuWiki</a></p>
+		</div>
+		<div class="MainHeader">Programming</div>
+		<p>
+			<a href="https://github.com/login">GitHub</a> |
+			<a href="http://www.heroku.com/">Heroku</a>
+		</p>
+		<p class="SubHeader">Commands</p>
+		<div class="LinkGroupList" >
+			<p>
+				<a href="http://www.computerhope.com/msdos.htm">MS-DOS</a> |
+				<a href="http://en.wikipedia.org/wiki/List_of_Unix_utilities">Unix</a> |
+				<a href="http://www.oreillynet.com/linux/cmd/">Linux</a> |
+				<a href="http://www.tuxfiles.org/linuxhelp/vimcheat.html">VIM</a>
+			</p>
+		</div>
+		<p class="SubHeader">ColdFusion</p>
+		<div class="LinkGroupList" >
+			<p><a href="" class="AltMenu" onClick="SearchFor( 'http://www.cfquickdocs.com/cf9/', '#<REPLACE>' ); return false;">ColdFusion CFQuickDocs</a></p>
+			<p><a href="http://livedocs.adobe.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/js/html/wwhelp.htm">ColdFusion Documentation</a></p>
+		</div>
+		<p class="SubHeader">jQuery</p>
+		<div class="LinkGroupList" >
+			<p>
+				<a href="http://jquery.com/">jQuery</a>
+				(<a href="http://docs.jquery.com/">Documentation</a>)
+			</p>
+			<p><a href="http://jsfiddle.net/">jsFiddle</a></p>
+		</div>
+		<p class="SubHeader">Oracle</p>
+		<div class="LinkGroupList" >
+			<p>
+				<a href="http://www.techonthenet.com/oracle/">Oracle/PLSQL</a>
+				(<a href="http://www.techonthenet.com/oracle/functions/">Functions</a>)
+			</p>
+			<p><a href="http://www.ss64.com/ora/">Oracle SQL Commands</a></p>
+			<p><a href="http://www.sqlfiddle.com/">SQL Fiddle</a></p>
+		</div>
+		<p class="SubHeader">PHP</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://www.php.net/manual/en/langref.php">PHP Language Reference</a></p>
+		</div>
+	</div>
+
+	<div class="ColumnDiv">
+		<div class="MainHeader">Entertainment/Information</div>
+		<p>
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/', 'mail/u/0/#search/<REPLACE>' ); return false;">Gmail</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/voice/', '#search/<REPLACE>' ); return false;">Voice</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/calendar/', 'render?tab=lc&q=<REPLACE>' ); return false;">Calendar</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://mail.google.com/mail/u/0/#contacts', '/search/<REPLACE>' ); return false;">Contacts</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'http://www.google.com/reader/', 'view/#search/<REPLACE>/' ); return false;">Reader</a>
+		</p>
+		<p class="BigIndent">
+			<a href="https://www.google.com/latitude/">Latitude</a> |
+			<a href="https://mail.google.com/tasks/canvas">Tasks</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://drive.google.com/#starred', 'https://drive.google.com/#search/<REPLACE>' ); return false;">Drive</a> |
+			<a href="https://www.google.com/settings/account">Account</a>
+		</p>
+		<p>
+			<a id="Google" href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/', '#q=<REPLACE>' ); return false;">Google</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=isch', '&q=<REPLACE>' ); return false;">Images</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=nws', '&q=<REPLACE>' ); return false;">News</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.google.com/search?tbm=shop', '&q=<REPLACE>' ); return false;">Shopping</a>
+		</p>
+		<p>
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://plus.google.com/', 's/<REPLACE>' ); return false;">Google+</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.facebook.com/', 'search/results.php?q=<REPLACE>' ); return false;">Facebook</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://twitter.com/', 'search?q=<REPLACE>' ); return false;">Twitter</a> |
+			<a href="http://www.linkedin.com/">LinkedIn</a>
+		</p>
+		<p>
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://en.wikipedia.org/', 'https://www.google.com/#q=<REPLACE>+site:en.wikipedia.org' ); return false;">Wikipedia</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'http://www.bing.com/', 'search?q=<REPLACE>' ); return false;">Bing</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://www.wolframalpha.com/', 'input/?i=<REPLACE>' ); return false;">WolframAlpha</a>
+		</p>
+		<p>
+			<a href="" class="AltMenu" onClick="SearchFor( 'http://dictionary.reference.com/', 'browse/<REPLACE>' ); return false;">Dictionary</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'http://www.urbandictionary.com/', 'define.php?term=<REPLACE>' ); return false;">Urban Dictionary</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'http://www.acronymfinder.com/', '<REPLACE>.html' ); return false;">Acronym Finder</a>
+		</p>
+		<p><a href="http://www.evite.com/">Evite</a></p>
+		<p><a href="http://www.straightdope.com/">Straight Dope</a></p>
+		<p><a href="http://www.conceptispuzzles.com/index.aspx?uri=myconceptis">Conceptis Puzzles</a></p>
+		<p class="SubHeader">Food</p>
+		<div class="LinkGroupList" >
+			<p><a href="https://online.jasonsdeli.com/">Jason's Deli</a></p>
+			<p><a href="http://www.nancyspizza.com/">Nancy's Pizza</a></p>
+			<p><a href="http://www.pizzahut.com/">Pizza Hut</a></p>
+			<p><a href="http://eatricebox.net/">Rice Box</a></p>
+			<p><a href="http://roaminghunger.com/atl">Roaming Hunger</a></p>
+		</div>
+		<p class="SubHeader">News</p>
+		<div class="LinkGroupList" >
+			<p>
+				<i><a href="http://www.clatl.com/">Creative Loafing</a></i> |
+				<i><a href="http://www.ajc.com/">AJC</a></i>
 			</p>
 			<p>
-				<a href="http://webwatch.itsmarta.com/">Webwatch Real-Time</a> |
-				<a href="http://spice.ridecell.com/">RideCell</a>
+				<a href="http://www.cnn.com/">CNN</a> |
+				<a href="http://www.nbcnews.com/">NBC</a>
 			</p>
 			<p>
-				<a href="http://transportation.emory.edu/transportation/cliff/index.html">Cliff</a> |
-				<a href="http://transportation.emory.edu/transportation/cliff/CCTMA_route.html">CCTMA</a> |
-				<a href="http://emory.transloc.com/">Live Map</a>
+				<a href="http://www.bbc.co.uk/">BBC</a> |
+				<a href="http://www.aljazeera.net/">&#1575;&#1604;&#1580;&#1586;&#1610;&#1585;&#1577;</a>
 			</p>
 			<p>
-				<a href="" class="AltMenu" onClick="SearchFor( 'https://maps.google.com/', 'maps?q=<REPLACE>' ); return false;">Google Maps</a>
-				(<a href="http://www.google.com/mapmaker">Map Maker</a>)
+				<a href="http://www.time.com/"><i>Time</i></a> |
+				<a href="http://www.newsweek.com/"><i>Newsweek</i></a>
 			</p>
-			<p><a href="http://www.zipcar.com/">Zipcar</a></p>
-		</td>
-		<td valign="top" class="LinkBox">
-			<div class="MainHeader">Finance</div>
-			<p><a href="https://wwws.mint.com/login.event">Mint.com</a></p>
-			<p class="SubHeader">Banking</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://personalsavings.americanexpress.com/">AmEx Savings</a></p>
-						<p><a href="http://www.emoryacu.com/">Emory Alliance</a></p>
-						<p><a href="http://home.ingdirect.com/">ING</a></p>
-						<p><a href="https://www.paypal.com/">PayPal</a></p>
-						<p><a href="https://secure.serve.com/Login">Serve</a></p>
-						<p><a href="https://squareup.com/login/">Square</a></p>
-						<p><a href="http://www.statefarm.com/account.htm">State Farm</a></p>
-						<p><a href="https://www.suntrust.com/portal/server.pt?space=CommunityPage&cached=true&parentname=CommunityPage&parentid=0&in_hi_userid=2&control=SetCommunity&CommunityID=765&PageID=0">SunTrust</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Credit</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="https://online.americanexpress.com/">AmEx</a></p>
-						<p><a href="http://www.chase.com/">Chase</a></p>
-						<p><a href="https://www.citibank.com/us/cards/index.jsp">Citibank</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Employment</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="https://psofthr.cc.emory.edu/">Emory&nbsp;Employment</a></p>
-						<p><a href="https://www.onecard.emory.edu/1card/">EmoryCard</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Healthcare/Insurance</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="https://emoryhealthcarepatientportal.iqhealth.com/iqh3/messaging/emry_ga/inbox">EHC Patient Portal</a></p>
-						<p><a href="http://www.medcohealth.com/">Medco</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Microlending</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://www.kiva.org/">Kiva</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Retirement</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://www.tiaa-cref.org/">TIAA-CREF</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Rewards</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://www.delta.com/skymiles/view_account_activity/index.jsp">Delta</a></p>
-						<p><a href="http://www.opentable.com/">OpenTable</a></p>
-						<p><a href="http://skymiles.rewardsnetwork.com/">Rewards Network</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Savings Bonds</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://www.treasurydirect.gov/">Treasury Direct</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Taxes</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://turbotax.intuit.com/">TurboTax</a></p>
-					</td>
-				</tr>
-			</table>
-			<p class="SubHeader">Utilities</p>
-			<table class="SlightIndent">
-				<tr>
-					<td class="FrameLeftBottom"></td>
-					<td>
-						<p><a href="http://payatlwateronline.com/">Atlanta Water</a></p>
-						<p><a href="https://my.bluehost.com/cgi-bin/cplogin">Bluehost</a></p>
-						<p><a href="https://is.breezecard.com/marta/">Breeze Card</a></p>
-						<p>
-							<a href="https://login.comcast.net/login">Comcast</a>
-							(<a href="http://web.mail.comcast.net/zimbra/mail?app=mail">E-Mail</a>)
-						</p>
-						<p><a href="http://ebill.georgiapower.com/">Georgia Power</a></p>
-						<p><a href="http://www.scana.com/SCANA+Energy/">SCANA</a></p>
-						<p>
-							<a href="http://www.tivo.com/manage">TiVo</a>
-							(<a href="http://www.amazon.com/b/ref=gw_br_unbox/002-3221642-5730405?%5Fencoding=UTF8&node=16261631">Amazon</a>)
-						</p>
-						<p><a href="http://www.verizonwireless.com/">Verizon</a></p>
-					</td>
-				</tr>
-			</table>
-		</td>
-		<td valign="top" class="LinkBox">
-			<div class="MainHeader">Local</div>
-			<p><a href="bookmarklets.htm">Bookmarklets</a></p>
-			<p><a href="cameras.htm">Cameras</a></p>
-			<p><a href="images.htm">Images</a></p>
-			<p><a href="http://www.inmanparkanimalhospital.com/">Inman Park Animal Hospital</a></p>
-			<p><a href="http://mobile.joederose.us/">Mobile</a></p>
-			<p><a href="regex.htm">Regular Expressions</a></p>
+		</div>
+		<p class="SubHeader">Television and Movies</p>
+		<div class="LinkGroupList" >
+			<p><a href="" class="AltMenu" onClick="SearchFor( 'http://www.imdb.com/', 'find?q=<REPLACE>' ); return false;">IMDB</a> |</p>
 			<p>
-				<a href="shopping.htm">Shopping</a>
-				(<a href="" class="AltMenu" onClick="SearchFor( 'http://www.amazon.com/', 's/ref=nb_sb_noss?field-keywords=<REPLACE>' ); return false;">Amazon</a>)
+				<a href="http://www.tvguide.com/listings/">TV Guide</a> |
+				<a href="http://www.tvtome.com/">TV.com</a>
 			</p>
-			<p><a href="UncleJerry.htm">Uncle Jerry</a></p>
-			<p><a href="weather.htm#1">Weather</a></p>
-			<div class="MainHeader MainHeaderSpaceBefore">Utilities</div>
+		</div>
+		<p class="SubHeader">Travel</p>
+		<div class="LinkGroupList" >
 			<p>
-				<a href="https://catch.com/login/snaptic">Catch</a> |
-				<a href="http://www.evernote.com/Home.action?login=true#v=t&b=9ac4e901-24fb-4b03-b9ef-9380047562c1&z=d">Evernote</a>
+				<a href="http://www.kayak.com/">Kayak</a> |
+				<a href="http://matrix.itasoftware.com/">ITA</a> |
+				<a href="http://www.google.com/flights/">Google Flights</a> |
+				<a href="http://www.delta.com/">Delta</a>
 			</p>
-			<p><a href="https://lastpass.com/">LastPass</a></p>
-			<p><a href="https://secure.logmein.com/">LogMeIn</a> <span class="SpecialNote">(Firefox)</span></p>
-			<p><a href="http://www.qrstuff.com/">QRStuff</a></p>
-			<p><a href="http://zip4.usps.com/zip4/welcome.jsp">USPS ZIP+4 Lookup</a></p>
-			<div class="MainHeader MainHeaderSpaceBefore">Updates</div>
-			<div id="Twitter">
-				<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-				<script>
-					new TWTR.Widget({
-						version: 2,
-						type: 'list',
-						rpp: 30,
-						interval: 30000,
-						title: 'Twitter',
-						subject: '',
-						width: 200,
-						height: 300,
-						theme: {
-							shell: {
-								background: '#847cb3',
-								color: '#ffffff'
-							},
-							tweets: {
-								background: '#ffffff',
-								color: '#444444',
-								links: '#440ef5'
-							}
+			<p><a href="" class="AltMenu" onClick="SearchFor( 'http://wikitravel.org/en/', 'https://www.google.com/search?q=<REPLACE>+site%3Awikitravel.org%2Fen%2F' ); return false;">Wikitravel</a></p>
+
+			<p>
+				<a href="http://www.joederose.us/travel/">Vacation Reports</a> |
+				<a href="http://www.joederose.us/travel/planning/2010_Israel.htm">Israel</a>
+			</p>
+		</div>
+		<div class="MainHeader">Language</div>
+		<p><a href="" class="AltMenu" onClick="SearchFor( 'http://translate.google.com/', '#auto/en/<REPLACE>' ); return false;">Translation</a></p>
+		<p class="SubHeader" style="font-size:1em">&#27721;&#35821;</p>
+		<div class="LinkGroupList" >
+			<p>
+				<a href="http://www.archchinese.com/chinese_english_dictionary.html">Stroke Order</a>
+				(<a href="language/strokeorder.htm">Local Menu</a>)
+			</p>
+		</div>
+		<p class="SubHeader">Esperanto</p>
+		<div class="LinkGroupList" >
+			<p>
+				<a href="http://reta-vortaro.de/revo/">Dictionary</a> |
+				<a href="http://en.wikipedia.org/wiki/Esperanto_vocabulary">Vocabulary</a> |
+				<a href="http://en.wikipedia.org/wiki/Esperanto_grammar">Grammar</a>
+			</p>
+		</div>
+		<div class="MainHeader">Transportation</div>
+		<p>
+			<a href="http://www.itsmarta.com/">MARTA</a>
+			(<a href="https://www.facebook.com/pages/MARTA/64214098113">Facebook</a>) |
+			<a href="http://www.trip.atltransit.com/">A-Train</a>
+		</p>
+		<p>
+			<a href="http://webwatch.itsmarta.com/">Webwatch Real-Time</a> |
+			<a href="http://spice.ridecell.com/">RideCell</a>
+		</p>
+		<p>
+			<a href="http://transportation.emory.edu/transportation/cliff/index.html">Cliff</a> |
+			<a href="http://transportation.emory.edu/transportation/cliff/CCTMA_route.html">CCTMA</a> |
+			<a href="http://emory.transloc.com/">Live Map</a>
+		</p>
+		<p>
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://maps.google.com/', 'maps?q=<REPLACE>' ); return false;">Google Maps</a>
+			(<a href="http://www.google.com/mapmaker">Map Maker</a>)
+		</p>
+		<p><a href="http://www.zipcar.com/">Zipcar</a></p>
+	</div>
+
+	<div class="ColumnDiv">
+		<div class="MainHeader">Finance</div>
+		<p><a href="https://wwws.mint.com/login.event">Mint.com</a></p>
+		<p class="SubHeader">Banking</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://personalsavings.americanexpress.com/">AmEx Savings</a></p>
+			<p><a href="http://www.emoryacu.com/">Emory Alliance</a></p>
+			<p><a href="http://home.ingdirect.com/">ING</a></p>
+			<p><a href="https://www.paypal.com/">PayPal</a></p>
+			<p><a href="https://secure.serve.com/Login">Serve</a></p>
+			<p><a href="https://squareup.com/login/">Square</a></p>
+			<p><a href="http://www.statefarm.com/account.htm">State Farm</a></p>
+			<p><a href="https://www.suntrust.com/portal/server.pt?space=CommunityPage&cached=true&parentname=CommunityPage&parentid=0&in_hi_userid=2&control=SetCommunity&CommunityID=765&PageID=0">SunTrust</a></p>
+		</div>
+		<p class="SubHeader">Credit</p>
+		<div class="LinkGroupList" >
+			<p><a href="https://online.americanexpress.com/">AmEx</a></p>
+			<p><a href="http://www.chase.com/">Chase</a></p>
+			<p><a href="https://www.citibank.com/us/cards/index.jsp">Citibank</a></p>
+		</div>
+		<p class="SubHeader">Employment</p>
+		<div class="LinkGroupList" >
+			<p><a href="https://psofthr.cc.emory.edu/">Emory&nbsp;Employment</a></p>
+			<p><a href="https://www.onecard.emory.edu/1card/">EmoryCard</a></p>
+		</div>
+		<p class="SubHeader">Healthcare/Insurance</p>
+		<div class="LinkGroupList" >
+			<p><a href="https://emoryhealthcarepatientportal.iqhealth.com/iqh3/messaging/emry_ga/inbox">EHC Patient Portal</a></p>
+			<p><a href="http://www.medcohealth.com/">Medco</a></p>
+		</div>
+		<p class="SubHeader">Microlending</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://www.kiva.org/">Kiva</a></p>
+		</div>
+		<p class="SubHeader">Retirement</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://www.tiaa-cref.org/">TIAA-CREF</a></p>
+		</div>
+		<p class="SubHeader">Rewards</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://www.delta.com/skymiles/view_account_activity/index.jsp">Delta</a></p>
+			<p><a href="http://www.opentable.com/">OpenTable</a></p>
+			<p><a href="http://skymiles.rewardsnetwork.com/">Rewards Network</a></p>
+		</div>
+		<p class="SubHeader">Savings Bonds</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://www.treasurydirect.gov/">Treasury Direct</a></p>
+		</div>
+		<p class="SubHeader">Taxes</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://turbotax.intuit.com/">TurboTax</a></p>
+		</div>
+		<p class="SubHeader">Utilities</p>
+		<div class="LinkGroupList" >
+			<p><a href="http://payatlwateronline.com/">Atlanta Water</a></p>
+			<p><a href="https://my.bluehost.com/cgi-bin/cplogin">Bluehost</a></p>
+			<p><a href="https://is.breezecard.com/marta/">Breeze Card</a></p>
+			<p>
+				<a href="https://login.comcast.net/login">Comcast</a>
+				(<a href="http://web.mail.comcast.net/zimbra/mail?app=mail">E-Mail</a>)
+			</p>
+			<p><a href="http://ebill.georgiapower.com/">Georgia Power</a></p>
+			<p><a href="http://www.scana.com/SCANA+Energy/">SCANA</a></p>
+			<p>
+				<a href="http://www.tivo.com/manage">TiVo</a>
+				(<a href="http://www.amazon.com/b/ref=gw_br_unbox/002-3221642-5730405?%5Fencoding=UTF8&node=16261631">Amazon</a>)
+			</p>
+			<p><a href="http://www.verizonwireless.com/">Verizon</a></p>
+		</div>
+	</div>
+
+	<div class="ColumnDiv">
+		<div class="MainHeader">Local</div>
+		<p><a href="bookmarklets.htm">Bookmarklets</a></p>
+		<p><a href="cameras.htm">Cameras</a></p>
+		<p><a href="images.htm">Images</a></p>
+		<p><a href="http://www.inmanparkanimalhospital.com/">Inman Park Animal Hospital</a></p>
+		<p><a href="http://mobile.joederose.us/">Mobile</a></p>
+		<p><a href="regex.htm">Regular Expressions</a></p>
+		<p>
+			<a href="shopping.htm">Shopping</a>
+			(<a href="" class="AltMenu" onClick="SearchFor( 'http://www.amazon.com/', 's/ref=nb_sb_noss?field-keywords=<REPLACE>' ); return false;">Amazon</a>)
+		</p>
+		<p><a href="UncleJerry.htm">Uncle Jerry</a></p>
+		<p><a href="weather.htm#1">Weather</a></p>
+		<div class="MainHeader">Utilities</div>
+		<p>
+			<a href="https://catch.com/login/snaptic">Catch</a> |
+			<a href="http://www.evernote.com/Home.action?login=true#v=t&b=9ac4e901-24fb-4b03-b9ef-9380047562c1&z=d">Evernote</a>
+		</p>
+		<p><a href="https://lastpass.com/">LastPass</a></p>
+		<p><a href="https://secure.logmein.com/">LogMeIn</a> <span class="SpecialNote">(Firefox)</span></p>
+		<p><a href="http://www.qrstuff.com/">QRStuff</a></p>
+		<p><a href="http://zip4.usps.com/zip4/welcome.jsp">USPS ZIP+4 Lookup</a></p>
+		<div class="MainHeader">Updates</div>
+		<div id="Twitter">
+			<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+			<script>
+				new TWTR.Widget({
+					version: 2,
+					type: 'list',
+					rpp: 30,
+					interval: 30000,
+					title: 'Twitter',
+					subject: '',
+					width: 200,
+					height: 300,
+					theme: {
+						shell: {
+							background: '#847cb3',
+							color: '#ffffff'
 						},
-						features: {
-							scrollbar: true,
-							loop: false,
-							live: true,
-							behavior: 'all'
+						tweets: {
+							background: '#ffffff',
+							color: '#444444',
+							links: '#440ef5'
 						}
-					}).render().setList('LJDeRose', 'interesting').start();
-				</script>
-			</div>
-		</td>
-		<td valign="top" class="LinkBox">
-			<table>
-				<tr>
-					<td valign="top">
-						<table>
-							<tr>
-								<td class="FlashClock" id="ClockCell4" >
-									<canvas id="imgJewishClock" width="200" height="200" style="border:1px black solid"></canvas>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<table>
-							<tr>
-								<td class="FlashClock" id="ClockCell5" >
-									<canvas id="imgIslamicClock" width="200" height="200" style="border:1px black solid"></canvas>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<table>
-							<tr>
-								<td class="FlashClock" id="ClockCell6" >
-									<canvas id="imgHexadecimalClock" width="200" height="200" style="border:1px black solid"></canvas>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
+					},
+					features: {
+						scrollbar: true,
+						loop: false,
+						live: true,
+						behavior: 'all'
+					}
+				}).render().setList('LJDeRose', 'interesting').start();
+			</script>
+		</div>
+	</div>
+
+	<div class="ColumnDiv">
+		<p class="FlashClock" id="ClockCell4" >
+			<canvas id="imgJewishClock" width="200" height="200" class="ClockCanvas"></canvas>
+		</p>
+		<p class="FlashClock" id="ClockCell5" >
+			<canvas id="imgIslamicClock" width="200" height="200" class="ClockCanvas"></canvas>
+		</p>
+		<p class="FlashClock" id="ClockCell6" >
+			<canvas id="imgHexadecimalClock" width="200" height="200" class="ClockCanvas"></canvas>
+		</p>
+	</div>
+
+</div>
 
 <form id="BlankForm" target="_blank" method="post" style="display:none;">
 	<input id="BlankFormInput" type="text" >
