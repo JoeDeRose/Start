@@ -2,13 +2,14 @@
 <html>
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>Joe's Start Menu</title>
 <base target='_blank' />
 
 <!-- main stylesheet -->
-<link rel="stylesheet" type="text/css" media="all" href="main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="CSS/main.css" />
 
 <!-- calendar stylesheet -->
 <link rel="stylesheet" type="text/css" media="all" href="jscalendar-1.0/calendar-win2k-cold-1.css" title="win2k-cold-1" />
@@ -88,17 +89,17 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 
 <div class="FrameDiv">
 
-	<div class="ColumnDiv">
-		<p class="FlashClock" id="ClockCell1" >
+	<div class="ColumnDiv ClockDiv">
+		<div class="FlashClock" id="ClockCell1" >
 			<canvas id="imgStandardClock" width="200" height="200" class="ClockCanvas" onClick="toggleClock(this.id);" ></canvas>
 			<canvas id="img24HourClock" width="200" height="200" class="ClockCanvas HideOnLoad" onClick="toggleClock(this.id);"></canvas>
-		</p>
-		<p class="FlashClock" id="ClockCell2" >
+		</div>
+		<div class="FlashClock" id="ClockCell2" >
 			<canvas id="imgChineseClock" width="200" height="200" class="ClockCanvas"></canvas>
-		</p>
-		<p class="FlashClock" id="ClockCell3" >
+		</div>
+		<div class="FlashClock" id="ClockCell3" >
 			<canvas id="imgMetricClock" width="200" height="200" class="ClockCanvas"></canvas>
-		</p>
+		</div>
 	</div>
 
 	<div class="ColumnDiv">
@@ -456,16 +457,16 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		</div>
 	</div>
 
-	<div class="ColumnDiv">
-		<p class="FlashClock" id="ClockCell4" >
+	<div class="ColumnDiv ClockDiv">
+		<div class="FlashClock" id="ClockCell4" >
 			<canvas id="imgJewishClock" width="200" height="200" class="ClockCanvas"></canvas>
-		</p>
-		<p class="FlashClock" id="ClockCell5" >
+		</div>
+		<div class="FlashClock" id="ClockCell5" >
 			<canvas id="imgIslamicClock" width="200" height="200" class="ClockCanvas"></canvas>
-		</p>
-		<p class="FlashClock" id="ClockCell6" >
+		</div>
+		<div class="FlashClock" id="ClockCell6" >
 			<canvas id="imgHexadecimalClock" width="200" height="200" class="ClockCanvas"></canvas>
-		</p>
+		</div>
 	</div>
 
 </div>

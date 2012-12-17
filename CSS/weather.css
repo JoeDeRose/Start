@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media screen and (min-width: 1298px)
+	{
+		#FloatingMenu
+			{
+				position: fixed;
+				top: 10;
+				left: 10;
+			}
+	}
+
+.FrameOuter
+	{
+		border: 1px solid #080;
+		margin-left: auto;
+		margin-right: auto;
+		display: table;
+		height: auto;
+	}
+
+.FrameInner
+	{
+		border: 1px solid #080;
+		padding: 10px;
+	}
+	
+.ImageGroup
+	{
+		white-space: normal;
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+.ImageGroup figure
+	{
+		float: left;
+		margin: 10px;
+	}
+
+figcaption
+	{
+		font-size: 0.8em;
+		font-family: Arial, Helvetica, sans-serif;
+		color: black;
+	}
+
+.NavBoxGroup
+	{
+		width: 100%;
+	}
+
+.NavBox a
+	{
+		background:#008000;
+		color:#FFF;
+		padding-left:0.5em;
+		padding-right:0.5em;
+		padding-top:0.25em;
+		padding-bottom:0.25em;
+	}
+
+.NavBoxRight
+	{
+		float: right;
+	}
+
+#FloatingMenu
+	{
+		font-size: 0.85em;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #080;
+	}
+
+#FloatingMenu p
+	{
+		border-width: 1px;
+		border-style: solid;
+		border-color: #080;
+		padding: 5px;
+		font-family:Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		text-align: center;
+	}
+
+#FloatingMenu p.FloatingHeader
+	{
+		background-color: #080;
+		color: #FFFFFF;
+	}
+
+.DisplayBox
+	{
+		padding:5px;
+		border-color:#008000;
+		border-width:2px;
+		border-style:solid;
+	}
+
+.DisplayBox table
+	{
+		clear:both;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+.TempConversion
+	{
+		font-family:Arial, Helvetica, sans-serif;
+		text-align:center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+img
+	{
+		border: solid #000 1px;
+	}
+

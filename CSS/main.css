@@ -1,0 +1,231 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face
+	{
+		font-family: ArialRounded;
+		src: url('../fonts/ARLRDBD.TTF');
+	}
+
+a
+	{
+		text-decoration: none;
+		color:#008000;
+	}
+
+a:visited
+	{
+		color:#008000;
+	}
+
+a:hover
+	{
+		color: #0000FF; text-decoration: underline
+	}
+
+p
+	{
+		padding:0;
+		margin-top:0;
+		margin-bottom:0;
+		margin-right:0;
+		white-space:nowrap;
+	}
+
+@media all and (orientation: landscape)
+	{
+		.FrameDiv
+			{
+				font-size: 0.85em;
+				font-family: Arial, Helvetica, sans-serif;
+				border-color: #008000;
+				border-left-width: 1px;		/* See note below */
+				border-right-width: 1px;	/* See note below */
+				border-top-width: 1px;		/* See note below */
+				border-bottom-width: 2px;	/* See note below */
+				border-style: solid;
+				overflow: hidden;
+				display: table;
+				margin-left: auto;
+				margin-right: auto;
+				height: 100%;
+				white-space: nowrap;
+				/*
+				See note below in .ColumnDiv about the padding-bottom/margin-bottom hack. It also necessitates
+				the bottom border having being set at 2px rather than 1px. If not for the hack, the following
+				would be correct:
+				
+				border-width: 1px;
+				*/
+			}
+		
+		.ColumnDiv
+			{
+				float: left;
+				border-style: solid;
+				border-color: #080;
+				border-width: 1px;
+				padding-left: 0.5em;
+				padding-right: 0.5em;
+				padding-top: -0.5em;
+				padding-bottom: 500em;		/* See note below */
+				margin-bottom: -499.5em;	/* See note below */
+				/*
+				This padding-bottom/margin-bottom hack is necessary to make the columns have a standard height
+				in Firefox and Internet Explorer. In chrome, the replacing those two lines with the following
+				gives the same effect:
+				
+				height: 100%;
+				*/
+			}
+	}
+
+@media all and (orientation: portrait)
+	{
+		.FrameDiv
+			{
+				font-family: Arial, Helvetica, sans-serif;
+				border: none;
+				white-space: normal;
+			}
+		
+		.ColumnDiv
+			{
+				float: none;
+				border: none;
+			}
+		
+		#Twitter
+			{
+				display: none;
+			}
+		
+		.ClockDiv
+			{
+				display: none;
+			}
+	}
+
+.FlashClock
+	{
+		border:1px solid #000000;
+		margin-top:0.5em;
+		margin-bottom:0.5em;
+	}
+
+.ClockCanvas
+	{
+		border: 1px black solid;
+	}
+
+table.MenuLinkTable
+	{
+		border-width:0;
+		border-collapse:collapse;
+	}
+
+table.MenuLinkTable td
+	{
+		white-space:nowrap;
+		padding:0;
+	}
+
+#JavaScriptIsDisabled
+	{
+		text-align: center;
+		background: #F00;
+		color: #FFF;
+		font-weight: bold;
+		width: 110%;
+		margin-left: -5%;
+		font-family: Arial, Helvetica, sans-serif;
+		margin-bottom: 0.5em;
+	}
+
+.AltMenu
+	{
+		background-color:#DDFFDD;
+	}
+
+.MainHeader
+	{
+		vertical-align:top;
+		background-color:#FFFFCC;
+		border:1px #000 solid;
+		border-radius:1em;
+		font-family:ArialRounded;
+		letter-spacing:0.25em;
+		text-align:center;
+		margin-bottom:0.2em;
+		padding-bottom:0.15em;
+		margin-top:0.5em;
+	}
+
+.SubHeader
+	{
+		font-weight: 700;
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:0.95em;
+	}
+
+.SpecialNote
+	{
+		font-weight:bold;
+		font-size:0.8em;
+		color:#990033;
+	}
+
+.LinkGroupList
+	{
+		border-left:1px #000 groove;
+		border-bottom-left-radius:0.4em;
+		margin-left:0.25em;
+		padding-left:0.5em;
+	}
+
+.BigIndent
+	{
+		margin-left:1em;
+	}
+
+#Twitter p
+	{
+		white-space:normal;
+	}
+
+.ReturnToTop
+	{
+		margin-left:auto;
+		margin-right:auto;
+		margin-bottom:0.75em;
+		border-width:0;
+		font-family:Arial, Helvetica, sans-serif;
+		text-align:center;
+	}
+
+td.ReturnToTop
+	{
+		text-align:center;
+		background:#008000;
+	}
+
+.ReturnToTop a
+	{
+		padding-top:3px;
+		padding-bottom:3px;
+		padding-left:8px;
+		padding-right:8px;
+		background-color:#080;
+		color:#FFF;
+		border:0;
+	}
+
+.PaddingLeftSmall
+	{
+		padding-left:1em;
+	}
+
+.caption
+	{
+		font-size:0.7em;
+	}

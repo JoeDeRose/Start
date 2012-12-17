@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+
+.FrameOuter
+	{
+		border: 1px solid #080;
+		margin-left: auto;
+		margin-right: auto;
+		display: table;
+		height: auto;
+	}
+
+.FrameInner
+	{
+		border: 1px solid #080;
+		padding: 10px;
+	}
+	
+.IconLink
+	{
+		height: 100px;
+		width: 100px;
+		padding: 0;
+		margin: 0;
+		border-width: 1px;
+		border-style: solid;
+		border-color: black;
+	}
+
+.IconListGroup
+	{
+		white-space: normal;
+		float: left;
+	}
+
+.IconListSubheader
+	{
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+.IconList
+	{
+		float: left;
+	}
+
+.IconFirst
+	{
+		margin-right: 20px;
+	}
+
+figure
+	{
+		margin-top: 2px;
+		margin-bottom: 2px;
+		margin-left: 2px;
+		margin-right: 2px;
+		width: 100px;
+	}
+
+figcaption
+	{
+		font-size: 0.6em;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+.BigImage
+	{
+		border:1px #000 solid;
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+.IconImage
+	{
+		border:0 #000 solid;
+	}
+
+.wc1    
+	{
+		position:absolute;
+		margin-top:-215px;
+		margin-left:-285px;
+		clip: rect(215px,385px,315px,285px);
+		padding-bottom: 100px;
+	}
+
+.wc2
+	{
+		position:absolute;
+		margin-top:-100px;
+		margin-left:-385px;
+		clip: rect(100px,485px,200px,385px);
+	}
+
+.wc4
+	{
+		position:absolute;
+		margin-top:-205px;
+		margin-left:-345px;
+		clip: rect(205px,445px,305px,345px);
+	}
+
+.wc5
+	{
+		position:absolute;
+		margin-top:-135px;
+		margin-left:-325px;
+		clip: rect(135px,425px,235px,325px);
+	}
+
+.wc6
+	{
+		position:absolute;
+		margin-top:-230px;
+		margin-left:-334px;
+		clip: rect(230px,434px,330px,334px);
+	}
+
+.wc7
+	{
+		position:absolute;
+		margin-top:-280px;
+		margin-left:-480px;
+		clip: rect(280px,580px,380px,480px);
+	}
+
+.stock
+	{
+		position:absolute;
+		clip: rect(0px,100px,100px,0px);
+	}
+
+.equake
+	{
+		position:absolute;
+		margin-top:-175px;
+		margin-left:-300px;
+		clip: rect(175px,400px,275px,300px);
+	}
+
+.hcane
+	{
+		position:absolute;
+		margin-top:-215px;
+		margin-left:-125px;
+		clip: rect(215px,225px,315px,125px);
+	}		
