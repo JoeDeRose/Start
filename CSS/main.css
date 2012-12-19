@@ -175,12 +175,24 @@ table.MenuLinkTable td
 		color:#990033;
 	}
 
-.LinkGroupList
+.LinkGroupList p
 	{
 		border-left:1px #000 groove;
-		border-bottom-left-radius:0.4em;
 		margin-left:0.25em;
 		padding-left:0.5em;
+	}
+
+.LinkGroupList:after
+	{
+		content: "";
+		display: table;
+		margin-left: 0.25em;
+		margin-top: -0.75em;
+		width: 0.6em;
+		height: 1em;
+		border-left:1px #000 groove;
+		border-bottom:1px #000 groove;
+		border-bottom-left-radius:0.4em;
 	}
 
 .BigIndent

@@ -11,6 +11,17 @@
 			}
 	}
 
+@media screen and (max-width: 1297px)
+	{
+		#FloatingMenu
+			{
+				display: table;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 2em;
+			}
+	}
+
 .FrameOuter
 	{
 		border: 1px solid #080;
@@ -50,6 +61,14 @@ figcaption
 .NavBoxGroup
 	{
 		width: 100%;
+		margin-bottom: 0.5em;
+	}
+
+.NavBoxGroup:after
+	{
+		content: "";
+		display: block;
+		clear: both;
 	}
 
 .NavBox a

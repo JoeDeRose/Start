@@ -68,51 +68,11 @@ img27on.src = "http://image.weather.com/images/maps/pt_BR/health/rag_pol_720x486
 img28on = new Image();
 img28on.src = "http://image.weather.com/images/maps/pt_BR/health/mold_spore_720x486.jpg";
 
-function imgOn( GroupJ, ImageJ ) {
-	window.location.hash = "Top";
-	window.location.hash = GroupJ;
+function imgOn( GroupJ, ImageJ, JumpJ ) {
+	if ( JumpJ == true ) {
+		window.location.hash = "Top";
+		window.location.hash = GroupJ;
+	}
 	document["Img" + GroupJ].src = eval(ImageJ + "on.src");
-}
-
-function imgAOn(imgName) {
-	if (document.images) {
-		document["A"].src = eval(imgName + "on.src");
-	}
-}
-
-function imgBOn(imgName) {
-	if (document.images) {
-		document["B"].src = eval(imgName + "on.src");
-	}
-}
-
-function imgCOn(imgName) {
-	if (document.images) {
-		document["C"].src = eval(imgName + "on.src");
-	}
-}
-
-function imgDOn(imgName) {
-	if (document.images) {
-		document["D"].src = eval(imgName + "on.src");
-	}
-}
-
-function imgEOn(imgName) {
-	if (document.images) {
-		document["E"].src = eval(imgName + "on.src");
-	}
-}
-
-function imgFOn(imgName) {
-	if (document.images) {
-		document["F"].src = eval(imgName + "on.src");
-	}
-}
-
-function imgGOn(imgName) {
-	if (document.images) {
-		document["G"].src = eval(imgName + "on.src");
-	}
 }
 

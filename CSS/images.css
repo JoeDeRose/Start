@@ -33,11 +33,19 @@
 		float: left;
 	}
 
+.ProtectDivHeight:after
+	{
+		content: "";
+		display: block;
+		clear: both;
+	}
+
 .IconListSubheader
 	{
 		display: table;
 		margin-left: auto;
 		margin-right: auto;
+		margin-bottom: 1em;
 	}
 
 .IconList
