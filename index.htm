@@ -87,9 +87,9 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 
 <p id="JavaScriptIsDisabled">JavaScript Disabled</p>
 
-<div class="FrameDiv">
+<div id="MainFrame" class="FrameDiv">
 
-	<div class="ColumnDiv ClockDiv">
+	<div id="ClockDiv1" class="ColumnDiv ClockDiv">
 		<div class="FlashClock" id="ClockCell1" >
 			<canvas id="imgStandardClock" width="200" height="200" class="ClockCanvas" onClick="toggleClock(this.id);" ></canvas>
 			<canvas id="img24HourClock" width="200" height="200" class="ClockCanvas HideOnLoad" onClick="toggleClock(this.id);"></canvas>
@@ -144,6 +144,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		<p class="SubHeader">R-WIT</p>
 		<div class="LinkGroupList" >
 			<p><a href="https://collaborate.emory.edu/Pages/Default.aspx">Collaborate</a></p>
+			<p><a href="https://wiki.service.emory.edu/">Confluence Wiki</a></p>
 			<p><a href="https://emoryrhsit.onjira.com/">JIRA</a></p>
 			<p><a href="https://project.emory.edu/pwa">PWA</a> <span class="SpecialNote">(IE)</span></p>
 			<p><a href="http://v3.sonar6.com/">Sonar6</a></p>
@@ -337,7 +338,6 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 			<p><a href="http://www.emoryacu.com/">Emory Alliance</a></p>
 			<p><a href="http://home.ingdirect.com/">ING</a></p>
 			<p><a href="https://www.paypal.com/">PayPal</a></p>
-			<p><a href="https://secure.serve.com/Login">Serve</a></p>
 			<p><a href="https://squareup.com/login/">Square</a></p>
 			<p><a href="http://www.statefarm.com/account.htm">State Farm</a></p>
 			<p><a href="https://www.suntrust.com/portal/server.pt?space=CommunityPage&cached=true&parentname=CommunityPage&parentid=0&in_hi_userid=2&control=SetCommunity&CommunityID=765&PageID=0">SunTrust</a></p>
@@ -355,8 +355,11 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		</div>
 		<p class="SubHeader">Healthcare/Insurance</p>
 		<div class="LinkGroupList" >
+			<p>
+				<a href="http://www.aetna.com/">Aetna</a> |
+				<a href="http://www.medcohealth.com/">Medco</a>
+			</p>
 			<p><a href="https://emoryhealthcarepatientportal.iqhealth.com/iqh3/messaging/emry_ga/inbox">EHC Patient Portal</a></p>
-			<p><a href="http://www.medcohealth.com/">Medco</a></p>
 		</div>
 		<p class="SubHeader">Microlending</p>
 		<div class="LinkGroupList" >
@@ -457,7 +460,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		</div>
 	</div>
 
-	<div class="ColumnDiv ClockDiv">
+	<div id="ClockDiv2" class="ColumnDiv ClockDiv">
 		<div class="FlashClock" id="ClockCell4" >
 			<canvas id="imgJewishClock" width="200" height="200" class="ClockCanvas"></canvas>
 		</div>
@@ -501,6 +504,20 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		$("#SearchTerm").focus();
 		
 	}
+	
+	function FixClockSpacing( ClockDiv ) {
+		var ClockGroupHeight = 0;
+		$( "#" + ClockDiv + " div.FlashClock" ).each( function() {
+			ClockGroupHeight = ClockGroupHeight + $( "#" + this.id ).height();
+		} );
+		var ClockGroupTotalGap = $( "#MainFrame" ).height() - ClockGroupHeight;
+		var ClockGroupEachGap = ( ClockGroupTotalGap - 25 ) / ( $( "#" + ClockDiv + " div.FlashClock" ).length - 1 );
+		$( "#" + ClockDiv + " div.FlashClock" ).css( "margin-top", ClockGroupEachGap );
+		$( "#" + ClockDiv + " div.FlashClock:first" ).css( "margin-top", 0 );
+	}
+	
+	// FixClockSpacing( "ClockDiv1" );
+	// FixClockSpacing( "ClockDiv2" );
 
 </script>
 

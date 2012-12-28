@@ -78,6 +78,12 @@ p
 				height: 100%;
 				*/
 			}
+		
+		.ClockDiv
+			{
+				padding-top: 0.5em;
+				/* background-color: #96704E; */
+			}
 	}
 
 @media all and (orientation: portrait)
@@ -109,8 +115,7 @@ p
 .FlashClock
 	{
 		border:1px solid #000000;
-		margin-top:0.5em;
-		margin-bottom:0.5em;
+		margin-bottom: 0.5em;
 	}
 
 .ClockCanvas
