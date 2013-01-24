@@ -91,8 +91,8 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 
 	<div id="ClockDiv1" class="ColumnDiv ClockDiv">
 		<div class="FlashClock" id="ClockCell1" >
-			<canvas id="imgStandardClock" width="200" height="200" class="ClockCanvas" onClick="toggleClock(this.id);" ></canvas>
-			<canvas id="img24HourClock" width="200" height="200" class="ClockCanvas HideOnLoad" onClick="toggleClock(this.id);"></canvas>
+			<canvas id="imgStandardClock" width="200" height="200" class="ClockCanvas" onClick="toggleClock(this.id);"></canvas>
+			<canvas id="img24HourClock" width="200" height="200" class="ClockCanvas HideOnLoad" onClick="toggleClock(this.id);" style="display: none;"></canvas>
 		</div>
 		<div class="FlashClock" id="ClockCell2" >
 			<canvas id="imgChineseClock" width="200" height="200" class="ClockCanvas"></canvas>
@@ -154,7 +154,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		<div class="LinkGroupList" >
 			<p>
 				<a href="http://www.ocr.emory.edu/staff/">OCR Staff</a> |
-				<a href="http://med.emory.edu/research/cto/protected/Metrics/metrics.php">Metrics</a>
+				<a href="https://secure.web.emory.edu/med/ocr/Metrics/metrics.php">Metrics</a>
 			</p>
 			<p><a href="http://www.med.emory.edu/research/cto/wiki/">DokuWiki</a></p>
 		</div>
@@ -163,6 +163,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 			<a href="https://github.com/login">GitHub</a> |
 			<a href="http://www.heroku.com/">Heroku</a>
 		</p>
+		<p><a href="http://stackoverflow.com/">StackOverflow</a></p>
 		<p class="SubHeader">Commands</p>
 		<div class="LinkGroupList" >
 			<p>
@@ -196,7 +197,10 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		</div>
 		<p class="SubHeader">PHP</p>
 		<div class="LinkGroupList" >
-			<p><a href="http://www.php.net/manual/en/langref.php">PHP Language Reference</a></p>
+			<p>
+				<a href="" class="AltMenu" onClick="SearchFor( 'http://www.php.net/manual/en/langref.php', 'http://www.php.net/search.php?pattern=<REPLACE>' ); return false;">PHP Language Reference</a>
+				(<a href="http://php.net/manual/en/function.date.php">Date</a>)
+			</p>
 		</div>
 	</div>
 
@@ -359,7 +363,10 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 				<a href="http://www.aetna.com/">Aetna</a> |
 				<a href="http://www.medcohealth.com/">Medco</a>
 			</p>
-			<p><a href="https://emoryhealthcarepatientportal.iqhealth.com/iqh3/messaging/emry_ga/inbox">EHC Patient Portal</a></p>
+			<p>
+				<a href="http://www.emoryhealthcare.org/billpay/">EHC</a> |
+				<a href="https://emoryhealthcarepatientportal.iqhealth.com/iqh3/messaging/emry_ga/inbox">Patient Portal</a>
+			</p>
 		</div>
 		<p class="SubHeader">Microlending</p>
 		<div class="LinkGroupList" >
@@ -381,6 +388,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		</div>
 		<p class="SubHeader">Taxes</p>
 		<div class="LinkGroupList" >
+			<p><a href="https://gtc.dor.ga.gov/">Georgia Tax Center</a></p>
 			<p><a href="http://turbotax.intuit.com/">TurboTax</a></p>
 		</div>
 		<p class="SubHeader">Utilities</p>
@@ -407,7 +415,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		<p><a href="bookmarklets.htm">Bookmarklets</a></p>
 		<p><a href="cameras.htm">Cameras</a></p>
 		<p><a href="images.htm">Images</a></p>
-		<p><a href="http://www.inmanparkanimalhospital.com/">Inman Park Animal Hospital</a></p>
+		<p><a href="IPAH.htm">Inman Park Animal Hospital</a></p>
 		<p><a href="http://mobile.joederose.us/">Mobile</a></p>
 		<p><a href="regex.htm">Regular Expressions</a></p>
 		<p>

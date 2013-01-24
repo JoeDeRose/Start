@@ -869,7 +869,10 @@ function RegExpTestJ()
   			<li><b>JavaScript:</b> first match is $1</li>
   			<li><b>ColdFusion:</b> first match is \1</li>
   			<li><b>Oracle:</b> first match is \1</li>
-  			<li><b>PHP (ereg):</b> first match is \\1</li>
+  			<li><b>PHP (ereg):</b> first match is \\1 or $1 (the latter is preferred);
+  				if necesssary to eliminate ambiguity, the number can be in braces (e.g.,
+  				$11 might be the first reference followed by the digit 1, or the eleventh
+  				reference; to ensure that it is interpreted as the former, use ${1}1).</li>
   			<li><b>Ruby:</b> first match is '\1' (or &quot;\\1&quot; or '\\1') (The quotes
   				are necesssary to prevent it being parsed as an octal escape.)</li>
 		</ul></td>
