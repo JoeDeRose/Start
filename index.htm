@@ -145,18 +145,10 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		<div class="LinkGroupList" >
 			<p><a href="https://collaborate.emory.edu/Pages/Default.aspx">Collaborate</a></p>
 			<p><a href="https://wiki.service.emory.edu/">Confluence Wiki</a></p>
-			<p><a href="https://emoryrhsit.onjira.com/">JIRA</a></p>
+			<p><a href="https://emoryrhsit.atlassian.net/">JIRA</a></p>
 			<p><a href="https://project.emory.edu/pwa">PWA</a> <span class="SpecialNote">(IE)</span></p>
 			<p><a href="http://v3.sonar6.com/">Sonar6</a></p>
 			<p><a href="https://svn.service.emory.edu:8443/repos/emoryoit/project/">SVN</a></p>
-		</div>
-		<p class="SubHeader"><a href="http://www.ocr.emory.edu/">OCR</a></p>
-		<div class="LinkGroupList" >
-			<p>
-				<a href="http://www.ocr.emory.edu/staff/">OCR Staff</a> |
-				<a href="https://secure.web.emory.edu/med/ocr/Metrics/metrics.php">Metrics</a>
-			</p>
-			<p><a href="http://www.med.emory.edu/research/cto/wiki/">DokuWiki</a></p>
 		</div>
 		<div class="MainHeader">Programming</div>
 		<p>
@@ -217,6 +209,10 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 			<a href="https://www.google.com/latitude/">Latitude</a> |
 			<a href="https://mail.google.com/tasks/canvas">Tasks</a> |
 			<a href="" class="AltMenu" onClick="SearchFor( 'https://drive.google.com/#starred', 'https://drive.google.com/#search/<REPLACE>' ); return false;">Drive</a> |
+			<a href="" class="AltMenu" onClick="SearchFor( 'https://groups.google.com/forum/?fromgroups#!myforums', 'https://groups.google.com/forum/?fromgroups#!search/<REPLACE>' ); return false;">Groups</a> |
+			<a href="https://code.google.com/apis/console/">APIs</a>
+		</p>
+		<p class="BigIndent">
 			<a href="https://www.google.com/settings/account">Account</a>
 		</p>
 		<p>
@@ -249,7 +245,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 			<p><a href="https://online.jasonsdeli.com/">Jason's Deli</a></p>
 			<p><a href="http://www.nancyspizza.com/">Nancy's Pizza</a></p>
 			<p><a href="http://www.pizzahut.com/">Pizza Hut</a></p>
-			<p><a href="http://eatricebox.net/">Rice Box</a></p>
+			<p><a href="http://www.riceboxatlanta.com/">Rice Box</a></p>
 			<p><a href="http://roaminghunger.com/atl">Roaming Hunger</a></p>
 		</div>
 		<p class="SubHeader">News</p>
@@ -329,6 +325,7 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		<p>
 			<a href="" class="AltMenu" onClick="SearchFor( 'https://maps.google.com/', 'maps?q=<REPLACE>' ); return false;">Google Maps</a>
 			(<a href="http://www.google.com/mapmaker">Map Maker</a>)
+			(<a href="https://maps.google.com/?ll=33.756458,-84.368134&t=m&z=15">Home</a> | <a href="https://maps.google.com/?ll=33.790561,-84.31788&t=m&z=15">Work</a>)
 		</p>
 		<p><a href="http://www.zipcar.com/">Zipcar</a></p>
 	</div>
@@ -435,36 +432,9 @@ adding a calendar a matter of 1 or 2 lines of code. -->
 		<p><a href="http://zip4.usps.com/zip4/welcome.jsp">USPS ZIP+4 Lookup</a></p>
 		<div class="MainHeader">Updates</div>
 		<div id="Twitter">
-			<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-			<script>
-				new TWTR.Widget({
-					version: 2,
-					type: 'list',
-					rpp: 30,
-					interval: 30000,
-					title: 'Twitter',
-					subject: '',
-					width: 200,
-					height: 300,
-					theme: {
-						shell: {
-							background: '#847cb3',
-							color: '#ffffff'
-						},
-						tweets: {
-							background: '#ffffff',
-							color: '#444444',
-							links: '#440ef5'
-						}
-					},
-					features: {
-						scrollbar: true,
-						loop: false,
-						live: true,
-						behavior: 'all'
-					}
-				}).render().setList('LJDeRose', 'interesting').start();
-			</script>
+			<!-- Twitter: Interesting -->
+			<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/LJDeRose/interesting" data-widget-id="315568274245033984">Tweets from @LJDeRose/interesting</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</div>
 	</div>
 

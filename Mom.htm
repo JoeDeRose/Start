@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Information for Mom</title>
+<!-- jQuery and add-ins -->
+<script src="Scripts/jquery-min.js"></script>
+<style>
+	h1
+		{
+			text-align: center;
+		}
+	table#TrashDay
+		{
+			border-collapse: collapse;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	table#TrashDay th
+		{
+			border-collapse: collapse;
+			font-weight: bold;
+			font-size: 1.5em;
+			text-align: center;
+			padding: 10px;
+		}
+	table#TrashDay td
+		{
+			border: 1px solid black;
+			font-weight: bold;
+			font-size: 3em;
+			text-align: center;
+			width: 12%;
+		}
+	.TrashYes
+		{
+			background-color: lawngreen;
+		}
+	.TrashNo
+		{
+			background-color: salmon;
+		}
+	#TrashQuestion
+		{
+			text-align: center;
+			font-weight: bold;
+			font-size: 2em;
+		}
+	#TrashAnswer
+		{
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+			border-radius: 1em;
+		}
+	.TrashCircle
+		{
+			border: 3px solid red;
+			border-radius: 1em;
+			padding-left: 0.25em;
+			padding-right: 0.25em;
+		}
+</style>
+</head>
+<body>
+
+<h1>Trash Day</h1>
+
+<table id="TrashDay">
+	<thead>
+		<tr>
+			<th><span class="Sunday">Sunday</span></th>
+			<th><span class="Monday">Monday</span></th>
+			<th><span class="Tuesday">Tuesday</span></th>
+			<th><span class="Wednesday">Wednesday</span></th>
+			<th><span class="Thursday">Thursday</span></th>
+			<th><span class="Friday">Friday</span></th>
+			<th><span class="Saturday">Saturday</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="TrashYes Sunday">Yes</td>
+			<td class="TrashYes Monday">Yes</td>
+			<td class="TrashYes Tuesday">Yes</td>
+			<td class="TrashYes Wednesday">Yes</td>
+			<td class="TrashYes Thursday">Yes</td>
+			<td class="TrashNo Friay">No</td>
+			<td class="TrashNo Saturday">No</td>
+		</tr>
+	</tbody>
+</table>
+
+<p id="TrashQuestion">
+	Is today a trash day?<br />
+	<span id="TrashAnswer"></span>
+</p>
+
+</body>
+
+<script>
+	var TodayDate = new Date();
+	var Today = TodayDate.getDay();
+	var WeekdayArray = new Array(7);
+	WeekdayArray[0] = "Sunday";
+	WeekdayArray[1] = "Monday";
+	WeekdayArray[2] = "Tuesday";
+	WeekdayArray[3] = "Wednesday";
+	WeekdayArray[4] = "Thursday";
+	WeekdayArray[5] = "Friday";
+	WeekdayArray[6] = "Saturday";
+
+	if ( Today == 5 || Today == 6 ) {
+		$( "#TrashAnswer" ).addClass( "TrashNo" );
+		$( "#TrashAnswer" ).html( "No. Today is " + WeekdayArray[Today] + "." );
+	} else {
+		$( "#TrashAnswer" ).addClass( "TrashYes" );
+		$( "#TrashAnswer" ).html( "Yes. Today is " + WeekdayArray[Today] + "." );
+	}
+	$( "th span." + WeekdayArray[Today] ).addClass( "TrashCircle" );
+</script>
+
+</html>

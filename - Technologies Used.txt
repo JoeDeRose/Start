@@ -1,0 +1,14 @@
+JavaScript
+	jQuery
+
+HTML5 <canvas>
+
+CSS/CSS3
+	pseudo elements
+	rounded corners
+	embedded fonts
+	gridlike disply using DIV instead of TABLE
+	separate display styles for mobile vs. desktop (executed as portrait vs. landscape)
+
+Adobe Flash (previous version of clocks; replaced by HTML5)
+	ActionScript
